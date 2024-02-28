@@ -1,9 +1,25 @@
 # EduQuest
 ![EduQuest Logo](Assets/logo-1.jpg)
 
+## Set up instructions
+In the terminal run the following commands
+```
+cd eduquest
+npm install
+```
+
+It should be set up now
+
+## Run instructions 
+```
+cd eduquest/
+npm run dev
+```
+
+The site should be accessible on [localhost:3000/](localhost:3000/) 
+
 ## High-Level Description
 Teachers will be able to create questions and student groups along with viewing student marks/attendance. Students will be able to answer live questions as well as asynchronous assignments and quizzes posted by teachers, communicate with their peers, and submit essay questions via an interactive text box and file upload. 
-
 
 
 ## Requirements
