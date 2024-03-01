@@ -1,5 +1,6 @@
 # EduQuest
-![EduQuest Logo](Assets/logo-1.jpg)
+
+![EduQuest Logo](Assets/eduQuestpxArtLogo.png)
 
 ## Set up instructions
 In the terminal run the following commands
