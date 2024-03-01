@@ -1,0 +1,82 @@
+version: '3.8'
+services:             
+    cosc310-mysql:
+        image: mysql:8.0
+        container_name: cosc310-mysql
+        restart: always
+        environment:
+            MYSQL_DATABASE: 'testuser'
+            MYSQL_USER: 'testuser'
+            MYSQL_PASSWORD: '310testpw'            
+            MYSQL_ROOT_PASSWORD: '310rootpw'
+        ports:
+            - '3306:3306'
+        expose:
+            - '3306'   
+        volumes:
+            - mysql-db:/var/lib/mysql
+            - ./WebContent/ddl:/docker-entrypoint-initdb.d
+        networks:
+            network310:
+                aliases:
+                    - cosc310_mysql
+    cosc310-sqlserver:
+        image: mcr.microsoft.com/mssql/server:2019-latest
+        container_name: cosc310-sqlserver
+        restart: always
+        environment:
+            ACCEPT_EULA: 'Y'
+            SA_PASSWORD: '310#sa#pw'
+        ports:
+            - '1433:1433'
+        expose:
+            - '1433'
+        volumes:
+            - cosc310-db:/var/lib/mssql            
+            - ./WebContent/ddl:/scripts
+        networks:
+            network310:
+                aliases:
+                    - cosc310_sqlserver
+        command:
+            - /bin/bash
+            - -c
+            - |
+               /opt/mssql/bin/sqlservr &
+               pid=$$!
+               echo "Waiting for MS SQL to be available"
+               /opt/mssql-tools/bin/sqlcmd -l 30 -S localhost -h-1 -V1 -U sa -P $$SA_PASSWORD -Q "SET NOCOUNT ON SELECT \"YAY WE ARE UP\" , @@servername"
+               is_up=$$?
+               while [ $$is_up -ne 0 ] ; do 
+                 echo -e $$(date) 
+                 /opt/mssql-tools/bin/sqlcmd -l 30 -S localhost -h-1 -V1 -U sa -P $$SA_PASSWORD -Q "SET NOCOUNT ON SELECT \"YAY WE ARE UP\" , @@servername"
+                 is_up=$$?
+                 sleep 5 
+               done
+               for foo in /scripts/SQLServer*.ddl
+                 do /opt/mssql-tools/bin/sqlcmd -U sa -P $$SA_PASSWORD -l 30 -e -i $$foo
+               done
+               trap "kill -15 $$pid" SIGTERM
+               wait $$pid
+               exit 0         
+    app:
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        image: cosc310-java
+        depends_on:
+            - cosc310-sqlserver
+        container_name: cosc310-java
+        volumes:
+            - ./WebContent:/usr/local/tomcat/webapps/shop/
+        networks:
+            network310:
+                aliases:
+                    - cosc310-java
+        ports:
+            - 80:8080
+volumes: 
+    cosc310-db:
+    mysql-db:
+networks:
+    network310:
