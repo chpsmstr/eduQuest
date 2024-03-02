@@ -13,10 +13,10 @@ export default function Home() {
         <Link href="">
           <h1 className="text-3xl lg:text-4xl lg:mx-4 sm:mx-2">Educator</h1>
         </Link>
-        <Link href="">
+        <Link href="/Register">
           <h1 className="text-3xl lg:text-4xl lg:mx-4 sm:mx-2">Register</h1>
         </Link>
-        <Link href="">
+        <Link href="/Login">
           <h1 className="text-3xl lg:text-4xl lg:mx-4 sm:mx-2">Start</h1>
         </Link>
       </div>
