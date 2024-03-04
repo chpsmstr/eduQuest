@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="px-9 bg-gradient-to-b from-amber-100 to-amber-500 h-screen flex items-center flex-col">
+    <main className="px-9 bg-cover  bg-center bg-landing h-screen flex items-center flex-col">
       <img
         src="/eduQuestpxArtLogo.png"
         alt="Eduquest logo"
