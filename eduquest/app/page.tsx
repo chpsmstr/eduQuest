@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="px-9 bg-gradient-to-b from-amber-100 to-amber-500 h-screen flex items-center flex-col">
+    <main className="px-9 bg-cover  bg-center bg-landing h-screen flex items-center flex-col">
       <img
         src="/eduQuestpxArtLogo.png"
         alt="Eduquest logo"
@@ -13,10 +13,10 @@ export default function Home() {
         <Link href="">
           <h1 className="text-3xl lg:text-4xl lg:mx-4 sm:mx-2">Educator</h1>
         </Link>
-        <Link href="">
+        <Link href="/Register">
           <h1 className="text-3xl lg:text-4xl lg:mx-4 sm:mx-2">Register</h1>
         </Link>
-        <Link href="">
+        <Link href="/Login">
           <h1 className="text-3xl lg:text-4xl lg:mx-4 sm:mx-2">Start</h1>
         </Link>
       </div>
