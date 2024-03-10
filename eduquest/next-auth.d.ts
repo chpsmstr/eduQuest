@@ -1,6 +1,8 @@
 import { DefaultSession, DefaultUser } from "next-auth";
 import { JWT, DefaultJWT } from "next-auth/jwt";
 
+// https://authjs.dev/guides/basics/role-based-access-control#persisting-the-role
+
 declare module "next-auth" {
   interface Session {
     user: {
