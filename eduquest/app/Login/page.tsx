@@ -1,14 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
+import Logo from "../Components/Logo";
 
 export default function Login() {
   return (
     <main className="px-4 bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col">
-      <img
-        src="/eduQuestpxArtLogo.png"
-        alt="Eduquest logo"
-        className="h-100 w-100 xs:h-80 xs:w-80 lg:h-100 lg:w-100"
-      />
+      <Logo />
       <form>
       <div className="grid grid-cols-2 gap-4">
         <div className="text-center text-3xl lg:text-2xl lg:mx-4 sm:mx-2">Username:</div>
@@ -36,4 +33,3 @@ export default function Login() {
     </main>
   );
 }
-

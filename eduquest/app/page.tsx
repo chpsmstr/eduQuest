@@ -1,5 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
+import MenuButton from "./Components/MenuButton";
+import Logo from "./Components/Logo";
 
 export default function Home() {
   return (
