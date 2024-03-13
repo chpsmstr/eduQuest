@@ -12,40 +12,43 @@ export default function TeacherRegistration() {
       <div className="grid text-center text-left text-4xl lg:text-3xl lg:mx-4 sm:mx-2 mb-12">
           Create an Account
       </div>
+      <form>
       <div className="grid grid-cols-2 gap-4 mt-4">
         <div className="text-left text-3xl lg:text-2xl lg:mx-4 sm:mx-2">First Name:</div>
         <div>
-          <input type="text" className="w-full border rounded px-2 py-1" />
+          <input type="text" id = "firstName" className="w-full border rounded px-2 py-1" />
         </div>
         <div className="text-left text-3xl lg:text-2xl lg:mx-4 sm:mx-2">Last Name:</div>
         <div>
-          <input type="text" className="w-full border rounded px-2 py-1" />
+          <input type="text" id= "lastName" className="w-full border rounded px-2 py-1" />
         </div>
         <div className="text-left text-3xl lg:text-2xl lg:mx-4 sm:mx-2">Username:</div>
         <div>
-          <input type="text" className="w-full border rounded px-2 py-1" />
+          <input type="text" id = "username" className="w-full border rounded px-2 py-1" />
         </div>
         <div className="text-left text-3xl lg:text-2xl lg:mx-4 sm:mx-2">Email:</div>
         <div>
-          <input type="text" className="w-full border rounded px-2 py-1" />
+          <input type="email" id = "email" className="w-full border rounded px-2 py-1" />
         </div>
         <div className="text-left text-3xl lg:text-2xl lg:mx-4 sm:mx-2">Faculty ID:</div>
         <div>
-          <input type="text" className="w-full border rounded px-2 py-1" />
+          <input type="text" id = "facultyId" className="w-full border rounded px-2 py-1" />
         </div>
         <div className="text-left text-3xl lg:text-2xl lg:mx-4 sm:mx-2">Password:</div>
         <div>
-          <input type="text" className="w-full border rounded px-2 py-1" />
+          <input type="password" id = "firstPassword" className="w-full border rounded px-2 py-1" />
         </div>
         <div className="text-left text-3xl lg:text-2xl lg:mx-4 sm:mx-2">Confirm Password:</div>
         <div>
-          <input type="text" className="w-full border rounded px-2 py-1" />
+          <input type="password" id = "confirmPassword" className="w-full border rounded px-2 py-1" />
         </div>
-     
         <div className="col-span-2 text-center mt-4">
-          <button className="bg-orange-500 text-white px-12 py-6 rounded border-2 border-orange-600 hover:bg-orange-600 hover:border-orange-700 mt-4" style={{borderWidth: "4px"}}>Submit</button>
-        </div>
+          <Link href = ""> 
+            <button className="bg-orange-500 text-white px-12 py-6 rounded border-2 border-orange-600 hover:bg-orange-600 hover:border-orange-700 mt-4" style={{borderWidth: "4px"}}>Submit</button>
+          </Link>
+          </div>
       </div>
+      </form>
       <Link href="/">
         <h1 className="text-center text-2xl lg:text-xl lg:mx-4 sm:mx-2 mt-4 mb-4">Back Home</h1>
       </Link>
