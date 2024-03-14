@@ -14,6 +14,7 @@ CREATE TABLE student(
     studentFirstName    VARCHAR(40),
     studentLastName     VARCHAR(40),
     studentUsername     VARCHAR(40),
+    studentPassword     VARCHAR(40),
     studentEmail        VARCHAR(50),
     overallGrade        DECIMAL(3,2),
     attendence          DECIMAL(3,2),
@@ -26,6 +27,7 @@ CREATE TABLE teacher (
     teacherFirstName    VARCHAR(40),
     teacherLastName     VARCHAR(40),
     teacherUsername     VARCHAR(40),
+    teacherPassword     VARCHAR(40),
     teacherEmail        VARCHAR(50),
     educationLevel      VARCHAR(20),
     numOfCourses        INT,
@@ -38,6 +40,7 @@ CREATE TABLE administrator(
     adminFirstName      VARCHAR(40),
     adminLastName       VARCHAR(40),
     adminusername       VARCHAR(40),
+    adminPassword       VARCHAR(40),
     adminEmail          VARCHAR(50),
     PRIMARY KEY(adminId)
 ) ENGINE=InnoDB;
