@@ -28,13 +28,13 @@ export default function Home() {
       ></img>
       </div>
       <div className="grid text-center space-y-4 sm:space-y-0 lg:space-y-0  lg:grid-cols-1 sm:grid-cols-1 gap-10">
-        <Link href="/Dashboard">
+        <Link href="/Login">
           <h1 className="text-4xl lg:text-4xl lg:mx-4 sm:mx-2 transition duration-500 hover:scale-125 rounded">Enter</h1>
         </Link>
         <Link href="/About">
           <h1 className="text-4xl lg:text-4xl lg:mx-4 sm:mx-2 transition duration-500 hover:scale-125">Credits</h1>
         </Link>
-        <Link href="">
+        <Link href="/Settings">
           <h1 className="text-4xl lg:text-4xl lg:mx-4 sm:mx-2 transition duration-500 hover:scale-125">Settings</h1>
         </Link>
         <Link href="">
