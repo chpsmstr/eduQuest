@@ -11,7 +11,7 @@ interface ClassProps {
 
 const ClassBox: React.FC<ClassProps> = ({ color, link, label }) => {
   return (
-    <div className="relative mb-4 w-56 sm:w-56">
+    <div className="relative mb-4 w-56 sm:w-56 rounded">
       <Link href={link}>
         <div className="block h-56 cursor-pointer transition duration-300 ease-in-out transform hover:brightness-90">
           {/* Colored half at the top */}
@@ -46,6 +46,9 @@ export default function Dashboard() {
     return(
         <main className="bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col">
             <h1 className="text-3xl lg:text-4xl lg:mx-4 sm:mx-2 p-4 mt-8 mb-16">Student Name Classes</h1>
+            <Link href = "/CreateClass">
+            <div className="text-center text-3xl lg:text-2xl lg:mx-4 sm:mx-2">Create a Class</div>
+            </Link>
             {/*<Link href="Dashboard/Student">
               <h1 className="text-3xl lg:text-4xl lg:mx-4 sm:mx-2 p-4 hover:border-indigo-600 border-indigo-700 hover:bg-indigo-500  bg-indigo-600 rounded-md" style={{borderWidth: "4px"}}>Student</h1> 
             </Link>

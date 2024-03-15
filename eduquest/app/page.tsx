@@ -31,7 +31,7 @@ export default function Home() {
         <Link href="/About">
           <h1 className="text-4xl lg:text-4xl lg:mx-4 sm:mx-2 transition duration-500 hover:scale-125">Credits</h1>
         </Link>
-        <Link href="">
+        <Link href="/Settings">
           <h1 className="text-4xl lg:text-4xl lg:mx-4 sm:mx-2 transition duration-500 hover:scale-125">Settings</h1>
         </Link>
         <Link href="">
