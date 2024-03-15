@@ -17,7 +17,7 @@ export default function Home() {
           </button>
         </Link>
       </div>
-      <div className="grid text-right space-y-4 sm:space-y-0 lg:space-y-0  lg:grid-cols-1 lg:grid-cols-1 gap-3 justify-items-center">
+      <div className="grid text-right space-y-4 sm:space-y-0 lg:space-y-0 lg:grid-cols-1 lg:grid-cols-1 gap-3 justify-items-center">
       <img
         src="/eduQuestlogoresized2.webp"
         alt="Eduquest logo"
