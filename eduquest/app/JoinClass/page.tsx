@@ -18,7 +18,7 @@ export default function CreateClass() {
         
         <div className="col-span-2 text-center mt-4">
           <Link href = "">
-            <button className="bg-orange-500 text-white px-12 py-6 rounded border-2 border-orange-600 hover:bg-orange-600 hover:border-orange-700 mt-4" style={{borderWidth: "4px"}}>Create a Class</button>
+            <button className="bg-orange-500 text-white px-12 py-6 rounded border-2 border-orange-600 hover:bg-orange-600 hover:border-orange-700 mt-4" style={{borderWidth: "4px"}}>Join Class</button>
           </Link>
         </div>
       </div>
@@ -26,4 +26,3 @@ export default function CreateClass() {
     </main>
   );
 }
-

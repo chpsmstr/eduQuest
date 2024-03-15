@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Link from "next/link";
+import Logo from "@/app/Components/Logo"
 
 const colors: string[] = ['bg-red-500', 'bg-blue-500', 'bg-green-500', 'bg-indigo-500', 'bg-purple-500', 'bg-pink-500'];
 
@@ -16,11 +17,11 @@ const ClassBox: React.FC<ClassProps> = ({ color, link, label }) => {
         <div className="block h-56 cursor-pointer transition duration-300 ease-in-out transform hover:brightness-90">
           {/* Colored half at the top */}
           <div className={`absolute left-0 top-0 w-full h-1/2 ${color} transition duration-300 ease-in-out transform hover:brightness-110`}></div>
-          {/* Remaining half */}
+          {/* White lower half */}
           <div className="absolute left-0 bottom-0 w-full h-1/2 bg-white"></div>
         </div>
       </Link>
-      {/* Text */}
+      {/* Text position within class*/}
       <div className="absolute top-0 left-0 w-full p-2 text-black text-2xl font-bold pointer-events-none" style={{ marginTop: 'calc(1/6 * 6rem)' }}>
         {label}
       </div>
@@ -29,8 +30,8 @@ const ClassBox: React.FC<ClassProps> = ({ color, link, label }) => {
 };
 
 const ClassNames = () => {
-  const links: string[] = ['Dashboard/Calculus', 'Dashboard/Chemistry', 'Dashboard/Physics', 'Dashboard/Biology', 'Dashboard/CompSci', 'Dashboard/Arts'];
-  const labels: string[] = ['Calculus', 'Chemistry', 'Physics', 'Biology', 'CompSci', 'Arts'];
+  var links: string[] = ['Dashboard/Calculus', 'Dashboard/Chemistry', 'Dashboard/Physics', 'Dashboard/Biology', 'Dashboard/CompSci', 'Dashboard/Arts'];
+  var labels: string[] = ['Calculus', 'Chemistry', 'Physics', 'Biology', 'CompSci', 'Arts'];
   
   return (
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-12">
@@ -49,18 +50,9 @@ export default function Dashboard() {
             <Link href = "/CreateClass">
             <div className="text-center text-3xl lg:text-2xl lg:mx-4 sm:mx-2">Create a Class</div>
             </Link>
-            {/*<Link href="Dashboard/Student">
-              <h1 className="text-3xl lg:text-4xl lg:mx-4 sm:mx-2 p-4 hover:border-indigo-600 border-indigo-700 hover:bg-indigo-500  bg-indigo-600 rounded-md" style={{borderWidth: "4px"}}>Student</h1> 
+            <Link href = "/JoinClass">
+            <div className="text-center text-3xl lg:text-2xl lg:mx-4 sm:mx-2">Join a Class</div>
             </Link>
-            <br />
-            <Link href="Dashboard/Teacher">
-              <h1 className="text-3xl lg:text-4xl lg:mx-4 sm:mx-2 p-4 hover:border-red-600 border-red-700 hover:bg-red-500  bg-red-600 rounded-md" style={{borderWidth: "4px"}}>Teacher</h1> 
-            </Link>
-            <br />
-            <Link href="Dashboard/Admin">
-              <h1 className="text-3xl lg:text-4xl lg:mx-4 sm:mx-2 p-4 hover:border-gree-600 border-green-700 hover:bg-green-500  bg-green-600 rounded-md" style={{borderWidth: "4px"}}>Administrator</h1> 
-            </Link>
-    */}
     
             <ClassNames/>
         </main>
