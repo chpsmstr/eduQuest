@@ -6,6 +6,7 @@ type Params = {
     color: string;
     link: string;
     label: string;
+    grade: string;
   };
 };
 
@@ -20,6 +21,11 @@ export default function ClassBox({ params }: Params) {
           ></div>
           {/* White lower half */}
           <div className="absolute left-0 bottom-0 w-full h-1/2 bg-white"></div>
+          <div className="absolute top-24 right-2 transform -translate-y-1/2">
+            {[1].map((_, index) => (
+          <div key={index} className="w-20 h-20 bg-gray-200 rounded-full mx-1"></div>
+        ))}
+      </div>
         </div>
       </Link>
       {/* Text position within class*/}
@@ -28,6 +34,9 @@ export default function ClassBox({ params }: Params) {
         style={{ marginTop: "calc(1/6 * 6rem)" }}
       >
         {params?.label}
+      </div>
+      <div className="absolute top-16 left-36 w-full p-2 text-black text-2xl font-bold pointer-events-none" style={{ marginTop: 'calc(1/6 * 3rem)'}}>
+        {params?.grade}
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Link from "next/link";
 import Logo from "@/app/Components/Logo";
 import ClassBox from "@/app/Components/ClassBox";
+import ClassButton from "@/app/Components/ClassButton";
 
 const colors: string[] = [
   "bg-red-500",
@@ -35,6 +36,7 @@ const ClassNames = () => {
     "CompSci",
     "Arts",
   ];
+  var grades: string[] = ["89%","75%","98%","67%","84%","78%"];
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-12">
@@ -45,6 +47,7 @@ const ClassNames = () => {
             color: color,
             link: links[index],
             label: labels[index],
+            grade: grades[index]
           }}
         />
       ))}
@@ -55,20 +58,25 @@ const ClassNames = () => {
 export default function Dashboard() {
   return (
     <main className="bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col">
-      <h1 className="text-3xl lg:text-4xl lg:mx-4 sm:mx-2 p-4 mt-8 mb-16">
+      <h1 className="text-3xl lg:text-4xl lg:mx-4 sm:mx-2 p-4 mt-16 mb-16">
         Student Name Classes
       </h1>
-      <Link href="/CreateClass">
-        <div className="text-center text-3xl lg:text-2xl lg:mx-4 sm:mx-2">
-          Create a Class
+      <div className="absolute top-4 right-16">
+      <ClassButton
+          params={{
+            link: "/JoinClass",
+            label: "Join a Class"
+          }}
+        />
         </div>
-      </Link>
-      <Link href="/JoinClass">
-        <div className="text-center text-3xl lg:text-2xl lg:mx-4 sm:mx-2">
-          Join a Class
+        <div className="absolute top-28 right-16">
+        <ClassButton
+          params={{
+            link: "/CreateClass",
+            label: "Create a Class"
+          }}
+        />
         </div>
-      </Link>
-
       <ClassNames />
     </main>
   );
