@@ -14,21 +14,21 @@ export default function CreateClass() {
       <div className="grid grid-cols-2 gap-4 mt-4">
         <div className="text-left text-3xl lg:text-2xl lg:mx-4 sm:mx-2">Class Name:</div>
         <div>
-          <input type="text" id = "className" className="w-full border rounded px-2 py-1 text-black" />
+          <input type="text" id = "className" placeholder = "ex: Math 100"className="w-full border rounded px-2 py-1 text-black" />
         </div>
         <div className="text-left text-3xl lg:text-2xl lg:mx-4 sm:mx-2">Class Section:</div>
         <div>
-          <input type="text" id = "classSection" className="w-full border rounded px-2 py-1 text-black" />
+          <input type="text" id = "classSection" placeholder = "ex: 101" className="w-full border rounded px-2 py-1 text-black" />
         </div>
         <div className="text-left text-3xl lg:text-2xl lg:mx-4 sm:mx-2">Class Description:</div>
         <div>
         <div>
-        <textarea id="classDescription" className="w-full border rounded px-4 py-2 text-black" style={{ height: '8rem' }} />
+        <textarea id="classDescription" placeholder = "ex: Derivatives of elementary functions and limits." className="w-full border rounded px-4 py-2 text-black" style={{ height: '8rem' }} />
         </div>
         </div>
         <div className="text-left text-3xl lg:text-2xl lg:mx-4 sm:mx-2">Unique Class ID:</div>
         <div>
-          <input type="text" id = "classId" className="w-full border rounded px-2 py-1 text-black" />
+          <input type="text" id = "classId" placeholder = "ex: 123456" className="w-full border rounded px-2 py-1 text-black" />
         </div>
         
         <div className="col-span-2 text-center mt-4">

@@ -47,7 +47,7 @@ export default function Home() {
         <MenuButton
           params={{
             text: "Settings",
-            href: "/Settings",
+            href: "/userSettings",
           }}
         />
 

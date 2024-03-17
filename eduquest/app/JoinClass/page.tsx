@@ -12,17 +12,10 @@ export default function JoinClass() {
       <div className = "text-center text-4xl lg:text-3xl lg:mx-4 sm:mx-2 mb-12">Join a Class</div>
       <form>
       <div className="grid grid-cols-2 gap-4 mt-4">
-        <div className="text-left text-3xl lg:text-2xl lg:mx-4 sm:mx-2">Class Name:</div>
+      
+        <div className="text-left text-3xl lg:text-2xl lg:mx-4 sm:mx-2">Class Join Code:</div>
         <div>
-          <input type="text" id = "className" className="w-full border rounded px-2 py-1 text-black" />
-        </div>
-        <div className="text-left text-3xl lg:text-2xl lg:mx-4 sm:mx-2">Class Section:</div>
-        <div>
-          <input type="text" id = "classSection" className="w-full border rounded px-2 py-1 text-black" />
-        </div>
-        <div className="text-left text-3xl lg:text-2xl lg:mx-4 sm:mx-2">Unique Class ID:</div>
-        <div>
-          <input type="text" id = "classId" className="w-full border rounded px-2 py-1 text-black" />
+          <input type="text" id = "classId" placeholder = "ex: 123456" className="w-full border rounded px-2 py-1 text-black" />
         </div>
         
         <div className="col-span-2 text-center mt-4">
