@@ -8,6 +8,7 @@ type Params = {
     label: string;
     teacher: string;
     editLink: string;
+    registerLink: string;
   };
 };
 
@@ -42,7 +43,7 @@ export default function AdminClassBox({ params }: Params) {
         className="absolute top-0 left-0 w-full p-2 text-black text-l font-bold"
         style={{ marginTop: 100, marginLeft: 24 }}
       >
-        <Link href="">
+        <Link href={`${params?.registerLink}`}>
           <button className="bg-orange-500 text-white px-6 py-1 rounded border-2 border-orange-600 hover:bg-orange-600 hover:border-orange-700 mt-4" style={{ borderWidth: "4px" }}>Registration</button>
         </Link>
       </div>
@@ -50,7 +51,7 @@ export default function AdminClassBox({ params }: Params) {
         className="absolute top-0 left-0 w-full p-2 text-black text-l font-bold"
         style={{ marginTop: 148, marginLeft: 64 }}
       >
-        <Link href="">
+        <Link href={`${params?.editLink}`}>
           <button className="bg-orange-500 text-white px-6 py-1 rounded border-2 border-orange-600 hover:bg-orange-600 hover:border-orange-700 mt-4" style={{ borderWidth: "4px" }}>Edit</button>
         </Link>
       </div>

@@ -21,20 +21,28 @@ interface ClassProps {
 
 const ClassNames = () => {
   var links: string[] = [
-    "Dashboard/Math100",
-    "Dashboard/Chemistry111",
-    "Dashboard/Physics112",
-    "Dashboard/Biology121",
-    "Dashboard/Comp-Sci122",
-    "Dashboard/English112",
-  ];
-  var editLinks: string[] = [
     "adminDashboard/Math100",
     "adminDashboard/Chemistry111",
     "adminDashboard/Physics112",
     "adminDashboard/Biology121",
     "adminDashboard/Comp-Sci122",
     "adminDashboard/English112",
+  ];
+  var registerLinks: string[] = [
+    "adminDashboard/registerMath100",
+    "adminDashboard/registerChemistry111",
+    "adminDashboard/registerPhysics112",
+    "adminDashboard/registerBiology121",
+    "adminDashboard/registerComp-Sci122",
+    "adminDashboard/registerEnglish112",
+  ];
+  var editLinks: string[] = [
+    "adminDashboard/editMath100",
+    "adminDashboard/editChemistry111",
+    "adminDashboard/editPhysics112",
+    "adminDashboard/editBiology121",
+    "adminDashboard/editComp-Sci122",
+    "adminDashboard/editEnglish112",
   ];
   
   var labels: string[] = [
@@ -64,7 +72,8 @@ const ClassNames = () => {
             link: links[index],
             label: labels[index],
             teacher: teachers[index],
-            editLink: editLinks[index]
+            editLink: editLinks[index],
+            registerLink: registerLinks[index]
           }}
         />
       ))}

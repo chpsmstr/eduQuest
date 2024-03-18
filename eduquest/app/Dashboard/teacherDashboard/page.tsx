@@ -21,12 +21,12 @@ interface ClassProps {
 
 const ClassNames = () => {
   var links: string[] = [
-    "Dashboard/Math100",
-    "Dashboard/Chemistry111",
-    "Dashboard/Physics112",
-    "Dashboard/Biology121",
-    "Dashboard/Comp-Sci122",
-    "Dashboard/English112",
+    "teacherDashboard/Math100",
+    "teacherDashboard/Chemistry111",
+    "teacherDashboard/Physics112",
+    "teacherDashboard/Biology121",
+    "teacherDashboard/Comp-Sci122",
+    "teacherDashboard/English112",
   ];
   var labels: string[] = [
     "Math 100",
