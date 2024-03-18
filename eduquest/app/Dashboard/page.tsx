@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Link from "next/link";
 import Logo from "@/app/Components/Logo";
 import ClassBox from "@/app/Components/ClassBox";
+import ClassButton from "@/app/Components/ClassButton";
 
 const colors: string[] = [
   "bg-red-500",
@@ -20,22 +21,37 @@ interface ClassProps {
 
 const ClassNames = () => {
   var links: string[] = [
-    "Dashboard/Calculus",
-    "Dashboard/Chemistry",
-    "Dashboard/Physics",
-    "Dashboard/Biology",
-    "Dashboard/CompSci",
-    "Dashboard/Arts",
+    "Dashboard/Math100",
+    "Dashboard/Chemistry111",
+    "Dashboard/Physics112",
+    "Dashboard/Biology121",
+    "Dashboard/Comp-Sci122",
+    "Dashboard/English112",
   ];
   var labels: string[] = [
-    "Calculus",
-    "Chemistry",
-    "Physics",
-    "Biology",
-    "CompSci",
-    "Arts",
+    "Math 100",
+    "Chemistry 111",
+    "Physics 112",
+    "Biology 121",
+    "Comp-Sci 122",
+    "English 112",
   ];
-
+  var grades: string[] = [
+    "89%",
+    "75%",
+    "98%",
+    "67%",
+    "84%",
+    "78%"
+  ];
+  var teachers: string[] = [
+      "Dr. Meredith Stone",
+      "Dr. Alexander Patel", 
+      "Dr. Eleanor Hayes",
+      "Dr. Benjamin Carter", 
+      "Dr. Victoria Liu", 
+      "Dr. Jim Thompson"
+    ];
   return (
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-12">
       {colors.map((color, index) => (
@@ -45,6 +61,8 @@ const ClassNames = () => {
             color: color,
             link: links[index],
             label: labels[index],
+            grade: grades[index],
+            teacher: teachers[index]
           }}
         />
       ))}
@@ -55,20 +73,25 @@ const ClassNames = () => {
 export default function Dashboard() {
   return (
     <main className="bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col">
-      <h1 className="text-3xl lg:text-4xl lg:mx-4 sm:mx-2 p-4 mt-8 mb-16">
+      <h1 className="text-3xl lg:text-4xl lg:mx-4 sm:mx-2 p-4 mt-16 mb-16">
         Student Name Classes
       </h1>
-      <Link href="/CreateClass">
-        <div className="text-center text-3xl lg:text-2xl lg:mx-4 sm:mx-2">
-          Create a Class
+      <div className="absolute top-4 right-16">
+      <ClassButton
+          params={{
+            link: "/JoinClass",
+            label: "Join a Class"
+          }}
+        />
         </div>
-      </Link>
-      <Link href="/JoinClass">
-        <div className="text-center text-3xl lg:text-2xl lg:mx-4 sm:mx-2">
-          Join a Class
+        <div className="absolute top-28 right-16">
+        <ClassButton
+          params={{
+            link: "/CreateClass",
+            label: "Create a Class"
+          }}
+        />
         </div>
-      </Link>
-
       <ClassNames />
     </main>
   );

@@ -16,31 +16,31 @@ export default function StudentRegistration() {
       <div className="grid grid-cols-2 gap-4 mt-4">
         <div className="text-left text-3xl lg:text-2xl lg:mx-4 sm:mx-2">First Name:</div>
         <div>
-          <input type="text" id = "firstName" className="w-full border rounded px-2 py-1" />
+          <input type="text" id = "firstName" className="w-full border rounded px-2 py-1 text-black" />
         </div>
         <div className="text-left text-3xl lg:text-2xl lg:mx-4 sm:mx-2">Last Name:</div>
         <div>
-          <input type="text" id = "lastName" className="w-full border rounded px-2 py-1" />
+          <input type="text" id = "lastName" className="w-full border rounded px-2 py-1 text-black" />
         </div>
         <div className="text-left text-3xl lg:text-2xl lg:mx-4 sm:mx-2">Username:</div>
         <div>
-          <input type="text" id = "username" className="w-full border rounded px-2 py-1" />
+          <input type="text" id = "username" className="w-full border rounded px-2 py-1 text-black" />
         </div>
         <div className="text-left text-3xl lg:text-2xl lg:mx-4 sm:mx-2">Email:</div>
         <div>
-          <input type="email" id = "email" className="w-full border rounded px-2 py-1" />
+          <input type="email" id = "email" className="w-full border rounded px-2 py-1 text-black" />
         </div>
         <div className="text-left text-3xl lg:text-2xl lg:mx-4 sm:mx-2">Student ID:</div>
         <div>
-          <input type="text" id = "studentId" className="w-full border rounded px-2 py-1" />
+          <input type="text" id = "studentId" className="w-full border rounded px-2 py-1 text-black" />
         </div>
         <div className="text-left text-3xl lg:text-2xl lg:mx-4 sm:mx-2">Password:</div>
         <div>
-          <input type="password" id="firstPassword" className="w-full border rounded px-2 py-1" />
+          <input type="password" id="firstPassword" className="w-full border rounded px-2 py-1 text-black" />
         </div>
         <div className="text-left text-3xl lg:text-2xl lg:mx-4 sm:mx-2">Confirm Password:</div>
         <div>
-          <input type="password" id="confirmPassword" className="w-full border rounded px-2 py-1" />
+          <input type="password" id="confirmPassword" className="w-full border rounded px-2 py-1 text-black" />
         </div>
         <div className="col-span-2 text-center mt-4">
           <Link href = "">
