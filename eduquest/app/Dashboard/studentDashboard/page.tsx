@@ -84,30 +84,7 @@ export default function Dashboard() {
           }}
         />
         </div>
-        <div className="absolute top-28 right-16">
-        <ClassButton
-          params={{
-            link: "/CreateClass",
-            label: "Create a Class"
-          }}
-        />
-        </div>
       <ClassNames />
-      <Link href = "Dashboard/teacherDashboard">
-      
-            <button className="bg-blue-500 text-white px-10 py-5 rounded border-2 border-blue-600 hover:bg-blue-600 hover:border-blue-700 mt-4" style={{borderWidth: "4px"}}>Teacher</button>
-            
-          </Link>
-          <Link href = "Dashboard/adminDashboard">
-      
-            <button className="bg-red-500 text-white px-10 py-5 rounded border-2 border-red-600 hover:bg-red-600 hover:border-red-700 mt-4" style={{borderWidth: "4px"}}>Admin</button>
-            
-          </Link>
-          <Link href = "Dashboard/studentDashboard">
-      
-            <button className="bg-green-500 text-white px-10 py-5 rounded border-2 border-green-600 hover:bg-green-600 hover:border-green-700 mt-4" style={{borderWidth: "4px"}}>Student</button>
-            
-          </Link>
     </main>
   );
 }
