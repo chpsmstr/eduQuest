@@ -21,23 +21,37 @@ interface ClassProps {
 
 const ClassNames = () => {
   var links: string[] = [
-    "Dashboard/Calculus",
-    "Dashboard/Chemistry",
-    "Dashboard/Physics",
-    "Dashboard/Biology",
-    "Dashboard/CompSci",
-    "Dashboard/Arts",
+    "Dashboard/Math100",
+    "Dashboard/Chemistry111",
+    "Dashboard/Physics112",
+    "Dashboard/Biology121",
+    "Dashboard/Comp-Sci122",
+    "Dashboard/English112",
   ];
   var labels: string[] = [
-    "Calculus",
-    "Chemistry",
-    "Physics",
-    "Biology",
-    "CompSci",
-    "Arts",
+    "Math 100",
+    "Chemistry 111",
+    "Physics 112",
+    "Biology 121",
+    "Comp-Sci 122",
+    "English 112",
   ];
-  var grades: string[] = ["89%","75%","98%","67%","84%","78%"];
-
+  var grades: string[] = [
+    "89%",
+    "75%",
+    "98%",
+    "67%",
+    "84%",
+    "78%"
+  ];
+  var teachers: string[] = [
+      "Dr. Meredith Stone",
+      "Dr. Alexander Patel", 
+      "Dr. Eleanor Hayes",
+      "Dr. Benjamin Carter", 
+      "Dr. Victoria Liu", 
+      "Dr. Jim Thompson"
+    ];
   return (
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-12">
       {colors.map((color, index) => (
@@ -47,7 +61,8 @@ const ClassNames = () => {
             color: color,
             link: links[index],
             label: labels[index],
-            grade: grades[index]
+            grade: grades[index],
+            teacher: teachers[index]
           }}
         />
       ))}

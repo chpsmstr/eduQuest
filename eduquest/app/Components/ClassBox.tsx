@@ -7,6 +7,7 @@ type Params = {
     link: string;
     label: string;
     grade: string;
+    teacher: string;
   };
 };
 
@@ -31,11 +32,17 @@ export default function ClassBox({ params }: Params) {
       {/* Text position within class*/}
       <div
         className="absolute top-0 left-0 w-full p-2 text-black text-2xl font-bold pointer-events-none"
-        style={{ marginTop: "calc(1/6 * 6rem)" }}
+        style={{ marginTop: 4 }}
       >
         {params?.label}
       </div>
-      <div className="absolute top-16 left-36 w-full p-2 text-black text-2xl font-bold pointer-events-none" style={{ marginTop: 'calc(1/6 * 3rem)'}}>
+      <div
+        className="absolute top-0 left-0 w-full p-2 text-black text-xs font-bold pointer-events-none"
+        style={{ marginTop: 36 }}
+      >
+        {params?.teacher}
+      </div>
+      <div className="absolute top-16 left-36 w-full p-2 text-black text-2xl font-bold pointer-events-none text-black" style={{ marginTop: 'calc(1/6 * 3rem)'}}>
         {params?.grade}
       </div>
     </div>
