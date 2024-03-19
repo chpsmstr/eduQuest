@@ -9,7 +9,7 @@ type Params = {
   };
 };
 
-export default function AdminClassBox({ params }: Params) {
+export default function TeacherClassBox({ params }: Params) {
   return (
     <div className="relative mb-4 w-56 sm:w-56">
       <Link href={`${params?.link}`}>
