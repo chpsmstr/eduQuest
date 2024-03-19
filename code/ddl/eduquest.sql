@@ -10,7 +10,8 @@ DROP TABLE IF EXISTS administrator;
 
 
 CREATE TABLE student(
-    studentId INT,
+    studentId           INT NOT NULL AUTO_INCREMENT,
+    studentUid          INT,    
     studentFirstName    VARCHAR(40),
     studentLastName     VARCHAR(40),
     studentUsername     VARCHAR(40),
@@ -23,7 +24,8 @@ CREATE TABLE student(
 ) ENGINE=InnoDB;
 
 CREATE TABLE teacher (
-    teacherId           INT,
+    teacherId           INT NOT NULL AUTO_INCREMENT,
+    teacherUid          INT,
     teacherFirstName    VARCHAR(40),
     teacherLastName     VARCHAR(40),
     teacherUsername     VARCHAR(40),
@@ -36,7 +38,8 @@ CREATE TABLE teacher (
 ) ENGINE=InnoDB;
 
 CREATE TABLE administrator(
-    adminId             INT,
+    adminId             INT NOT NULL AUTO_INCREMENT,
+    adminUid            INT,
     adminFirstName      VARCHAR(40),
     adminLastName       VARCHAR(40),
     adminUsername       VARCHAR(40),
@@ -46,7 +49,7 @@ CREATE TABLE administrator(
 ) ENGINE=InnoDB;
 
 CREATE TABLE course (
-    courseId            INT,
+    courseId            INT NOT NULL AUTO_INCREMENT,
     courseName          VARCHAR(40),
     courseSection       INT,
     numEnrolled         INT,
@@ -65,24 +68,24 @@ CREATE TABLE assignment(
 ) ENGINE=InnoDB;
 
 -- student dummy data being inserted for testing:
-INSERT INTO student (studentId, studentFirstName, studentLastName, studentUsername, studentPassword, studentEmail, overallGrade, attendence, leaderboardPosition) VALUES (1234, 'John', 'Doe', 'johndoe123', 'password123', 'johndoe@example.com', 85.50, 92.00, 2);
-INSERT INTO student (studentId, studentFirstName, studentLastName, studentUsername, studentPassword, studentEmail, overallGrade, attendence, leaderboardPosition) VALUES (5678, 'Jane', 'Smith', 'janesmit456', 'password456', 'janesmith@example.com', 78.28, 87.50, 3);
-INSERT INTO student (studentId, studentFirstName, studentLastName, studentUsername, studentPassword, studentEmail, overallGrade, attendence, leaderboardPosition) VALUES (9876, 'Michael', 'Johnson', 'michaeljohnson789', 'password789', 'michaeljohnson@example.com', 92.75, 95.75, 1);
+INSERT INTO student (studentUid, studentFirstName, studentLastName, studentUsername, studentPassword, studentEmail, overallGrade, attendence, leaderboardPosition) VALUES (1234, 'John', 'Doe', 'johndoe123', 'password123', 'johndoe@example.com', 85.50, 92.00, 2);
+INSERT INTO student (studentUid, studentFirstName, studentLastName, studentUsername, studentPassword, studentEmail, overallGrade, attendence, leaderboardPosition) VALUES (5678, 'Jane', 'Smith', 'janesmit456', 'password456', 'janesmith@example.com', 78.28, 87.50, 3);
+INSERT INTO student (studentUid, studentFirstName, studentLastName, studentUsername, studentPassword, studentEmail, overallGrade, attendence, leaderboardPosition) VALUES (9876, 'Michael', 'Johnson', 'michaeljohnson789', 'password789', 'michaeljohnson@example.com', 92.75, 95.75, 1);
 
 -- teacher dummy data being inserted for testing:
-INSERT INTO teacher (teacherId, teacherFirstName, teacherLastName, teacherUsername, teacherPassword, teacherEmail, educationLevel, numOfCourses, numOfSessions) VALUES (10001, 'Alice', 'Johnson', 'alicej123', 'pass123', 'alicej@example.com', 'Bachelor', 3, 6);
-INSERT INTO teacher (teacherId, teacherFirstName, teacherLastName, teacherUsername, teacherPassword, teacherEmail, educationLevel, numOfCourses, numOfSessions) VALUES (10002, 'Bob', 'Smith', 'bobsmith456', 'pass456', 'bobsmith@example.com', 'Master', 5, 8);
-INSERT INTO teacher (teacherId, teacherFirstName, teacherLastName, teacherUsername, teacherPassword, teacherEmail, educationLevel, numOfCourses, numOfSessions) VALUES (10003, 'Charlie', 'Williams', 'charliew789', 'pass789', 'charlierw@example.com', 'PhD', 4, 10);
+INSERT INTO teacher (teacherUid, teacherFirstName, teacherLastName, teacherUsername, teacherPassword, teacherEmail, educationLevel, numOfCourses, numOfSessions) VALUES (10001, 'Alice', 'Johnson', 'alicej123', 'pass123', 'alicej@example.com', 'Bachelor', 3, 6);
+INSERT INTO teacher (teacherUId, teacherFirstName, teacherLastName, teacherUsername, teacherPassword, teacherEmail, educationLevel, numOfCourses, numOfSessions) VALUES (10002, 'Bob', 'Smith', 'bobsmith456', 'pass456', 'bobsmith@example.com', 'Master', 5, 8);
+INSERT INTO teacher (teacherUId, teacherFirstName, teacherLastName, teacherUsername, teacherPassword, teacherEmail, educationLevel, numOfCourses, numOfSessions) VALUES (10003, 'Charlie', 'Williams', 'charliew789', 'pass789', 'charlierw@example.com', 'PhD', 4, 10);
 
 -- -- admin dummy data being inserted for testing:
-INSERT INTO administrator (adminId, adminFirstName, adminLastName, adminUserName, adminPassword, adminEmail) VALUES (101, 'Emily', 'Taylor', 'admin1', 'adminpass1', 'admin1@example.com');
-INSERT INTO administrator (adminId, adminFirstName, adminLastName, adminUsername, adminPassword, adminEmail) VALUES (202, 'Mathew', 'Clark', 'admin2', 'adminpass2', 'admin2@example.com');
-INSERT INTO administrator (adminId, adminFirstName, adminLastName, adminUsername, adminPassword, adminEmail) VALUES (303, 'Olivia', 'Wilson', 'admin3', 'adminpass3', 'admin3@example.com');
+INSERT INTO administrator (adminUid, adminFirstName, adminLastName, adminUserName, adminPassword, adminEmail) VALUES (101, 'Emily', 'Taylor', 'admin1', 'adminpass1', 'admin1@example.com');
+INSERT INTO administrator (adminUid, adminFirstName, adminLastName, adminUsername, adminPassword, adminEmail) VALUES (202, 'Mathew', 'Clark', 'admin2', 'adminpass2', 'admin2@example.com');
+INSERT INTO administrator (adminUid, adminFirstName, adminLastName, adminUsername, adminPassword, adminEmail) VALUES (303, 'Olivia', 'Wilson', 'admin3', 'adminpass3', 'admin3@example.com');
 
 -- -- course dummy data being inserted for testing:
-INSERT INTO course (courseId, courseName, courseSection, numEnrolled, courseAverage) VALUES (123456, 'Mathematics', 101, 65, 89.50);
-INSERT INTO course (courseId, courseName, courseSection, numEnrolled, courseAverage) VALUES (234567, 'Science', 202, 78, 92.75);
-INSERT INTO course (courseId, courseName, courseSection, numEnrolled, courseAverage) VALUES (345678, 'HIstory', 303, 54, '75.25');
+INSERT INTO course (courseName, courseSection, numEnrolled, courseAverage) VALUES ('Mathematics', 101, 65, 89.50);
+INSERT INTO course (courseName, courseSection, numEnrolled, courseAverage) VALUES ('Science', 202, 78, 92.75);
+INSERT INTO course (courseName, courseSection, numEnrolled, courseAverage) VALUES ('HIstory', 303, 54, '75.25');
 
 -- -- assignment dummy data being inserted for testing: 
 INSERT INTO assignment (assignmentName, startDate, dueDate, worth, assignmentType) VALUES ('Quiz 1', '2024-03-20 08:00:00', '2024-03-21 23:59:59', '5.00', 'Quiz');

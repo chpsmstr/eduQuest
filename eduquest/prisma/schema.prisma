@@ -1,0 +1,61 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model administrator {
+  adminId        Int     @id @default(autoincrement())
+  adminUid       Int?
+  adminFirstName String? @db.VarChar(40)
+  adminLastName  String? @db.VarChar(40)
+  adminUsername  String? @db.VarChar(40)
+  adminPassword  String? @db.VarChar(40)
+  adminEmail     String? @db.VarChar(50)
+}
+
+model assignment {
+  assignmentId   Int       @id @default(autoincrement())
+  assignmentName String?   @db.VarChar(40)
+  startDate      DateTime? @db.DateTime(0)
+  dueDate        DateTime? @db.DateTime(0)
+  worth          Decimal?  @db.Decimal(3, 2)
+  assignmentType String?   @db.VarChar(40)
+}
+
+model course {
+  courseId      Int      @id @default(autoincrement())
+  courseName    String?  @db.VarChar(40)
+  courseSection Int?
+  numEnrolled   Int?
+  courseAverage Decimal? @db.Decimal(4, 2)
+}
+
+model student {
+  studentId           Int      @id @default(autoincrement())
+  studentUid          Int?
+  studentFirstName    String?  @db.VarChar(40)
+  studentLastName     String?  @db.VarChar(40)
+  studentUsername     String?  @db.VarChar(40)
+  studentPassword     String?  @db.VarChar(40)
+  studentEmail        String?  @db.VarChar(50)
+  overallGrade        Decimal? @db.Decimal(4, 2)
+  attendence          Decimal? @db.Decimal(4, 2)
+  leaderboardPosition Int?
+}
+
+model teacher {
+  teacherId        Int     @id @default(autoincrement())
+  teacherUid       Int?
+  teacherFirstName String? @db.VarChar(40)
+  teacherLastName  String? @db.VarChar(40)
+  teacherUsername  String? @db.VarChar(40)
+  teacherPassword  String? @db.VarChar(40)
+  teacherEmail     String? @db.VarChar(50)
+  educationLevel   String? @db.VarChar(20)
+  numOfCourses     Int?
+  numOfSessions    Int?
+}
