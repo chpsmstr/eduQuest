@@ -12,7 +12,7 @@ export default function Class({ params }: {
                         src="/classheaderv2.png"
                         className="mb-4 mt-4 align-middle"/>
                     <figcaption className="text-lg text-white">
-                    <h1 className="text-5xl relative bottom-20">{params.classId}</h1>
+                    <h1 className="text-5xl relative bottom-20 px-4">{params.classId}</h1>
                     <Link href={gradeNav}>
                     <button className="relative bottom-10 text-white bg-orange-500 text-4xl hover:bg-orange-400 text-white py-2 px-4 border-b-4 border-orange-700 hover:border-orange-500 rounded-lg">View Grades</button>
                     </Link>
