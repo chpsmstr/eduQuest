@@ -29,20 +29,20 @@ const ClassNames = () => {
     "adminDashboard/English112",
   ];
   var registerLinks: string[] = [
-    "adminDashboard/registerMath100",
-    "adminDashboard/registerChemistry111",
-    "adminDashboard/registerPhysics112",
-    "adminDashboard/registerBiology121",
-    "adminDashboard/registerComp-Sci122",
-    "adminDashboard/registerEnglish112",
+    "adminDashboard/registerClassId",
+    "adminDashboard/registerClassId",
+    "adminDashboard/registerClassId",
+    "adminDashboard/registerClassId",
+    "adminDashboard/registerClassId",
+    "adminDashboard/registerClassId",
   ];
   var editLinks: string[] = [
-    "adminDashboard/editMath100",
-    "adminDashboard/editChemistry111",
-    "adminDashboard/editPhysics112",
-    "adminDashboard/editBiology121",
-    "adminDashboard/editComp-Sci122",
-    "adminDashboard/editEnglish112",
+    "adminDashboard/editClassId",
+    "adminDashboard/editClassId",
+    "adminDashboard/editClassId",
+    "adminDashboard/editClassId",
+    "adminDashboard/editClassId",
+    "adminDashboard/editClassId",
   ];
   
   var labels: string[] = [
