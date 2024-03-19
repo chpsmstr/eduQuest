@@ -28,6 +28,19 @@ export const options: NextAuthOptions = {
           role: "teacher",
         };
 
+        const res = await fetch("http://localhost:3000/Login", {
+          method: "POST", 
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: credentials?.username,
+            password: credentials?.password,
+          }),
+        });
+
+        const student = await res.json();
+
         if (
           credentials?.username === user.name &&
           credentials?.password === user.password
