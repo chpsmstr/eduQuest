@@ -1,24 +1,29 @@
 import Assignment from "@/app/Components/Assignment";
 import Link from "next/link";
+const courses: { [key: string]: string } = {
+    "Math100": "bg-red-500",
+    "Chemistry111": "bg-blue-500",
+    "Physics112": "bg-green-500",
+    "Biology121": "bg-indigo-500",
+    "Comp-Sci122": "bg-purple-500",
+    "English112": "bg-pink-500",
+}
+
 export default function Class({ params }: {
     params: { studentClassId: string }
 }) {
+    let bgColor = courses[params.studentClassId];
     const gradeNav = "../Dashboard/" + params.studentClassId + "/" + params.studentClassId;
     return (
         <main className="bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col">
-            <div className="grid grid-cols-1">
-                <figure>
-                    <img
-                        src="/classheaderv2.png"
-                        className="mb-4 mt-4 align-middle"/>
-                    <figcaption className="text-lg text-white">
-                    <h1 className="text-5xl relative bottom-20 px-4">{params.studentClassId}</h1>
+             <br></br>
+                <div className={`${bgColor} w-[100rem] h-64 rounded-lg px-6`}><h1 className="text-5xl relative bottom-20 px-4">{params.studentClassId}</h1>
                     <Link href={gradeNav}>
-                    <button className="relative bottom-10 text-white bg-orange-500 text-4xl hover:bg-orange-400 text-white py-2 px-4 border-b-4 border-orange-700 hover:border-orange-500 rounded-lg">View Grades</button>
+                    <button className="relative bottom-10 text-white bg-gray-500 text-4xl hover:bg-gray-400 text-white py-2 px-4 border-b-4 border-gray-700 hover:border-gray-500 rounded-lg">View Grades</button>
                     </Link>
-                    </figcaption>
-                </figure>
+                    <h1 className="text-white text-6xl pt-[5rem]">{params.studentClassId}</h1>
             </div>
+            <br></br>
             <div className="grid grid-rows-12 grid-cols-12 gap-20">
                 <div className="col-span-6 row-start-1 row-end-10 bg-white text-black w-full rounded-lg">
                     {/*To-Do Column (For teacher reminders, new assignments, etc.)*/}

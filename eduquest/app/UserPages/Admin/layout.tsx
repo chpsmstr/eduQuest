@@ -18,5 +18,5 @@ export default async function DashboardLayout({
     redirect("/api/auth/signin?callbackUrl=/UserPages/Admin/");
   }
   return <div>{children}</div>;
-    
+  
   }
