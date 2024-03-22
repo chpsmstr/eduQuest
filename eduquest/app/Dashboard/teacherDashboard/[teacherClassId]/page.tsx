@@ -45,8 +45,9 @@ export default function Class({ params }: {
                     <hr className="h-1 my-4 bg-gray-200 border-0 dark:bg-gray-700"></hr>
                     <div className="grid grid-cols-1 gap-6 justify-items-center">
                         {/* Quiz Items */}
-                        <button className="text-white bg-green-400 px-8 py-4 text-2xl transition duration-500 hover:scale-110 rounded"><strong>Quiz #1</strong><br></br>{params.teacherClassId} Module 1<br></br>3/13/2023</button>
-                        <div className="static bottom-100 left-0"></div>
+                        <Link href = "../../Quiz/Quiz1">
+                    <button className="text-white bg-green-400 px-8 py-4 text-2xl transition duration-500 hover:scale-125 rounded"><strong>Quiz #1</strong><br></br>{params.teacherClassId} Module 1<br></br>3/13/2023</button>
+                    </Link><div className="static bottom-100 left-0"></div>
                     </div>
                 </div>
                 <div className="col-span-6 row-start-1 row-end-10 bg-white text-black w-full rounded-lg">
@@ -55,10 +56,15 @@ export default function Class({ params }: {
                     <hr className="h-1 my-4 bg-gray-200 border-0 dark:bg-gray-700"></hr>
                     <div className="grid grid-cols-1 gap-6 justify-items-center">
                         {/* Fetched Assignments */}
-                        <button className="text-white bg-orange-400 px-4 py-3 text-2xl transition duration-500 hover:scale-110 rounded"><strong>{params.teacherClassId} Assignment 1</strong><br></br>Sub-Heading<br></br>Due: 3/13/2023</button>
-                        <button className="text-white bg-orange-400 px-4 py-3 text-2xl transition duration-500 hover:scale-110 rounded"><strong>{params.teacherClassId} Assignment 2</strong><br></br>Sub-Heading<br></br>Due: 3/13/2023</button>
-                        <button className="text-white bg-orange-400 px-4 py-3 text-2xl transition duration-500 hover:scale-110 rounded"><strong>{params.teacherClassId} Assignment 3</strong><br></br>Sub-Heading<br></br>Due: 3/13/2023</button>
-                    </div>
+                        <Link href = "../../Assignment/Assignment1">
+                        <button className="text-white bg-orange-400 px-8 py-4 text-2xl transition duration-500 hover:scale-125 rounded"><strong>{params.teacherClassId} Assignment 1</strong><br></br>Sub-Heading<br></br>Due: 3/13/2023</button>
+                        </Link>
+                        <Link href = "../../Assignment/Assignment2">
+                        <button className="text-white bg-orange-400 px-8 py-4 text-2xl transition duration-500 hover:scale-125 rounded"><strong>{params.teacherClassId} Assignment 2</strong><br></br>Sub-Heading<br></br>Due: 3/13/2023</button>
+                        </Link>
+                        <Link href = "../../Assignment/Assignment3">
+                        <button className="text-white bg-orange-400 px-8 py-4 text-2xl transition duration-500 hover:scale-125 rounded"><strong>{params.teacherClassId} Assignment 3</strong><br></br>Sub-Heading<br></br>Due: 3/13/2023</button>
+                        </Link> </div>
                 </div>
             </div>
 
