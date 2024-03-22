@@ -9,6 +9,7 @@ export default function Home() {
     <main className="px-9 bg-center bg-cover bg-landing h-screen flex items-center flex-col">
         <br></br>
  <div className="absolute top-0 right-0 mt-6 mr-6 flex flex-col gap-2">
+
         <SolidColorButton
           params={{
             text: "Sign Up",
@@ -59,8 +60,8 @@ export default function Home() {
           }}
         />
       </div>
-      <br></br>
-      <br></br>
+      <br />
+      <br />
     </main>
   );
 }
