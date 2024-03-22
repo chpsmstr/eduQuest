@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <main className="px-9 bg-center bg-cover bg-landing h-screen flex items-center flex-col">
       <div className="grid text-right space-y-4 sm:space-y-0 lg:space-y-0  lg:grid-cols-1 lg:grid-cols-1 gap-3 justify-items-end">
-        <br></br>
+        <br />
         <SolidColorButton
           params={{
             text: "Sign Up",
@@ -58,8 +58,8 @@ export default function Home() {
           }}
         />
       </div>
-      <br></br>
-      <br></br>
+      <br />
+      <br />
     </main>
   );
 }
