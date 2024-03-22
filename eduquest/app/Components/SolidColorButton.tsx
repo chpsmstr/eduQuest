@@ -12,17 +12,14 @@ type Params = {
 };
 
 export default function SolidColorButton({ params }: Params) {
-  return (<button
-    className={`${params?.color} hover:${params?.hoverColor} text-white py-2 px-7 rounded`}
-  >
+  return (
     <Link href={`${params.href}`}>
       <button
         className={`${params?.color} hover:${params?.hoverColor} text-white py-2 ${params?.length} sm:text-1xl lg:text-2xl rounded`}
       >
 
         {params.text}
-      
+         </button>
     </Link>
-    </button>
   );
 }
