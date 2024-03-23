@@ -12,11 +12,11 @@ export default function Class({ params }: {
     params: { teacherClassId: string }
 }) {
     let bgColor = courses[params.teacherClassId];
-    const gradeNav = "../Dashboard/" + params.teacherClassId + "/" + params.teacherClassId;
+    const gradeNav = "../teacherDashboard/" + params.teacherClassId + "/" + params.teacherClassId;
     return (
         <main className="bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col">
             <br></br>
-            <div className={`${bgColor} w-[100rem] h-64 rounded-lg px-6`}><h1 className="text-5xl relative bottom-20 px-4">{params.teacherClassId}</h1>
+            <div className={`${bgColor} w-[75rem] h-64 rounded-lg px-6`}><h1 className="text-5xl relative bottom-20 px-4">{params.teacherClassId}</h1>
                 <Link href={gradeNav}>
                     <button className="relative left-1 bottom-10 text-white bg-gray-500 text-4xl hover:bg-gray-400 text-white py-2 px-4 border-b-4 border-gray-700 hover:border-gray-500 rounded-lg">Grade</button>
                 </Link>

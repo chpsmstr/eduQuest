@@ -74,38 +74,23 @@ export default function Dashboard() {
   return (
     <main className="bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col">
       <h1 className="text-3xl lg:text-4xl lg:mx-4 sm:mx-2 p-4 mt-16 mb-16">
-        Student Name Classes
+        Dashboard
       </h1>
-      <div className="absolute top-4 right-16">
-      <ClassButton
-          params={{
-            link: "/JoinClass",
-            label: "Join a Class"
-          }}
-        />
-        </div>
-        <div className="absolute top-28 right-16">
-        <ClassButton
-          params={{
-            link: "/CreateClass",
-            label: "Create a Class"
-          }}
-        />
-        </div>
-      <ClassNames />
+    
+      {/*<ClassNames /> Commented out to simplify dashboard*/}
       <Link href = "Dashboard/teacherDashboard">
       
-            <button className="bg-blue-500 text-white px-10 py-5 rounded border-2 border-blue-600 hover:bg-blue-600 hover:border-blue-700 mt-4" style={{borderWidth: "4px"}}>Teacher</button>
+            <button className="bg-blue-500 text-white px-20 py-10 rounded border-2 border-blue-600 hover:bg-blue-600 hover:border-blue-700 mt-4" style={{borderWidth: "4px"}}>Teacher</button>
             
           </Link>
           <Link href = "Dashboard/adminDashboard">
       
-            <button className="bg-red-500 text-white px-10 py-5 rounded border-2 border-red-600 hover:bg-red-600 hover:border-red-700 mt-4" style={{borderWidth: "4px"}}>Admin</button>
+            <button className="bg-red-500 text-white px-20 py-10 rounded border-2 border-red-600 hover:bg-red-600 hover:border-red-700 mt-4" style={{borderWidth: "4px"}}>Admin</button>
             
           </Link>
           <Link href = "Dashboard/studentDashboard">
       
-            <button className="bg-green-500 text-white px-10 py-5 rounded border-2 border-green-600 hover:bg-green-600 hover:border-green-700 mt-4" style={{borderWidth: "4px"}}>Student</button>
+            <button className="bg-green-500 text-white px-20 py-10 rounded border-2 border-green-600 hover:bg-green-600 hover:border-green-700 mt-4" style={{borderWidth: "4px"}}>Student</button>
             
           </Link>
     </main>

@@ -7,25 +7,25 @@ const courses: { [key: string]: string } = {
     "English112": "bg-pink-500",
   };
 export default function Grades({ params }: {
-    params: { classId: string }
+    params: { teacherClassId: string }
 }) {
-    let bgColor = courses[params.classId];
+    let bgColor = courses[params.teacherClassId];
     return (
         <main className="px-4 bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col">
              <br></br>
-                <div className={`${bgColor} w-[75rem] h-64 rounded-lg px-6`}><h1 className="text-5xl relative bottom-20 px-4">{params.classId}</h1>
-                    <h1 className="text-white text-6xl pt-[8rem]">{params.classId}</h1>
+                <div className={`${bgColor} w-[75rem] h-64 rounded-lg px-6`}><h1 className="text-5xl relative bottom-20 px-4">{params.teacherClassId}</h1>
+                    <h1 className="text-white text-6xl pt-[8rem]">{params.teacherClassId}</h1>
             </div>
             <br></br>
             <div className="grid grid-rows-[25rem,8fr] grid-cols-[25rem,8fr] gap-20 justify-items-center">
                 <div className="col-span-12 row-start-1 row-end-12 bg-white text-black w-full rounded-lg">
                     <h1 className="text-4xl text-center mt-2">Graded Assignments</h1>
                     <hr className="h-1 my-4 bg-gray-200 border-0 dark:bg-gray-700"></hr>
-                    <p className="text-3xl bg-orange-400 text-white mt-2 px-20 py-3 text-center rounded-lg">{/*Assignment Name*/}{params.classId} Assignment #1 : <span className="text-3xl px-20">
+                    <p className="text-3xl bg-orange-400 text-white mt-2 px-20 py-3 text-center rounded-lg">{/*Assignment Name*/}{params.teacherClassId} Assignment #1 : <span className="text-3xl px-20">
                         {/*Grade*/}91%</span></p>
                     <h1 className="text-4xl text-center mt-20">Ungraded Assignments</h1>
                     <hr className="h-1 my-4 bg-gray-200 border-0 dark:bg-gray-700"></hr>
-                    <p className="text-3xl bg-orange-400 text-white mt-2 px-20 py-3 text-center rounded-lg">{/*Assignment Name*/}{params.classId} Assignment #2 : 
+                    <p className="text-3xl bg-orange-400 text-white mt-2 px-20 py-3 text-center rounded-lg">{/*Assignment Name*/}{params.teacherClassId} Assignment #2 : 
                     {/*Submitted/Unsubmitted */}<span className="text-3xl px-20">Submitted</span></p>
                 </div></div>
         </main>
