@@ -29,7 +29,6 @@ export default function Class({ params }: {
                 <h1 className="text-white text-6xl pt-[5rem]">{params.teacherClassId}</h1>
             </div>
             <br></br>
-        
             <div className="grid grid-rows-12 grid-cols-12 gap-20">
                 <div className="col-span-6 row-start-1 row-end-10 bg-white text-black w-full rounded-lg">
                     {/* To-Do Column (For teacher reminders, new assignments, etc.) */}
