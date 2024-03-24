@@ -18,7 +18,7 @@ interface ClassProps {
   link: string;
   label: string;
 }
-
+var adminName = "First Name Last Name"; //Filler name
 const ClassNames = () => {
   var links: string[] = [
     "adminDashboard/Math100",
@@ -85,7 +85,7 @@ export default function Dashboard() {
   return (
     <main className="bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col">
       <h1 className="text-3xl lg:text-4xl lg:mx-4 sm:mx-2 p-4 mt-16 mb-16">
-        Admin Classes
+        {adminName} Classes
       </h1>
       <div className="absolute top-4 right-16">
         <ClassButton
