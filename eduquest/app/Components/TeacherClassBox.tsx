@@ -6,6 +6,7 @@ type Params = {
     color: string;
     link: string;
     label: string;
+    name: string;
   };
 };
 
@@ -29,6 +30,12 @@ export default function TeacherClassBox({ params }: Params) {
         style={{ marginTop: 4 }}
       >
         {params?.label}
+      </div>
+      <div
+        className="absolute top-0 left-0 w-full p-2 text-black text-xs font-bold pointer-events-none"
+        style={{ marginTop: 36 }}
+      >
+        {params?.name}
       </div>
     </div>
   );

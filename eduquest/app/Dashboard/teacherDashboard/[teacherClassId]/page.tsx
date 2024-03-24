@@ -23,7 +23,7 @@ export default function Class({ params }: {
                 <Link href={`${params.teacherClassId}/createAssignment`}>
                     <button className="relative left-4 bottom-10 text-white bg-gray-500 text-4xl hover:bg-gray-400 text-white py-2 px-4 border-b-4 border-gray-700 hover:border-gray-500 rounded-lg">Create Assignment</button>
                 </Link>
-                <Link href={`${params.teacherClassId}/createAssignment`}>
+                <Link href={`${params.teacherClassId}/createQuiz`}>
                     <button className="relative left-7 bottom-10 text-white bg-gray-500 text-4xl hover:bg-gray-400 text-white py-2 px-4 border-b-4 border-gray-700 hover:border-gray-500 rounded-lg">Create Quiz</button>
                 </Link>
                 <h1 className="text-white text-6xl pt-[5rem]">{params.teacherClassId}</h1>
