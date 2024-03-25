@@ -2,8 +2,38 @@ import Image from "next/image";
 import Link from "next/link";
 import { FormEvent } from "react";
 import { isNull } from "util";
+import prisma from "@/app/lib/prisma";
+import { RedirectType, redirect } from "next/navigation";
 
-export default function TeacherRegistration() {
+export default async function TeacherRegistration() {
+  const teacher = await prisma.teacher.findMany();
+
+  async function submitTeacherInfo(formData: FormData){
+    "use server";
+    
+    const fname = formData.get("fname");
+    const lname = formData.get("lname");
+    const username = formData.get("username");
+    const email = formData.get("email");
+    const facultyId = formData.get("facultyId");
+    const password = formData.get("password");
+
+    const teacher = await prisma.teacher.create({
+      data: {
+        teacherUid: Number(facultyId),
+        teacherFirstName: fname as string,
+        teacherLastName: lname as string,
+        teacherUsername: username as string,
+        teacherPassword: password as string,
+        teacherEmail: email as string,
+        educationLevel: null,
+        numOfCourses: null,
+        numOfSessions: null
+      }
+    })
+    
+    redirect("../../Dashboard/teacherDashboard", RedirectType.replace);
+  }
   return (
     <main className="px-4 bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col">
       <img
@@ -14,7 +44,7 @@ export default function TeacherRegistration() {
       <div className="grid text-center text-left text-4xl lg:text-3xl lg:mx-4 sm:mx-2 mb-12">
           Create an Account
       </div>
-      <form action="../Dashboard/teacherDashboard" method="POST">
+      <form action={submitTeacherInfo} method="POST">
       <div className="grid grid-cols-2 gap-4 mt-4">
         <div className="text-left text-3xl lg:text-2xl lg:mx-4 sm:mx-2">First Name:</div>
         <div>
