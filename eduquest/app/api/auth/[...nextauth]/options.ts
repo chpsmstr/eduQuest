@@ -17,7 +17,7 @@ export const options: NextAuthOptions = {
           placeholder: "your-awesome-password",
         },
       },
-      async authorize(credentials) {
+      async authorize(credentials, req) {
         // This is where you need to retrieve user data
         // to verify with credentials
         // Docs: https://next-auth.js.org/configuration/providers/credentials
@@ -63,3 +63,5 @@ export const options: NextAuthOptions = {
     },
   },
 };
+
+export { options as GET, options as POST };
