@@ -6,6 +6,8 @@ DROP TABLE IF EXISTS student;
 DROP TABLE IF EXISTS teacher;
 DROP TABLE IF EXISTS course;
 DROP TABLE IF EXISTS assignment;
+DROP TABLE IF EXISTS quiz;
+DROP TABLE IF EXISTS question;
 DROP TABLE IF EXISTS administrator;
 DROP TABLE IF EXISTS enrolled;
 
@@ -55,6 +57,9 @@ CREATE TABLE course (
     courseSection       INT,
     numEnrolled         INT,
     courseAverage       DECIMAL(4,2),
+    courseCode          VARCHAR(20),
+    courseColour        VARCHAR(20),
+    teacherId           INT,
     PRIMARY KEY(courseId)
 ) ENGINE=InnoDB;
 
@@ -64,8 +69,30 @@ CREATE TABLE assignment(
     startDate           DATETIME,
     dueDate             DATETIME,
     worth               DECIMAL(3,2),
-    assignmentType      VARCHAR(40),
+    assignmentQuestion  VARCHAR(500),
+    assignmentResponse  VARCHAR(1000),
     PRIMARY KEY(assignmentId)
+) ENGINE=InnoDB;
+
+CREATE TABLE quiz(
+    quizId        INT NOT NULL AUTO_INCREMENT,
+    quizName      VARCHAR(40),
+    startDate           DATETIME,
+    dueDate             DATETIME,
+    worth               DECIMAL(3,2),
+    PRIMARY KEY(quizId)
+) ENGINE=InnoDB;
+
+CREATE TABLE question(
+    questionId      INT NOT NULL AUTO_INCREMENT,
+    questionContent VARCHAR(100),
+    firstAnswer     VARCHAR(100),
+    secondAnswer     VARCHAR(100),
+    thirdAnswer     VARCHAR(100),
+    fourthAnswer     VARCHAR(100),
+    correctAnswer   INT,
+    quizId          INT NOT NULL,
+    PRIMARY KEY(questionId, quizId)
 ) ENGINE=InnoDB;
 
 CREATE TABLE enrolled(
@@ -93,14 +120,17 @@ INSERT INTO administrator (adminUid, adminFirstName, adminLastName, adminUsernam
 INSERT INTO administrator (adminUid, adminFirstName, adminLastName, adminUsername, adminPassword, adminEmail) VALUES (303, 'Olivia', 'Wilson', 'admin3', 'adminpass3', 'admin3@example.com');
 
 -- -- course dummy data being inserted for testing:
-INSERT INTO course (courseName, courseSection, numEnrolled, courseAverage) VALUES ('Mathematics', 101, 65, 89.50);
-INSERT INTO course (courseName, courseSection, numEnrolled, courseAverage) VALUES ('Science', 202, 78, 92.75);
-INSERT INTO course (courseName, courseSection, numEnrolled, courseAverage) VALUES ('History', 303, 54, 75.25);
+INSERT INTO course (courseName, courseSection, numEnrolled, courseAverage, courseCode, courseColour, teacherId) VALUES ('Mathematics', 101, 4, 89.50, 'RJF05MD7', 'red', 1);
+INSERT INTO course (courseName, courseSection, numEnrolled, courseAverage, courseCode, courseColour, teacherId) VALUES ('Science', 202, 4, 92.75, 'Z47A44X9', 'green', 2);
+INSERT INTO course (courseName, courseSection, numEnrolled, courseAverage, courseCode, courseColour, teacherId) VALUES ('History', 303, 5, 75.25, 'WNS1HFIR', 'yellow', 3);
+INSERT INTO course (courseName, courseSection, numEnrolled, courseAverage, courseCode, courseColour, teacherId) VALUES ('Robotics', 404, 4, 82.00, 'PJPO702D', 'indigo', 1);
+INSERT INTO course (courseName, courseSection, numEnrolled, courseAverage, courseCode, courseColour, teacherId) VALUES ('English', 505, 4, 91.50, 'C5BONDSV', 'blue', 2);
+INSERT INTO course (courseName, courseSection, numEnrolled, courseAverage, courseCode, courseColour, teacherId) VALUES ('Film Studies', 606, 5, 98.00, '93XFQYXG', 'orange', 3);
 
 -- -- assignment dummy data being inserted for testing: 
-INSERT INTO assignment (assignmentName, startDate, dueDate, worth, assignmentType) VALUES ('Quiz 1', '2024-03-20 08:00:00', '2024-03-21 23:59:59', '5.00', 'Quiz');
-INSERT INTO assignment (assignmentName, startDate, dueDate, worth, assignmentType) VALUES ('Assignment 1', '2024-03-22 08:00:00', '2024-03-23 23:59:59', '2.50', 'File Upload');
-INSERT INTO assignment (assignmentName, startDate, dueDate, worth, assignmentType) VALUES ('QUiz 2', '2024-03-24 08:00:00', '2024-03-25 23:59:59', '5.00', 'Quiz');
+-- -- INSERT INTO assignment (assignmentName, startDate, dueDate, worth, assignmentType) VALUES ('Quiz 1', '2024-03-20 08:00:00', '2024-03-21 23:59:59', '5.00', 'Quiz');
+-- -- INSERT INTO assignment (assignmentName, startDate, dueDate, worth, assignmentType) VALUES ('Assignment 1', '2024-03-22 08:00:00', '2024-03-23 23:59:59', '2.50', 'File Upload');
+-- -- INSERT INTO assignment (assignmentName, startDate, dueDate, worth, assignmentType) VALUES ('QUiz 2', '2024-03-24 08:00:00', '2024-03-25 23:59:59', '5.00', 'Quiz');
 
 INSERT INTO enrolled (studentId, courseId) VALUES (1,1);
 INSERT INTO enrolled (studentId, courseId) VALUES (1,2);
@@ -115,3 +145,16 @@ INSERT INTO enrolled (studentId, courseId) VALUES (5,1);
 INSERT INTO enrolled (studentId, courseId) VALUES (5,2);
 INSERT INTO enrolled (studentId, courseId) VALUES (5,3);
 INSERT INTO enrolled (studentId, courseId) VALUES (6,3);
+INSERT INTO enrolled (studentId, courseId) VALUES (1,4);
+INSERT INTO enrolled (studentId, courseId) VALUES (1,5);
+INSERT INTO enrolled (studentId, courseId) VALUES (2,4);
+INSERT INTO enrolled (studentId, courseId) VALUES (2,6);
+INSERT INTO enrolled (studentId, courseId) VALUES (3,4);
+INSERT INTO enrolled (studentId, courseId) VALUES (3,5);
+INSERT INTO enrolled (studentId, courseId) VALUES (3,6);
+INSERT INTO enrolled (studentId, courseId) VALUES (4,5);
+INSERT INTO enrolled (studentId, courseId) VALUES (4,6);
+INSERT INTO enrolled (studentId, courseId) VALUES (5,4);
+INSERT INTO enrolled (studentId, courseId) VALUES (5,5);
+INSERT INTO enrolled (studentId, courseId) VALUES (5,6);
+INSERT INTO enrolled (studentId, courseId) VALUES (6,6);

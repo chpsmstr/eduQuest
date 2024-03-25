@@ -26,12 +26,32 @@ model assignment {
   assignmentType String?   @db.VarChar(40)
 }
 
+model quiz{
+    quizId        Int      @default(autoincrement())
+    quizName      String? @db.VarChar(40)
+    startDate     DateTime? @db.DateTime(0)
+    dueDate       DateTime? @db.DateTime(0)
+    worth         Decimal?  @db.Decimal(3, 2)
+}
+
+model question{
+    questionId      Int @default(autoincrement())
+    questionContent String? @db.VarChar(100)
+    firstAnswer     String? @db.VarChar(100)
+    secondAnswer    String? @db.VarChar(100)
+    thirdAnswer     String? @db.VarChar(100)
+    fourthAnswer    String? @db.VarChar(100)
+    correctAnswer   Int?
+    quizId          Int
+}
+
 model course {
   courseId      Int      @id @default(autoincrement())
   courseName    String?  @db.VarChar(40)
   courseSection Int?
   numEnrolled   Int?
   courseAverage Decimal? @db.Decimal(4, 2)
+  courseColour  String?  @db.VarChar(20cd )
 }
 
 model student {
