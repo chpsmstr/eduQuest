@@ -11,8 +11,12 @@ interface Student {
   grade: number;
 }
 
+
+
 // Define the Dashboard component
 const Dashboard = ({ params }: { params: { adminClassId: string } }) => {
+
+
   // Filler student data
   const studentsRegistered: Student[] = [
     {
