@@ -59,3 +59,8 @@ model teacher {
   numOfCourses     Int?
   numOfSessions    Int?
 }
+
+model enrolled {
+  studentId       Int
+  courseId        Int
+}
