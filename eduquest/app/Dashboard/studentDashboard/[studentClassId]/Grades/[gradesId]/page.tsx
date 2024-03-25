@@ -12,6 +12,8 @@ export default function Grades({ params }: {
     let bgColor = courses[params.studentClassId];
     return (
         <main className="px-4 bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col">
+            {/*Show student grades based on the class Id, classId is passed from studentClassId when a student clicks view grades.
+            Both graded assignments and ungraded assignments will be shown to the user along with an average grade for the class.*/}
              <br></br>
                 <div className={`${bgColor} w-[75rem] h-64 rounded-lg px-6`}><h1 className="text-5xl relative bottom-20 px-4">{params.studentClassId}</h1>
                     <h1 className="text-white text-6xl pt-[8rem]">{params.studentClassId}</h1>
