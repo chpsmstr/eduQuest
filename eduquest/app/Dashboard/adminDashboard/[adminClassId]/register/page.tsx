@@ -1,72 +1,35 @@
 // Import React
 import React from 'react';
 import Link from "next/link";
+import { PrismaClient, Prisma } from '@prisma/client'
+const prisma = new PrismaClient();
 // Define the interface for the Student type
 interface Student {
   id: number;
-  studentNumber: number;
-  firstName: string;
-  lastName: string;
-  email: string;
-  grade: number;
+  studentNumber: number|null;
+  firstName: string|null;
+  lastName: string|null;
+  email: string|null;
+  grade: Prisma.Decimal|number|null;
 }
 
 
+export default async function main({ params }: { params: { adminClassId: string } }){
+  "use server";
+  const users = await prisma.student.findMany();
+  let studentsRegistered: Student[] = new Array();
+   users.forEach(element => {
+    let temp : Student = {
+    id: element.studentId,
+    studentNumber: element.studentUid,
+    firstName: element.studentFirstName,
+    lastName: element.studentLastName,
+    email: element.studentEmail,
+    grade: element.overallGrade
+    }
+    studentsRegistered.push(temp);
+  });
 
-// Define the Dashboard component
-const Dashboard = ({ params }: { params: { adminClassId: string } }) => {
-
-
-  // Filler student data
-  const studentsRegistered: Student[] = [
-    {
-      id: 1,
-      studentNumber: 12345678,
-      firstName: 'John',
-      lastName: 'Doe',
-      email: 'john_doe@gmail.com',
-      grade: 90,
-    },
-    {
-      id: 2,
-      studentNumber: 87654321,
-      firstName: 'Jane',
-      lastName: 'Smith',
-      email: 'jane_smith@gmail.com',
-      grade: 85,
-    },
-    {
-      id: 3,
-      studentNumber: 12349876,
-      firstName: 'Alice',
-      lastName: 'Johnson',
-      email: 'alice_johnson@hotmail.com',
-      grade: 88,
-    },
-    {
-      id: 4,
-      studentNumber: 23456789,
-      firstName: 'Bob',
-      lastName: 'Brown',
-      email: 'bob_brown@gmail.com',
-      grade: 80,
-    },
-    {
-      id: 5,
-      studentNumber: 34567890,
-      firstName: 'Sarah',
-      lastName: 'Wilson',
-      email: 'sarah_wilson@hotmail.com',
-      grade: 87,
-    },
-    {
-      id: 6,
-      studentNumber: 45678901,
-      firstName: 'David',
-      lastName: 'Miller',
-      email: 'david_miller@gmail.com',
-      grade: 92,
-    }]
     const studentsUnregistered: Student[] = [{
       id: 7,
       studentNumber: 56789012,
@@ -212,6 +175,3 @@ const Dashboard = ({ params }: { params: { adminClassId: string } }) => {
     </main>
   );
 };
-
-// Export the Dashboard component as default
-export default Dashboard;
