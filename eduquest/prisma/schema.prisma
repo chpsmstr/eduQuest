@@ -18,31 +18,35 @@ model administrator {
 }
 
 model assignment {
-  assignmentId   Int       @id @default(autoincrement())
-  assignmentName String?   @db.VarChar(40)
-  startDate      DateTime? @db.DateTime(0)
-  dueDate        DateTime? @db.DateTime(0)
-  worth          Decimal?  @db.Decimal(3, 2)
-  assignmentType String?   @db.VarChar(40)
+  assignmentId       Int       @id @default(autoincrement())
+  assignmentName     String?   @db.VarChar(40)
+  startDate          DateTime? @db.DateTime(0)
+  dueDate            DateTime? @db.DateTime(0)
+  worth              Decimal?  @db.Decimal(3, 2)
+  assignmentQuestion String?   @db.VarChar(500)
+  classId            Int?
 }
 
-model quiz{
-    quizId        Int     @id @default(autoincrement())
-    quizName      String? @db.VarChar(40)
-    startDate     DateTime? @db.DateTime(0)
-    dueDate       DateTime? @db.DateTime(0)
-    worth         Decimal?  @db.Decimal(3, 2)
+model quiz {
+  quizId    Int       @id @default(autoincrement())
+  quizName  String?   @db.VarChar(40)
+  startDate DateTime? @db.DateTime(0)
+  dueDate   DateTime? @db.DateTime(0)
+  worth     Decimal?  @db.Decimal(3, 2)
+  classId   Int?
 }
 
-model question{
-    questionId      Int @id @default(autoincrement())
-    questionContent String? @db.VarChar(100)
-    firstAnswer     String? @db.VarChar(100)
-    secondAnswer    String? @db.VarChar(100)
-    thirdAnswer     String? @db.VarChar(100)
-    fourthAnswer    String? @db.VarChar(100)
-    correctAnswer   Int?
-    quizId          Int
+model question {
+  questionId      Int     @default(autoincrement())
+  questionContent String? @db.VarChar(100)
+  firstAnswer     String? @db.VarChar(100)
+  secondAnswer    String? @db.VarChar(100)
+  thirdAnswer     String? @db.VarChar(100)
+  fourthAnswer    String? @db.VarChar(100)
+  correctAnswer   Int?
+  quizId          Int
+
+  @@id([questionId, quizId])
 }
 
 model course {
@@ -83,7 +87,22 @@ model teacher {
 }
 
 model enrolled {
-  enrollId        Int @id
-  studentId       Int
-  courseId        Int
+  enrollId  Int @id @default(autoincrement())
+  studentId Int
+  courseId  Int
+}
+
+model doesAssignment {
+  doesAssignmentId Int      @id @default(autoincrement())
+  assignmentId     Int
+  studentId        Int
+  response         String?  @db.VarChar(1000)
+  assignmentGrade  Decimal? @db.Decimal(3, 2)
+}
+
+model doesQuiz {
+  doesQuizId Int      @id @default(autoincrement())
+  quizId     Int
+  studentId  Int
+  quizGrade  Decimal? @db.Decimal(3, 2)
 }

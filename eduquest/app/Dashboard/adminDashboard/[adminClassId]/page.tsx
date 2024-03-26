@@ -1,8 +1,10 @@
 import Assignment from "@/app/Components/Assignment";
 import Link from "next/link";
-export default function Class({ params }: {
+
+export default async function Class({ params }: {
     params: { adminClassId: string }
 }) {
+    
     const gradeNav = "../Dashboard/" + params.adminClassId + "/" + params.adminClassId;
     return (
         <main className="bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col">
