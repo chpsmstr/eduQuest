@@ -20,7 +20,7 @@ const courses: { [key: string]: string } = {
 
 const Quiz: React.FC<{ params: { teacherClassId: string } }> = ({ params }) => {
   // State variables for managing quiz data
-  const [numQuestions, setNumQuestions] = useState<number>(1);
+  const [numQuestions, setNumQuestions] = useState<number>(5);
   const [questions, setQuestions] = useState<string[]>(Array(numQuestions).fill(''));
   const [options, setOptions] = useState<string[][]>(Array(numQuestions).fill(['', '', '', '']));
   const [correctAnswers, setCorrectAnswers] = useState<number[]>(Array(numQuestions).fill(0));
@@ -54,7 +54,9 @@ const Quiz: React.FC<{ params: { teacherClassId: string } }> = ({ params }) => {
   // Event handlers for changing number of questions, question text, options, correct answers, due date, and quiz name
 
   const handleNumQuestionsChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const num = parseInt(e.target.value);
+    let num = parseInt(e.target.value);
+    // Ensure the number is between 5 and 10
+    num = Math.max(5, Math.min(10, num));
     setNumQuestions(num);
     setQuestions(Array(num).fill(''));
     setOptions(Array(num).fill(['', '', '', '']));
@@ -116,8 +118,8 @@ const Quiz: React.FC<{ params: { teacherClassId: string } }> = ({ params }) => {
       <div style={{ marginTop: '36px' }}>
         <label className='text-3xl text-black' style={{ marginTop: '36px' }}>Select number of questions: </label>
         <select className="text-2xl text-black" value={numQuestions} onChange={handleNumQuestionsChange}>
-          {Array.from({ length: 10 }).map((_, index) => (
-            <option key={index + 1} value={index + 1}>{index + 1}</option>
+         {Array.from({ length: 6 }, (_, index) => (
+          <option key={index + 5} value={index + 5}>{index + 5}</option>
           ))}
         </select>
 
