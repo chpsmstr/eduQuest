@@ -2,12 +2,6 @@ import { expect, test } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
 import Home from "@/app/page";
 
-// test("Home", () => {
-//   render(<Home />);
-
-//   expect(screen.getByRole("heading", { level: 1, name: "Home" })).toBeDefined();
-// });
-
 test("Navigation Buttons Work", () => {
   render(<Home />);
 
