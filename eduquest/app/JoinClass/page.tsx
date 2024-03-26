@@ -15,7 +15,7 @@ export default function JoinClass() {
       
         <div className="text-left text-3xl lg:text-2xl lg:mx-4 sm:mx-2">Class Join Code:</div>
         <div>
-          <input type="text" id = "classId" placeholder = "ex: 123456" className="w-full border rounded px-2 py-1 text-black" />
+          <input type="text" id = "classId" placeholder = "ex: ABCD1234" className="w-full border rounded px-2 py-1 text-black" />
         </div>
         
         <div className="col-span-2 text-center mt-4">
