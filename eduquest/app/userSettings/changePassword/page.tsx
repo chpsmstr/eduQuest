@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const ResetPasswordPage = () => {
   return (
-    <main className="px-4 bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col">
+    <main className="px-4 bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col text-black">
       <div className="container mx-auto p-4 flex flex-col items-center">
         <Image
           src="/eduQuestpxArtLogo.png"

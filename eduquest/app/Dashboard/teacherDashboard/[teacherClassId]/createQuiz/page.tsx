@@ -25,10 +25,18 @@ const Quiz: React.FC<{ params: { teacherClassId: string } }> = ({ params }) => {
   const [options, setOptions] = useState<string[][]>(Array(numQuestions).fill(['', '', '', '']));
   const [correctAnswers, setCorrectAnswers] = useState<number[]>(Array(numQuestions).fill(0));
   const [dueDate, setDueDate] = useState<string>('');
+  const [startDate, setStartDate] = useState<string>('');
   const [quizName, setQuizName] = useState<string>('');
 
   // Set due date one week later from the current date
   useEffect(() => {
+    const today = new Date();
+    today.setDate(today.getDate() + 1); // Set to start tomorrow
+    today.setUTCHours(0,0,0,0); // Set to midnight for start date
+    const todayString = today.toISOString().slice(0, -1); // Remove the 'Z' at the end 
+    setStartDate(todayString); // Set string
+
+
     const oneWeekLater = new Date();
     oneWeekLater.setDate(oneWeekLater.getDate() + 7);
     oneWeekLater.setUTCHours(23, 59, 0, 0); // Set time to 11:59 pm in UTC
@@ -72,7 +80,9 @@ const Quiz: React.FC<{ params: { teacherClassId: string } }> = ({ params }) => {
     newCorrectAnswers[questionIndex] = optionIndex;
     setCorrectAnswers(newCorrectAnswers);
   };
-
+  const handleStartDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setStartDate(e.target.value);
+  };
   const handleDueDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDueDate(e.target.value);
   };
@@ -82,7 +92,7 @@ const Quiz: React.FC<{ params: { teacherClassId: string } }> = ({ params }) => {
   };
 
   return (
-    <main className="px-4 bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col gap-4">
+    <main className="px-4 bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col gap-4 text-black">
       {/* Quiz header with background color */}
       <br></br>
       <div className={`${bgColor} w-[75rem] h-36 rounded-lg px-6 relative`}>
@@ -94,13 +104,18 @@ const Quiz: React.FC<{ params: { teacherClassId: string } }> = ({ params }) => {
         <label className='text-3xl text-black mb-4 mt-4'>Quiz Name: </label>
         <input className='text-2xl text-black rounded' type="text" value={quizName} onChange={handleQuizNameChange} />
       </div>
+       {/* Start Date Input */}
+       <div style={{ marginTop: '36px' }}>
+        <label className='text-3xl text-black mb-4 mt-4' htmlFor="start-date">Set Start Date: </label>
+        <input id="start-date" className='text-2xl text-black' type="datetime-local" value={startDate} onChange={handleStartDateChange} />
+      </div>
       <div style={{ marginTop: '36px' }}>
         <label className='text-3xl text-black mb-4 mt-4'>Set Due Date: </label>
         <input className='text-2xl text-black' type="datetime-local" value={dueDate} onChange={handleDueDateChange} />
       </div>
       <div style={{ marginTop: '36px' }}>
-        <label className='text-3xl' style={{ marginTop: '36px' }}>Select number of questions: </label>
-        <select className="text-2xl" value={numQuestions} onChange={handleNumQuestionsChange}>
+        <label className='text-3xl text-black' style={{ marginTop: '36px' }}>Select number of questions: </label>
+        <select className="text-2xl text-black" value={numQuestions} onChange={handleNumQuestionsChange}>
           {Array.from({ length: 10 }).map((_, index) => (
             <option key={index + 1} value={index + 1}>{index + 1}</option>
           ))}
@@ -109,17 +124,18 @@ const Quiz: React.FC<{ params: { teacherClassId: string } }> = ({ params }) => {
         {/* Input fields for questions, options, and correct answers */}
         {Array.from({ length: numQuestions }).map((_, index) => (
           <div key={index} className="grid gap-2">
-            <label className='text-3xl mt-8 mb-4'>Question {index + 1}:</label>
-            <label className='text-2xl'>Enter your question:</label>
-            <input className="rounded" type="text" value={questions[index]} onChange={(e) => handleQuestionChange(index, e)} />
+            <label className='text-3xl mt-8 mb-4 text-black'>Question {index + 1}:</label>
+            <label className='text-2xl text-black'>Enter your question:</label>
+            <input className="rounded text-black" type="text" value={questions[index]} onChange={(e) => handleQuestionChange(index, e)} />
 
-            <label className='mt-4 text-xl'> Please enter options and select a correct answer</label>
+            <label className='mt-4 text-xl text-black'> Please enter options and select a correct answer</label>
             {options[index].map((option, optionIndex) => (
-              <div key={optionIndex} className="flex gap-2 items-center">
-                <label>{String.fromCharCode(65 + optionIndex)}:</label>
-                <input className="rounded" type="text" value={option} onChange={(e) => handleOptionChange(index, optionIndex, e)} />
+              <div key={optionIndex} className="flex gap-2 items-center text-black">
+                <label className = 'text-black'>{String.fromCharCode(65 + optionIndex)}:</label>
+                <input className="rounded text-black" type="text" value={option} onChange={(e) => handleOptionChange(index, optionIndex, e)} />
                 <label>
                   <input
+                    className = 'text-black'
                     type="radio"
                     name={`correct-answer-${index}`}
                     value={optionIndex}

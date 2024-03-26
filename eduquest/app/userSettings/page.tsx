@@ -23,16 +23,16 @@ const SettingsPage: React.FC<{ user: User }> = ({ user }) => {
   };
 
   return (
-    <main className="px-4 bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col">
+    <main className="px-4 bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col text-black">
       <div className="container mx-auto p-4 flex flex-col items-center">
         <div className="w-64 h-64">
           <Logo />
         </div>
-        <h1 className="text-4xl text-center mb-8 ">Settings</h1>
+        <h1 className="text-4xl text-center mb-8">Settings</h1>
         <form>
           <div className="mb-4">
             <label className="block text-gray-800 font-bold mb-2" htmlFor="firstName">First Name:</label>
-            <input id="firstName" name="firstName" type="text" value={editedUser.firstName} onChange={handleChange} className="border rounded px-3 py-2 texr-black" />
+            <input id="firstName" name="firstName" type="text" value={editedUser.firstName} onChange={handleChange} className="border rounded px-3 py-2 text-black" />
           </div>
           <div className="mb-4">
             <label className="block text-gray-800 font-bold mb-2" htmlFor="lastName">Last Name:</label>
@@ -52,7 +52,7 @@ const SettingsPage: React.FC<{ user: User }> = ({ user }) => {
         </div>
         <div>
           <Link href="">
-            <button className="bg-blue-500 border-blue-600 hover:border-blue-700 justify-center hover:bg-blue-600 text-white font-bold py-3 px-6 rounded mt-4 " style={{ borderWidth: "4px" }}>
+            <button className="bg-blue-500 border-blue-600 hover:border-blue-700 justify-center hover:bg-blue-600 text-white font-bold py-3 px-6 rounded mt-4" style={{ borderWidth: "4px" }}>
               Update Information
             </button>
           </Link>

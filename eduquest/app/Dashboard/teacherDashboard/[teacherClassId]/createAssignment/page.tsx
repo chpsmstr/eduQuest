@@ -55,7 +55,7 @@ const Assignment: React.FC<{ params: { teacherClassId: string } }> = ({ params }
   };
 
   return (
-    <main className="px-4 bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col gap-4">
+    <main className="px-4 bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col gap-4 text-black">
       {/* Header */}
       <br></br>
       <div className={`${bgColor} w-[75rem] h-36 rounded-lg px-6 relative`}>
@@ -76,7 +76,7 @@ const Assignment: React.FC<{ params: { teacherClassId: string } }> = ({ params }
         <input id="due-date" className='text-2xl text-black' type="datetime-local" value={dueDate} onChange={handleDueDateChange} />
       </div>
       {/* Assignment Details Input */}
-      <div className='text-center' style={{ marginTop: '36px' }}>
+      <div className='text-center text-black' style={{ marginTop: '36px' }}>
         <label className='text-3xl text-black mb-4 mt-4'>Assignment Details: </label>
         <div>
           <input
