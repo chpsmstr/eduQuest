@@ -24,13 +24,25 @@ export default function Quiz({ params }: {
   const quiz: Quiz = {
     quizId: "uniqueQuizId",
     questions: [
+      // loop db results to fetch all questions based on quizId
       {
-        question: "What is EduQuest",
+        question: "What is EduQuest?",
         answers: [
           "An E-Learning Platform",
           "A flavor of ice cream",
           "A breed of dog",
           "A database management system"
+        ],
+        correctAns: 0,
+        points: 10
+      },
+      {
+        question: "What is the value of x? (x + 2 = 5)",
+        answers: [
+          "2",
+          "4",
+          "3",
+          "5"
         ],
         correctAns: 0,
         points: 10
@@ -56,7 +68,7 @@ export default function Quiz({ params }: {
     const formData = new FormData(event.currentTarget); // Form data object created from quiz form 
     const answers: number[] = []; // Array to store index of user answers
 
-    //|Loop Through All Questions|, check whether the answer is right, if right|
+    //|Loop Through All Questions|, check whether the answer is right, if right 
     quiz.questions.forEach((_, index) => {
       const selectedAnswer = formData.get(`q${index + 1}`); // Get value of selected answer for current question from form data object (quiz form)
       if (typeof selectedAnswer === 'string') {
@@ -73,12 +85,13 @@ export default function Quiz({ params }: {
   return (
     <main className="px-4 bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col">
       <div className="bg-white rounded-lg p-6 md:w-[75rem] w-full mt-8">
-        <h1 className="text-3xl font-bold mb-4 text-black">{quizId}</h1>
+        <h1 className="text-5xl font-bold mb-4 text-black text-center">{quizId}</h1>
+        <br></br>
         <form onSubmit={handleSubmit}>
           {/* Loop through each question to display each question to the user */}
           {quiz.questions.map((question, index) => (
             <div key={index} className="mb-6">
-              <p className="text-lg font-medium mb-2 text-black text-xl">{`Question ${index + 1}: ${question.question}`}</p>
+              <p className="text-2xl font-medium mb-2 text-black">{`Question ${index + 1}: ${question.question}`}</p>
               {/* Loop through each answer to display the radio button (multiple choice) answers to the user */}
               {question.answers.map((answer, answerIndex) => (
                 <div key={answerIndex} className="flex items-center mb-2">
@@ -88,7 +101,7 @@ export default function Quiz({ params }: {
                     name={`q${index + 1}`} 
                     value={answerIndex.toString()} 
                   />
-                  <label htmlFor={`q${index + 1}_${answerIndex}`} className="text-xl ml-2 text-black">{answer}</label>
+                  <label htmlFor={`q${index + 1}_${answerIndex}`} className="ml-2 text-black sm:text-xl lg:text-2xl">{answer}</label>
                 </div>
               ))}
             </div>
