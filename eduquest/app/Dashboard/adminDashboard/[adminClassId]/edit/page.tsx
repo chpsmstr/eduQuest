@@ -33,6 +33,10 @@ export default function editAdminClass({ params }: { params: { adminClassId: str
           <div>
             <input type="text" id="className" placeholder="ex: Math 100" className="w-full border rounded px-2 py-1 text-black" />
           </div>
+          <div className="text-left text-3xl lg:text-2xl text-black lg:mx-4 sm:mx-2">Teacher Name:</div>
+          <div>
+            <input type="text" id="teacherName" placeholder="ex: John Doe" className="w-full border rounded px-2 py-1 text-black" />
+          </div>
           <div className="text-left text-3xl lg:text-2xl lg:mx-4 text-black sm:mx-2">Class Colour:</div>
           <div>
             <select id="classColour" className="w-full border rounded px-2 py-1 text-black">
@@ -71,6 +75,9 @@ export default function editAdminClass({ params }: { params: { adminClassId: str
           </div>
         </div>
       </form>
+      {/* Spacing */}
+      <div style={{ marginBottom: '24px'}}>
+</div>
     </main>
   );
 }

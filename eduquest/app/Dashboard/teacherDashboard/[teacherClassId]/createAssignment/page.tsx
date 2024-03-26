@@ -111,7 +111,7 @@ const Assignment: React.FC<{ params: { teacherClassId: string } }> = ({ params }
         <div style={{ marginTop: '36px' }}>
           <label htmlFor="file-upload" className="bg-blue-500 text-white px-10 py-5 rounded border-2 border-blue-600 hover:bg-blue-600 hover:border-blue-700 mb-4 mt-4 cursor-pointer" style={{ borderWidth: "4px" }}>
             Choose File
-            <input id="file-upload" className="hidden" type="file" />
+            <input id="file-upload" className="hidden" type="file" accept=".pdf,.docx,.doc,.zip"/>
           </label>
         </div>
       )}

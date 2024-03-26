@@ -5,7 +5,7 @@ export default function Class({ params }: {
 }) {
     const gradeNav = "../Dashboard/" + params.adminClassId + "/" + params.adminClassId;
     return (
-        <main className="bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col">
+        <main className="bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col text-black">
             <div className="grid grid-cols-1">
 
                 <figure>
