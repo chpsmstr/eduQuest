@@ -44,7 +44,17 @@ export default function Quiz({ params }: {
           "3",
           "5"
         ],
-        correctAns: 0,
+        correctAns: 2,
+        points: 10
+      },
+      {
+        question: "Which of the following languages has the longest alphabet?",
+        answers: [
+          "Greek",
+          "Russian",
+          "Arrabic"
+        ],
+        correctAns: 1,
         points: 10
       },
     ]
