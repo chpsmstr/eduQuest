@@ -9,18 +9,10 @@ const prisma = new PrismaClient();
 
 const teacherNames: string[] = Array();
 
-async function wait(id:number){
-  const teacher = await prisma.teacher.findUnique({
-    where: {
-      teacherId: id
-    }
- });
-teacherNames.push(teacher?.teacherFirstName + " " + teacher?.teacherLastName);
-}
-
 export default async function main(){
   "use server";
   const courses = await prisma.course.findMany();
+  const teacher = await prisma.teacher.findMany();
   // Array of colors for class boxes
  const colors: string[] = Array();
  const links: string[] = Array();
@@ -33,7 +25,11 @@ export default async function main(){
   registerLinks.push("adminDashboard/" + element.courseId + "/register");
   editLinks.push("adminDashboard/" + element.courseId + "/edit");
   labels.push(element.courseName + " " + element.courseSection);
-  wait(element.teacherId);
+  teacher.forEach(e => {
+    if(e.teacherId === element.teacherId){
+      teacherNames.push(e.teacherFirstName + " " + e.teacherLastName);
+    }
+  });
 });
 
 // Component to display class boxes
