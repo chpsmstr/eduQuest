@@ -59,7 +59,7 @@ CREATE TABLE course (
     courseAverage       DECIMAL(4,2),
     courseCode          VARCHAR(20),
     courseColour        VARCHAR(20),
-    teacherId           INT,
+    teacherId           INT NOT NULL,
     PRIMARY KEY(courseId)
 ) ENGINE=InnoDB;
 
@@ -122,7 +122,7 @@ INSERT INTO administrator (adminUid, adminFirstName, adminLastName, adminUsernam
 -- -- course dummy data being inserted for testing:
 INSERT INTO course (courseName, courseSection, numEnrolled, courseAverage, courseCode, courseColour, teacherId) VALUES ('Mathematics', 101, 4, 89.50, 'RJF05MD7', 'red', 1);
 INSERT INTO course (courseName, courseSection, numEnrolled, courseAverage, courseCode, courseColour, teacherId) VALUES ('Science', 202, 4, 92.75, 'Z47A44X9', 'green', 2);
-INSERT INTO course (courseName, courseSection, numEnrolled, courseAverage, courseCode, courseColour, teacherId) VALUES ('History', 303, 5, 75.25, 'WNS1HFIR', 'yellow', 3);
+INSERT INTO course (courseName, courseSection, numEnrolled, courseAverage, courseCode, courseColour, teacherId) VALUES ('History', 303, 5, 75.25, 'WNS1HFIR', 'pink', 3);
 INSERT INTO course (courseName, courseSection, numEnrolled, courseAverage, courseCode, courseColour, teacherId) VALUES ('Robotics', 404, 4, 82.00, 'PJPO702D', 'indigo', 1);
 INSERT INTO course (courseName, courseSection, numEnrolled, courseAverage, courseCode, courseColour, teacherId) VALUES ('English', 505, 4, 91.50, 'C5BONDSV', 'blue', 2);
 INSERT INTO course (courseName, courseSection, numEnrolled, courseAverage, courseCode, courseColour, teacherId) VALUES ('Film Studies', 606, 5, 98.00, '93XFQYXG', 'orange', 3);

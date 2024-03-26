@@ -1,5 +1,7 @@
 import Assignment from "@/app/Components/Assignment";
 import Link from "next/link";
+import { PrismaClient, Prisma } from '@prisma/client'
+const prisma = new PrismaClient();
 const courses: { [key: string]: string } = {
     "Math100": "bg-red-500",
     "Chemistry111": "bg-blue-500",
