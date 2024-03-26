@@ -26,7 +26,7 @@ export default async function main(){
  const labels: string[] = Array();
  courses.forEach(async function (element){
   colors.push("bg-" + element.courseColour +"-500");
-  links.push("teacherDashboard/" + element.courseId);
+  links.push("studentDashboard/" + element.courseId);
   labels.push(element.courseName + " " + element.courseSection);
   wait(element.teacherId);
 });
