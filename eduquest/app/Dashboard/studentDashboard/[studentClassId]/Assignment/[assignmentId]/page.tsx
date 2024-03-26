@@ -1,21 +1,20 @@
 import React from 'react';
+import { PrismaClient, Prisma } from '@prisma/client'
+const prisma = new PrismaClient();
 
-export default function Assignment({ params }: {
+export default async function Assignment({ params }: {
     params: { assignmentId: string }
 }) {
+    const assignment = await prisma.assignment.findFirst({
+        where: {
+            assignmentId: Number(params.assignmentId)
+        }
+    });
     return (
         <main className="px-4 bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col">
             <div className="bg-white rounded-lg p-6 md:w-[75rem] w-full mt-8">
-                <h1 className="text-3xl font-bold mb-4 text-black">{params.assignmentId}</h1>
-                <p className="text-lg mb-4 text-black">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis bibendum mauris, vitae tempus ante.
-                 Praesent vulputate aliquet mi vitae ultricies. Nam in luctus arcu. Pellentesque in facilisis felis. 
-                 Donec sed gravida dolor. Nunc at ex eget neque dapibus cursus. Duis iaculis molestie mauris sit amet vestibulum. 
-                 Donec dictum, tellus sit amet rutrum accumsan, ex orci lobortis magna, et molestie eros augue ac risus. 
-                 Vestibulum in arcu eget risus faucibus convallis non eget justo. 
-                 Integer volutpat, enim sit amet dictum mattis, purus neque tempus odio, sit amet vulputate nulla ante laoreet libero. 
-                 Sed mattis, purus vel lobortis gravida, augue leo auctor urna, at euismod orci sem eget felis. 
-                 Vivamus egestas odio ut ante semper placerat. 
-                 Nullam sed bibendum enim. Pellentesque placerat risus a tincidunt congue.</p>
+                <h1 className="text-3xl font-bold mb-4 text-black">{assignment?.assignmentName}</h1>
+                <p className="text-lg mb-4 text-black">{assignment?.assignmentQuestion}</p>
                 <div className="mb-4">
                     {/* File submission box */}
                     <label htmlFor="file" className="block text-xl font-medium text-gray-700">Submit your file:</label>

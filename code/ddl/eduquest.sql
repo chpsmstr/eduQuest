@@ -6,7 +6,9 @@ DROP TABLE IF EXISTS student;
 DROP TABLE IF EXISTS teacher;
 DROP TABLE IF EXISTS course;
 DROP TABLE IF EXISTS assignment;
+DROP TABLE IF EXISTS doesAssignment;
 DROP TABLE IF EXISTS quiz;
+DROP TABLE IF EXISTS doesQuiz;
 DROP TABLE IF EXISTS question;
 DROP TABLE IF EXISTS administrator;
 DROP TABLE IF EXISTS enrolled;
@@ -70,8 +72,17 @@ CREATE TABLE assignment(
     dueDate             DATETIME,
     worth               DECIMAL(3,2),
     assignmentQuestion  VARCHAR(500),
-    assignmentResponse  VARCHAR(1000),
+    classId             INT,
     PRIMARY KEY(assignmentId)
+) ENGINE=InnoDB;
+
+CREATE TABLE doesAssignment(
+    doesAssignmentId        INT NOT NULL AUTO_INCREMENT,
+    assignmentId            INT NOT NULL,
+    studentId               INT NOT NULL,
+    response                VARCHAR(1000),
+    assignmentGrade         DECIMAL(3,2),
+    PRIMARY KEY(doesAssignmentId)
 ) ENGINE=InnoDB;
 
 CREATE TABLE quiz(
@@ -80,7 +91,16 @@ CREATE TABLE quiz(
     startDate           DATETIME,
     dueDate             DATETIME,
     worth               DECIMAL(3,2),
+    classId             INT,
     PRIMARY KEY(quizId)
+) ENGINE=InnoDB;
+
+CREATE TABLE doesQuiz(
+    doesQuizId        INT NOT NULL AUTO_INCREMENT,
+    quizId            INT NOT NULL,
+    studentId          INT NOT NULL,
+    quizGrade         DECIMAL(3,2),
+    PRIMARY KEY(doesQuizId)
 ) ENGINE=InnoDB;
 
 CREATE TABLE question(
@@ -96,9 +116,10 @@ CREATE TABLE question(
 ) ENGINE=InnoDB;
 
 CREATE TABLE enrolled(
+    enrollId            INT NOT NULL AUTO_INCREMENT,
     studentId           INT NOT NULL,
     courseId            INT NOT NULL,
-    PRIMARY KEY(studentId, courseId)
+    PRIMARY KEY(enrollId)
 ) ENGINE=InnoDB;
 
 -- student dummy data being inserted for testing:
@@ -128,10 +149,38 @@ INSERT INTO course (courseName, courseSection, numEnrolled, courseAverage, cours
 INSERT INTO course (courseName, courseSection, numEnrolled, courseAverage, courseCode, courseColour, teacherId) VALUES ('Film Studies', 606, 5, 98.00, '93XFQYXG', 'orange', 3);
 
 -- -- assignment dummy data being inserted for testing: 
--- -- INSERT INTO assignment (assignmentName, startDate, dueDate, worth, assignmentType) VALUES ('Quiz 1', '2024-03-20 08:00:00', '2024-03-21 23:59:59', '5.00', 'Quiz');
--- -- INSERT INTO assignment (assignmentName, startDate, dueDate, worth, assignmentType) VALUES ('Assignment 1', '2024-03-22 08:00:00', '2024-03-23 23:59:59', '2.50', 'File Upload');
--- -- INSERT INTO assignment (assignmentName, startDate, dueDate, worth, assignmentType) VALUES ('QUiz 2', '2024-03-24 08:00:00', '2024-03-25 23:59:59', '5.00', 'Quiz');
+INSERT INTO assignment (assignmentName, startDate, dueDate, worth, assignmentQuestion, classId) VALUES ('Quadratics  Assignment', '2024-03-20 08:00:00', '2024-03-21 23:59:59', '5.00', 
+'What strategies can be employed to determine the vertex of a quadratic function without graphing it?', 1);
+INSERT INTO assignment (assignmentName, startDate, dueDate, worth, assignmentQuestion, classId) VALUES ('Derivatives Assignment', '2024-03-22 08:00:00', '2024-03-23 23:59:59', '6.00', 
+'How can the concept of derivatives be applied to determine critical points and identify extrema in a given mathematical function?', 1);
+INSERT INTO assignment (assignmentName, startDate, dueDate, worth, assignmentQuestion, classId) VALUES ('Critical Application Assignment', '2024-03-24 08:00:00', '2024-03-25 23:59:59', '7.50', 
+'How does the application of the Pythagorean theorem extend beyond basic geometry to solve real-world problems in fields such as architecture, engineering, and physics?', 1);
+INSERT INTO assignment (assignmentName, startDate, dueDate, worth, assignmentQuestion, classId) VALUES ('Biology  Assignment', '2024-03-20 08:00:00', '2024-03-21 23:59:59', '5.00', 
+'How does the process of cellular respiration contribute to the production of ATP, and what role do different organelles, such as mitochondria and chloroplasts, play in this energy conversion process?', 2);
+INSERT INTO assignment (assignmentName, startDate, dueDate, worth, assignmentQuestion, classId) VALUES ('Physics Assignment', '2024-03-22 08:00:00', '2024-03-23 23:59:59', '8.00', 
+'Explain the concept of momentum conservation in collisions, and how it applies to both elastic and inelastic collisions. Provide examples to illustrate the principles involved.', 2);
+INSERT INTO assignment (assignmentName, startDate, dueDate, worth, assignmentQuestion, classId) VALUES ('18th Century History Assignment', '2024-03-24 08:00:00', '2024-03-25 23:59:59', '7.50', 
+'How did the Enlightenment shape political ideas and governance systems in 18th-century Europe and North America?', 3);
+INSERT INTO assignment (assignmentName, startDate, dueDate, worth, assignmentQuestion, classId) VALUES ('Industrial Revolution Assignment', '2024-03-20 08:00:00', '2024-03-21 23:59:59', '5.00', 
+'What were the main causes and consequences of the Industrial Revolution in the 19th century?', 3);
+INSERT INTO assignment (assignmentName, startDate, dueDate, worth, assignmentQuestion, classId) VALUES ('Robotics History Assignment', '2024-03-22 08:00:00', '2024-03-23 23:59:59', '4.00', 
+'How have advancements in robotics revolutionized various industries and impacted society, particularly in fields such as manufacturing, healthcare, and exploration?', 4);
+INSERT INTO assignment (assignmentName, startDate, dueDate, worth, assignmentQuestion, classId) VALUES ('Engineering Assignment', '2024-03-24 08:00:00', '2024-03-25 23:59:59', '7.50', 
+'How do engineers use kinematics and dynamics to design robots for precise motion control and manipulation?', 4);
+INSERT INTO assignment (assignmentName, startDate, dueDate, worth, assignmentQuestion, classId) VALUES ('Actuators  Assignment', '2024-03-20 08:00:00', '2024-03-21 23:59:59', '5.00', 
+'How do robotic actuators contribute to the movement and functionality of robotic systems, and what are some common types of actuators used in modern robotics?', 4);
+INSERT INTO assignment (assignmentName, startDate, dueDate, worth, assignmentQuestion, classId) VALUES ('Literature Assignment', '2024-03-22 08:00:00', '2024-03-23 23:59:59', '9.00', 
+'How do authors use symbolism to convey deeper meanings and themes in literature? Provide examples from a novel or poem you have studied.', 5);
+INSERT INTO assignment (assignmentName, startDate, dueDate, worth, assignmentQuestion, classId) VALUES ('Critical Reading Assignment', '2024-03-24 08:00:00', '2024-03-25 23:59:59', '7.50', 
+'How does the use of point of view affect the your understanding and interpretation of a story? Provide examples of different narrative perspectives and their impact on storytelling.', 5);
+INSERT INTO assignment (assignmentName, startDate, dueDate, worth, assignmentQuestion, classId) VALUES ('Literary Devices Assignment', '2024-03-20 08:00:00', '2024-03-21 23:59:59', '5.00', 
+'How do literary devices such as metaphor, simile, and imagery contribute to the development of themes and characterization in poetry? Provide examples from a poem you have analyzed.', 5);
+INSERT INTO assignment (assignmentName, startDate, dueDate, worth, assignmentQuestion, classId) VALUES ('Cinematography Assignment', '2024-03-22 08:00:00', '2024-03-23 23:59:59', '3.00', 
+'How do cinematographic techniques, such as framing, lighting, and camera movement, contribute to the narrative depth and emotional impact of a film, exemplified through specific scenes or sequences?', 6);
+INSERT INTO assignment (assignmentName, startDate, dueDate, worth, assignmentQuestion, classId) VALUES ('Sound Design Assignment', '2024-03-24 08:00:00', '2024-03-25 23:59:59', '7.50', 
+"How does the use of sound design influence the viewer's perception and immersion in a film's narrative and atmosphere? Provide examples of how sound is utilized effectively in a particular movie to enhance storytelling and evoke emotional responses.", 6);
 
+-- -- enrollment dummy data being inserted for testing: 
 INSERT INTO enrolled (studentId, courseId) VALUES (1,1);
 INSERT INTO enrolled (studentId, courseId) VALUES (1,2);
 INSERT INTO enrolled (studentId, courseId) VALUES (2,1);

@@ -3,6 +3,13 @@ import Link from "next/link";
 import { PrismaClient, Prisma } from '@prisma/client'
 const prisma = new PrismaClient();
 
+interface Assignment {
+    id: number;
+    assignmentName: string|null;
+    startDate: Date|null;
+    dueDate: Date|null;
+  }
+
 export default async function Class({ params }: {
     params: { teacherClassId: number }
 }) {
@@ -11,6 +18,21 @@ export default async function Class({ params }: {
             courseId: Number(params.teacherClassId)
         }
     });
+    const assignments = await prisma.assignment.findMany({
+        where: {
+            classId: Number(params.teacherClassId)
+        }
+    });
+    let classAssignments: Assignment[] = new Array();
+    assignments.forEach(element=>{
+        let temp : Assignment = {
+            id: element.assignmentId,
+            assignmentName: element.assignmentName,
+            startDate: element.startDate,
+            dueDate: element.dueDate
+        }
+        classAssignments.push(temp);
+    })
     const gradeNav = "../teacherDashboard/" + params.teacherClassId + "/" + params.teacherClassId;
     return (
         <main className="bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col">
@@ -54,15 +76,10 @@ export default async function Class({ params }: {
                     <hr className="h-1 my-4 bg-gray-200 border-0 dark:bg-gray-700"></hr>
                     <div className="grid grid-cols-1 gap-6 justify-items-center">
                         {/* Fetched Assignments */}
-                        <Link href = "../../Assignment/Assignment1">
-                        <button className="text-white bg-orange-400 px-8 py-4 text-2xl transition duration-500 hover:scale-125 rounded"><strong>{thisCourse?.courseName+ " " + thisCourse?.courseSection} Assignment 1</strong><br></br>Sub-Heading<br></br>Due: 3/13/2023</button>
-                        </Link>
-                        <Link href = "../../Assignment/Assignment2">
-                        <button className="text-white bg-orange-400 px-8 py-4 text-2xl transition duration-500 hover:scale-125 rounded"><strong>{thisCourse?.courseName+ " " + thisCourse?.courseSection} Assignment 2</strong><br></br>Sub-Heading<br></br>Due: 3/13/2023</button>
-                        </Link>
-                        <Link href = "../../Assignment/Assignment3">
-                        <button className="text-white bg-orange-400 px-8 py-4 text-2xl transition duration-500 hover:scale-125 rounded"><strong>{thisCourse?.courseName+ " " + thisCourse?.courseSection} Assignment 3</strong><br></br>Sub-Heading<br></br>Due: 3/13/2023</button>
-                        </Link> </div>
+                        {classAssignments.map((element) =>(
+                            <button className="text-white bg-orange-400 px-8 py-4 text-2xl transition duration-500 hover:scale-125 rounded"><strong>{element.assignmentName}</strong><br></br>Open: {element.startDate?.toString().split('GMT')[0]}<br></br>Due: {element.dueDate?.toString().split('GMT')[0]}</button>
+                        ))}
+                </div>
                 </div>
             </div>
 
