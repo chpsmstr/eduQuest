@@ -27,7 +27,7 @@ model assignment {
 }
 
 model quiz{
-    quizId        Int      @default(autoincrement())
+    quizId        Int     @id @default(autoincrement())
     quizName      String? @db.VarChar(40)
     startDate     DateTime? @db.DateTime(0)
     dueDate       DateTime? @db.DateTime(0)
@@ -35,7 +35,7 @@ model quiz{
 }
 
 model question{
-    questionId      Int @default(autoincrement())
+    questionId      Int @id @default(autoincrement())
     questionContent String? @db.VarChar(100)
     firstAnswer     String? @db.VarChar(100)
     secondAnswer    String? @db.VarChar(100)
@@ -51,7 +51,9 @@ model course {
   courseSection Int?
   numEnrolled   Int?
   courseAverage Decimal? @db.Decimal(4, 2)
-  courseColour  String?  @db.VarChar(20cd )
+  courseCode    String?  @db.VarChar(20)
+  courseColour  String?  @db.VarChar(20)
+  teacherId     Int
 }
 
 model student {
@@ -81,6 +83,7 @@ model teacher {
 }
 
 model enrolled {
+  enrollId        Int @id
   studentId       Int
   courseId        Int
 }
