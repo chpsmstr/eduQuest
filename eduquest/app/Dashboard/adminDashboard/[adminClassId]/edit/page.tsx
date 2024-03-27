@@ -33,14 +33,14 @@ export default function editAdminClass({ params }: { params: { adminClassId: str
           <div>
             <input type="text" id="className" placeholder="ex: Math 100" className="w-full border rounded px-2 py-1 text-black" />
           </div>
-          <div className="text-left text-3xl lg:text-2xl text-black lg:mx-4 sm:mx-2">Teacher Name:</div>
+          <div className="text-left text-3xl lg:text-2xl text-black lg:mx-4 sm:mx-2">Teacher Id:</div>
           <div>
-            <input type="text" id="teacherName" placeholder="ex: John Doe" className="w-full border rounded px-2 py-1 text-black" />
+            <input type="text" id="teacherId" placeholder="ex: John Doe" className="w-full border rounded px-2 py-1 text-black" />
           </div>
           <div className="text-left text-3xl lg:text-2xl lg:mx-4 text-black sm:mx-2">Class Colour:</div>
           <div>
             <select id="classColour" className="w-full border rounded px-2 py-1 text-black">
-              <option value="">Select a color</option>
+              <option value="">Select a colour</option>
               <option value="red">Red</option>
               <option value="blue">Blue</option>
               <option value="green">Green</option>

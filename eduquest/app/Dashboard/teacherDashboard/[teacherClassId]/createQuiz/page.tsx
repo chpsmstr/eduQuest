@@ -27,6 +27,8 @@ const Quiz: React.FC<{ params: { teacherClassId: string } }> = ({ params }) => {
   const [dueDate, setDueDate] = useState<string>('');
   const [startDate, setStartDate] = useState<string>('');
   const [quizName, setQuizName] = useState<string>('');
+   // State variable for question worth
+  const [questionWorth, setQuestionWorth] = useState<number[]>(Array(numQuestions).fill(1));
 
   // Set due date one week later from the current date
   useEffect(() => {
@@ -61,6 +63,7 @@ const Quiz: React.FC<{ params: { teacherClassId: string } }> = ({ params }) => {
     setQuestions(Array(num).fill(''));
     setOptions(Array(num).fill(['', '', '', '']));
     setCorrectAnswers(Array(num).fill(0));
+    setQuestionWorth(Array(num).fill(1));
   };
 
   const handleQuestionChange = (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
@@ -76,6 +79,14 @@ const Quiz: React.FC<{ params: { teacherClassId: string } }> = ({ params }) => {
     );
     setOptions(newOptions);
   };
+ 
+
+// Event handler for changing question worth
+const handleQuestionWorthChange = (index: number, e: React.ChangeEvent<HTMLSelectElement>) => {
+    const newQuestionWorth = [...questionWorth];
+    newQuestionWorth[index] = parseInt(e.target.value);
+    setQuestionWorth(newQuestionWorth);
+};
 
   const handleCorrectAnswerChange = (questionIndex: number, optionIndex: number) => {
     const newCorrectAnswers = [...correctAnswers];
@@ -125,30 +136,44 @@ const Quiz: React.FC<{ params: { teacherClassId: string } }> = ({ params }) => {
 
         {/* Input fields for questions, options, and correct answers */}
         {Array.from({ length: numQuestions }).map((_, index) => (
-          <div key={index} className="grid gap-2">
-            <label className='text-3xl mt-8 mb-4 text-black'>Question {index + 1}:</label>
-            <label className='text-2xl text-black'>Enter your question:</label>
-            <input className="rounded text-black" type="text" value={questions[index]} onChange={(e) => handleQuestionChange(index, e)} />
-
-            <label className='mt-4 text-xl text-black'> Please enter options and select a correct answer</label>
-            {options[index].map((option, optionIndex) => (
+          <div key={index} className="grid col-2 gap-2">
+          <label className='text-3xl mt-8 mb-4 text-black'>Question {index + 1}:</label>
+          <label className='text-2xl text-black'>Enter your question:</label>
+          <input className="rounded text-black" type="text" value={questions[index]} onChange={(e) => handleQuestionChange(index, e)} />
+      
+          <label className='mt-4 text-xl text-black'> Please enter options and select a correct answer</label>
+          {options[index].map((option, optionIndex) => (
               <div key={optionIndex} className="flex gap-2 items-center text-black">
-                <label className = 'text-black'>{String.fromCharCode(65 + optionIndex)}:</label>
-                <input className="rounded text-black" type="text" value={option} onChange={(e) => handleOptionChange(index, optionIndex, e)} />
-                <label>
-                  <input
-                    className = 'text-black'
-                    type="radio"
-                    name={`correct-answer-${index}`}
-                    value={optionIndex}
-                    checked={correctAnswers[index] === optionIndex}
-                    onChange={() => handleCorrectAnswerChange(index, optionIndex)}
-                  />
-                  Correct
-                </label>
+                  <label className = 'text-black'>{String.fromCharCode(65 + optionIndex)}:</label>
+                  <input className="rounded text-black" type="text" value={option} onChange={(e) => handleOptionChange(index, optionIndex, e)} />
+                  <label>
+                      <input
+                          className = 'text-black'
+                          type="radio"
+                          name={`correct-answer-${index}`}
+                          value={optionIndex}
+                          checked={correctAnswers[index] === optionIndex}
+                          onChange={() => handleCorrectAnswerChange(index, optionIndex)}
+                      />
+                      Correct
+                  </label>
               </div>
-            ))}
-          </div>
+          ))}
+      
+          {/* Dropdown selector for question worth */}
+          {/* Dropdown selector for question worth */}
+    <div className='grid grid-cols-2 gap-2 px-2 py-1' style={{ marginTop: '20px' }}>
+      <label className='text-xl text-black'>Question Worth:</label>
+      <select id="questionWorth" className="text-black rounded px-1 py-1" value={questionWorth[index]} onChange={(e) => handleQuestionWorthChange(index, e)}>
+        <option value={1}>1</option>
+        <option value={2}>2</option>
+        <option value={3}>3</option>
+        <option value={4}>4</option>
+        <option value={5}>5</option>
+      </select>
+    </div>
+      </div>
+      
         ))}
       </div>
 
