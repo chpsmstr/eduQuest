@@ -16,12 +16,10 @@ jobs:
        - name: Install Dependencies
          run: |
             echo "Installing Dependencies"
-            cd eduquest
             npm install
        - name: Run Tests
          run: |
             echo "Running tests"
-            cd eduquest
             npm run test
 
          
