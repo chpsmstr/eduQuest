@@ -1,0 +1,25 @@
+name: Automation pipeline
+
+on:
+  push: 
+
+jobs:
+  runTests:
+     name: Test
+     runs-on: ubuntu-latest
+     defaults:
+      run:
+        working-directory: ./eduquest
+     steps: 
+       - name: Clone Repository
+         uses: actions/checkout@v2
+       - name: Install Dependencies
+         run: |
+            echo "Installing Dependencies"
+            npm install
+       - name: Run Tests
+         run: |
+            echo "Running tests"
+            npm run test
+
+         
