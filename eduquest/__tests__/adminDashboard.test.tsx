@@ -11,18 +11,21 @@ import Admin from "@/app/Dashboard/adminDashboard/page";
 test("Navigation Buttons Work", () => {
   render(<Admin />);
   
-
-  //Create Class Button
-//   const Register = screen.getByText("Registration").closest("a")!;
-//   expect(Register).toBeTruthy();
-//   expect(Register?.getAttribute("href")).toBe("/Dashboard/adminDashboard/register");
-//   //Create Class Button
-//   const Edit = screen.getByText("Edit").closest("a")!;
-//   expect(Edit).toBeTruthy();
-//   expect(Edit?.getAttribute("href")).toBe("/Dashboard/adminDashboard/edit");
-  //Create Class Button
-  const createClass = screen.getByText("+").closest("a")!;
+    const createClass = screen.getByText("+").closest("a")!;
   expect(createClass).toBeTruthy();
   expect(createClass?.getAttribute("href")).toBe("/CreateClass");
- 
-});
+  });
+
+  test('render ClassNames component with ClassBox components', () => {
+    render(<Admin />);
+
+    // Check if dynamic content inside ClassBox components is rendered correctly
+    const classLabels = screen.getAllByText(/Math 100|Chemistry 111|Physics 112|Biology 121|Comp-Sci 122|English 112/);
+    expect(classLabels.length).toBe(12); 
+
+    // Check if teacher names are rendered correctly
+    const teacherNames = screen.getAllByText(/Dr. Meredith Stone|Dr. Alexander Patel|Dr. Eleanor Hayes|Dr. Benjamin Carter|Dr. Victoria Liu|Dr. Jim Thompson/);
+    expect(teacherNames.length).toBe(12); 
+  });
+  
+
