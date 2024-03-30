@@ -57,6 +57,7 @@ export default function Quiz({ params }: {
         correctAns: 1,
         points: 10
       },
+      
     ]
   };
 
@@ -87,6 +88,7 @@ export default function Quiz({ params }: {
         answers.push(-1);
       }
     });
+    
     const totalScore = calculateScore(answers);
     // |Displays Total Score| to user based on number of questions (this logic assumes each question is worth the same amount of points)
     alert(`Your score: ${totalScore} out of ${quiz.questions.length * 10}`);
