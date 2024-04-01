@@ -1,5 +1,6 @@
 "use client";
 import React from 'react';
+import { useRouter } from 'next/navigation';
 
 // Question object to hold all questions, answers, correct answers, and points of each question
 export interface Question {
@@ -8,17 +9,32 @@ export interface Question {
   correctAns: number;
   points: number;
 }
+// Check if the parameter passed is valid (no spaces, special charactersm etc.)
+const checkParam = (quizId: string): boolean => {
+  const regex = /^[a-zA-Z0-9]+$/;
+  return regex.test(quizId);
+}
 /* Quiz object is an array of question objects while also containing the quizId, however, the quizId can be accessed without the object 
 as it is a parameter passed by the dynamic route of the previous page*/
 export interface Quiz {
   quizId: string;
   questions: Question[];
 }
+
 // Set quiz parameters received from previous page
 export default function Quiz({ params }: {
   params: { quizId: string }
 }) {
+  
   const quizId = params.quizId;
+//if parameter fails the pattern check, send them back to the class dashboard
+const router = useRouter(); // Define the router here
+  if(!(checkParam(quizId))) {
+    if(typeof window !== 'undefined') {
+      router.back();
+    }
+    router.push("@/app/page");
+  }
 
   // Example quiz object creation. follow this syntax to add questions into a quiz object
   const quiz: Quiz = {
@@ -95,9 +111,10 @@ export default function Quiz({ params }: {
   };
 
   return (
+    
     <main className="px-4 bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col">
       <div className="bg-white rounded-lg p-6 md:w-[75rem] w-full mt-8">
-        <h1 className="text-5xl font-bold mb-4 text-black text-center">{quizId}</h1>
+        <h1 id="quizTitle" className="text-5xl font-bold mb-4 text-black text-center">{quizId}</h1>
         <br></br>
         <form onSubmit={handleSubmit}>
           {/* Loop through each question to display each question to the user */}

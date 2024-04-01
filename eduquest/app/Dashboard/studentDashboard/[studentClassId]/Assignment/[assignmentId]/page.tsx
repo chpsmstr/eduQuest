@@ -31,7 +31,7 @@ export default async function Assignment({ params }: {
                         </div>
                     </div>
                 </div>
-                <button className="bg-amber-500 text-white py-2 px-4 rounded-md hover:bg-amber-600">Submit</button>
+                <button type="submit" className="bg-amber-500 text-white py-2 px-4 rounded-md hover:bg-amber-600">Submit</button>
             </div>
         </main>
     );
