@@ -66,7 +66,7 @@ const ChangePasswordButton: React.FC = () => {
   return (
     <div style={{ display: 'flex', justifyContent: 'center' }}>
       <Link href="userSettings/changePassword">
-        <button className="bg-orange-500 justify-center hover:border-orange-700 border-orange-600 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded mt-2 mb-2" style={{ borderWidth: "4px" }}>
+        <button data-testid="change-password-button" className="bg-orange-500 justify-center hover:border-orange-700 border-orange-600 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded mt-2 mb-2" style={{ borderWidth: "4px" }}>
           Change Password
         </button>
       </Link>
