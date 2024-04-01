@@ -1,37 +1,13 @@
+"use server";
+
 import Image from "next/image";
 import Link from "next/link";
-import prisma from "@/app/lib/prisma";
-import { RedirectType, redirect } from "next/navigation";
+import { submitStudentInfo } from "./StudentRegisterFunction/submitStudentInfo";
+// import prisma from "@/app/lib/prisma";
+// import { RedirectType, redirect } from "next/navigation";
+
 
 export default async function StudentRegistration() {
-  const student = await prisma.student.findMany();        // keeps records of student database
-
-  async function submitStudentInfo(formData: FormData){   // function to insert form data to student table in database
-    "use server";                                         // "use server" is used to denote server side functions
-
-    const fname = formData.get("fname");                  // gets student first name from form entry field titled fname
-    const lname = formData.get("lname");                  // gets student last name from form entry field titled lname
-    const username = formData.get("username");            // gets student username from form entry field titled username
-    const email = formData.get("email");                  // gets student email from form entry field titled email
-    const studentId = formData.get("studentId");          // gets student Id from form entry field titled studentId
-    const password = formData.get("password");            // gets student password from form entry field titled password
-
-    const student = await prisma.student.create({         // prisma function to create new entry into student databases
-      data: {
-        studentUid: Number(studentId),                    // lines 21-29 show assigning data to the different fields in the database, such as setting studentUid to be studentId
-        studentFirstName: fname as string,                // also ensuring the type of the variables that are being put, as this is typescript
-        studentLastName: lname as string,
-        studentUsername: username as string,
-        studentPassword: password as string,
-        studentEmail: email as string,
-        overallGrade: null,
-        attendence: null,
-        leaderboardPosition: null
-      }
-    })
-
-    redirect("../../Dashboard/studentDashboard", RedirectType.replace); // after successful registration, redirects to student dashboard
-  }
   return (
     <main className="px-4 bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col">
       <img
@@ -73,7 +49,9 @@ export default async function StudentRegistration() {
           <input type="password" id = "confirmPassword" className="w-full border rounded px-2 py-1 text-black" />
         </div>
         <div className="col-span-2 text-center mt-4">
+          <Link href="../../Dashboard/studentDashboard">
             <button type="submit" className="bg-orange-500 text-white px-12 py-6 rounded border-2 border-orange-600 hover:bg-orange-600 hover:border-orange-700 mt-4" style={{borderWidth: "4px"}}>Submit</button>
+            </Link>
           </div>
       </div>
       </form>
