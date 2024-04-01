@@ -6,7 +6,9 @@ export default defineConfig({
   plugins: [react()],
   test: {
     environment: "jsdom",
-    setupFiles: ["./__tests__/backend/setup.ts"],
+    //Uncomment the "//" below when testing database
+    //setupFiles: ["./__tests__/backend/setup.ts"],
+
     //Delete the "//" below when testing database
     include: ["./__tests__/frontend/*"],
   },
