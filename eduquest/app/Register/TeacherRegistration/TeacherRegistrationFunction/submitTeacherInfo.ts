@@ -26,5 +26,5 @@ export async function submitTeacherInfo(formData: FormData){   // function for i
       }
     })
     
-    redirect("../../../Dashboard/teacherDashboard", RedirectType.replace);   // after successful registration, redirects to teacherDashboard
+    // redirect("../../../Dashboard/teacherDashboard", RedirectType.replace);   // after successful registration, redirects to teacherDashboard
   }

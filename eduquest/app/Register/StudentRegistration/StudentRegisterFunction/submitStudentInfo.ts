@@ -25,6 +25,6 @@ export async function submitStudentInfo(formData: FormData){
         leaderboardPosition: null
       }
     })
-  
-    redirect("../../../Dashboard/studentDashboard", RedirectType.replace); // Redirects to correct page after submitting information to database
+    
+    // redirect("../../../Dashboard/studentDashboard", RedirectType.replace); // Redirects to correct page after submitting information to database
   }

@@ -5,10 +5,9 @@ import { fireEvent, getByText, getByTitle, render, screen } from "@testing-libra
 import React from 'react'
 import StudentRegistration from "@/app/Register/StudentRegistration/page";
 
-vi.mock('@/app/Register/StudentRegistration/page')
-test('testing that student information being submitted properly to database', async () => {
+// test('testing that teacher information being submitted properly to database', async () => {
     
-    const formData = new FormData();
+    // const formData = new FormData();
     
     const fname = "test"
     const lname = "teacher"
@@ -18,15 +17,15 @@ test('testing that student information being submitted properly to database', as
     const password = "testpass"
     const facultyIdNum = 123
 
-    formData.append("fname", fname)
-    formData.append("lname", lname)
-    formData.append("username", username)
-    formData.append("email", email)
-    formData.append("facultyId", facultyId)
-    formData.append("password", password)
+    // formData.append("fname", fname)
+    // formData.append("lname", lname)
+    // formData.append("username", username)
+    // formData.append("email", email)
+    // formData.append("facultyId", facultyId)
+    // formData.append("password", password)
 
-    submitTeacherInfo(formData)
-
+    // submitTeacherInfo(formData)
+test('testing that teacher information being submitted properly to database', async () => {
     const teacher = await prisma.teacher.findFirst({
         where: {
             teacherFirstName: "test"

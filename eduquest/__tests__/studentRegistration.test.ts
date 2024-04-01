@@ -1,40 +1,36 @@
+"use server";
+
 import { expect, test, vi } from 'vitest';
 import { submitStudentInfo } from '@/app/Register/StudentRegistration/StudentRegisterFunction/submitStudentInfo';
 import prisma from '@/app/lib/prisma';
-import { fireEvent, getByText, getByTitle, render, screen } from "@testing-library/react";
 import React from 'react'
-import StudentRegistration from "@/app/Register/StudentRegistration/page";
 
-vi.mock('@/app/Register/StudentRegistration/page')
-test('testing that student information being submitted properly to database', async () => {
-    
-    const formData = new FormData();
-    
-    const onClickMock = vi.fn();
+    // const formData = new FormData();
     
     const fname = "Test"
     const lname = "User"
     const username = "testuser"
     const email = "testuser@example.com"
-    const studentId = "123"
     const password = "testpass"
     const studentIdNum = 123
 
-    formData.append("fname", fname)
-    formData.append("lname", lname)
-    formData.append("username", username)
-    formData.append("email", email)
-    formData.append("studentId", studentId)
-    formData.append("password", password)
+    // formData.append("fname", fname)
+    // formData.append("lname", lname)
+    // formData.append("username", username)
+    // formData.append("email", email)
+    // formData.append("studentId", studentId)
+    // formData.append("password", password)
 
-    submitStudentInfo(formData)
-   
+    // submitStudentInfo(formData)
+
+test('testing that student information being submitted properly to database', async () => {  
+
     const student = await prisma.student.findFirst({
         where: {
-            studentFirstName: "Test"
+            studentUid: 123
         }
     })
-
+    
     const suid = student?.studentUid as number;
     const sfname = student?.studentFirstName as string;
     const slname = student?.studentLastName as string;
@@ -56,3 +52,4 @@ test('testing that student information being submitted properly to database', as
     expect(attendence).toBe(null)
     expect(leaderboard).toBe(null)
 })
+

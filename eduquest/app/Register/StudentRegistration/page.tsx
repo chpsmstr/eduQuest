@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { submitStudentInfo } from "./StudentRegisterFunction/submitStudentInfo";
 // import prisma from "@/app/lib/prisma";
-// yimport { RedirectType, redirect } from "next/navigation";
+// import { RedirectType, redirect } from "next/navigation";
 
 
 export default async function StudentRegistration() {
@@ -49,7 +49,9 @@ export default async function StudentRegistration() {
           <input type="password" id = "confirmPassword" className="w-full border rounded px-2 py-1 text-black" />
         </div>
         <div className="col-span-2 text-center mt-4">
+          <Link href="../../Dashboard/studentDashboard">
             <button type="submit" className="bg-orange-500 text-white px-12 py-6 rounded border-2 border-orange-600 hover:bg-orange-600 hover:border-orange-700 mt-4" style={{borderWidth: "4px"}}>Submit</button>
+            </Link>
           </div>
       </div>
       </form>
