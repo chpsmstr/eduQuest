@@ -31,5 +31,5 @@ test('renders about page with correct content', () => {
     // Check if Logo component is rendered with correct src attribute
     const logo = screen.getByAltText('Eduquest logo');
     expect(logo).toBeTruthy();
-    expect(logo.getAttribute('src')).toContain("/eduQuestlogoresized2.webp");// Replace with the actual path to your logo image
+    expect(logo.getAttribute('src')).toContain("/eduQuestlogoresized2.webp");
   });
