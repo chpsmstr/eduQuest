@@ -7,9 +7,9 @@ export default defineConfig({
   test: {
     environment: "jsdom",
     //Uncomment the "//" below when testing database
-    //setupFiles: ["./__tests__/backend/setup.ts"],
+    setupFiles: ["./__tests__/backend/setup.ts"],
     //Add "//" below when testing database
-    include: ["./__tests__/frontend/*"],
+    //include: ["./__tests__/frontend/*"],
   },
   resolve: {
     alias: [{ find: "@", replacement: resolve(__dirname, "./") }],
