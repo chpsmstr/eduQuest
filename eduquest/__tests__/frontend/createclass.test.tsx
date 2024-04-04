@@ -23,7 +23,7 @@ import CreateClass from "@/app/CreateClass/page";
 
     const teacherIdTitle = screen.getByText('Teacher Id:');
     expect(teacherIdTitle).toBeTruthy();
-    const teacherIdInput = screen.getByPlaceholderText('ex: John Doe');
+    const teacherIdInput = screen.getByPlaceholderText('ex: 1234');
     expect(teacherIdInput).toBeTruthy();
 
     const classColourTitle = screen.getByText('Class Colour:');
