@@ -33,7 +33,7 @@ export default function CreateClass() {
         />
       </div>
       <div className="text-center text-black text-4xl lg:text-3xl lg:mx-4 sm:mx-2 mb-12">Create a Class</div>
-      <form action={submitClassInfo} method="POST"> {/*On button click, sends form data to function to submit to database*/}
+      <form action={submitClassInfo} method="POST">{/*sends form data to submitClassInfo function */}
         <div className="grid grid-cols-2 gap-4 mt-4">
           <div className="text-left text-3xl lg:text-2xl text-black lg:mx-4 sm:mx-2">Class Name:</div>
           <div>
@@ -75,7 +75,9 @@ export default function CreateClass() {
             <button type="button" onClick={handleGenerateCode}>Generate Code</button>
           </div>
           <div className="col-span-2 text-center mt-4">
+            <Link href="">
               <button type="submit" className="bg-orange-500 text-white px-8 py-4 rounded border-2 border-orange-600 hover:bg-orange-600 hover:border-orange-700" style={{ borderWidth: "4px" }}>Create Class</button>
+            </Link>
           </div>
         </div>
       </form>
