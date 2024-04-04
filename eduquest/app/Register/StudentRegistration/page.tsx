@@ -3,8 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { submitStudentInfo } from "./StudentRegisterFunction/submitStudentInfo";
-// import prisma from "@/app/lib/prisma";
-// import { RedirectType, redirect } from "next/navigation";
 
 
 export default async function StudentRegistration() {

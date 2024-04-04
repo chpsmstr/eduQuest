@@ -2,10 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { FormEvent } from "react";
-import { isNull } from "util";
-import prisma from "@/app/lib/prisma";
-import { RedirectType, redirect } from "next/navigation";
 import { submitTeacherInfo } from "./TeacherRegistrationFunction/submitTeacherInfo";
 
 export default async function TeacherRegistration() {
