@@ -4,11 +4,7 @@ import prisma from '@/app/lib/prisma';
 import { fireEvent, getByText, getByTitle, render, screen } from "@testing-library/react";
 import React from 'react'
 import StudentRegistration from "@/app/Register/StudentRegistration/page";
-
-// test('testing that teacher information being submitted properly to database', async () => {
-    
-    // const formData = new FormData();
-    
+    //constant variables for testing
     const fname = "test"
     const lname = "teacher"
     const username = "testteacher"
@@ -16,22 +12,15 @@ import StudentRegistration from "@/app/Register/StudentRegistration/page";
     const facultyId = "123"
     const password = "testpass"
     const facultyIdNum = 123
-
-    // formData.append("fname", fname)
-    // formData.append("lname", lname)
-    // formData.append("username", username)
-    // formData.append("email", email)
-    // formData.append("facultyId", facultyId)
-    // formData.append("password", password)
-
-    // submitTeacherInfo(formData)
+//starting testing
 test('testing that teacher information being submitted properly to database', async () => {
+    //finding test teacher values
     const teacher = await prisma.teacher.findFirst({
         where: {
             teacherFirstName: "test"
         }
     })
-
+    //assigning teacher values to variables
     const tuid = teacher?.teacherUid as number;
     const tfname = teacher?.teacherFirstName as string;
     const tlname = teacher?.teacherLastName as string;
@@ -42,6 +31,7 @@ test('testing that teacher information being submitted properly to database', as
     const noc = teacher?.numOfCourses as null;
     const nos = teacher?.numOfSessions as null;
 
+    //ensuring that retireved values are correct
     expect(tuid).toBe(facultyIdNum)
     expect(tfname).toBe(fname)
     expect(tlname).toBe(lname)
