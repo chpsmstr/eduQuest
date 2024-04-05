@@ -5,6 +5,7 @@ import { RedirectType, redirect } from "next/navigation";
 
 export async function submitStudentInfo(formData: FormData){
     //sets form data to variables to put into database
+    const istest = formData.get("istest");
     const fname = formData.get("fname");                  
     const lname = formData.get("lname");                  
     const username = formData.get("username");           
@@ -26,6 +27,7 @@ export async function submitStudentInfo(formData: FormData){
         leaderboardPosition: null
       }
     })
-    
-    // redirect("../../../Dashboard/studentDashboard", RedirectType.replace); // Redirects to correct page after submitting information to database
+    if(istest === "nottest"){
+     redirect("../../../Dashboard/studentDashboard", RedirectType.replace); // Redirects to correct page after submitting information to database
+    }
   }

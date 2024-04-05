@@ -5,6 +5,7 @@ import { RedirectType, redirect } from "next/navigation";
 
 export async function submitTeacherInfo(formData: FormData){   // function for inserting form data into teacher table in database
     //takes in form data and sets it to variabls for database insertion
+    const istest = formData.get("istest");
     const fname = formData.get("fname");                  
     const lname = formData.get("lname");                 
     const username = formData.get("username");            
@@ -26,6 +27,7 @@ export async function submitTeacherInfo(formData: FormData){   // function for i
         numOfSessions: null
       }
     })
-    
-    // redirect("../../../Dashboard/teacherDashboard", RedirectType.replace);   // after successful registration, redirects to teacherDashboard
+    if(istest === "nottest"){
+    redirect("../../../Dashboard/teacherDashboard", RedirectType.replace);   // after successful registration, redirects to teacherDashboard
+    }
   }

@@ -16,39 +16,38 @@ export default async function TeacherRegistration() {
           Create an Account
       </div>
       <form action={submitTeacherInfo} method="POST"> {/*used to denote that when submit button is clicked, will use a POST request to run function labelled above */}
+      <input name = "istest" type="hidden" value="nottest"></input>
       <div className="grid grid-cols-2 gap-4 mt-4">
         <div className="text-left text-3xl lg:text-2xl lg:mx-4 sm:mx-2">First Name:</div>
         <div>
-          <input type="text" name = "fname" id = "firstName" className="w-full border rounded px-2 py-1 text-black" />
+          <input type="text" name = "fname" id = "firstName" className="w-full border rounded px-2 py-1 text-black" required/>
         </div>
         <div className="text-left text-3xl lg:text-2xl lg:mx-4 sm:mx-2">Last Name:</div>
         <div>
-          <input type="text" name= "lname" id= "lastName" className="w-full border rounded px-2 py-1 text-black" />
+          <input type="text" name= "lname" id= "lastName" className="w-full border rounded px-2 py-1 text-black" required/>
         </div>
         <div className="text-left text-3xl lg:text-2xl lg:mx-4 sm:mx-2">Username:</div>
         <div>
-          <input type="text" name = "username" id = "username" className="w-full border rounded px-2 py-1 text-black" />
+          <input type="text" name = "username" id = "username" className="w-full border rounded px-2 py-1 text-black" required/>
         </div>
         <div className="text-left text-3xl lg:text-2xl lg:mx-4 sm:mx-2">Email:</div>
         <div>
-          <input type="email" name = "email" id = "email" className="w-full border rounded px-2 py-1 text-black" />
+          <input type="email" name = "email" id = "email" className="w-full border rounded px-2 py-1 text-black" required/>
         </div>
         <div className="text-left text-3xl lg:text-2xl lg:mx-4 sm:mx-2">Faculty ID:</div>
         <div>
-          <input type="text" name = "facultyId" id = "facultyId" className="w-full border rounded px-2 py-1 text-black" />
+          <input type="text" name = "facultyId" id = "facultyId" className="w-full border rounded px-2 py-1 text-black" required/>
         </div>
         <div className="text-left text-3xl lg:text-2xl lg:mx-4 sm:mx-2">Password:</div>
         <div>
-          <input type="password" name = "password" id = "firstPassword" className="w-full border rounded px-2 py-1 text-black" />
+          <input type="password" name = "password" id = "firstPassword" className="w-full border rounded px-2 py-1 text-black" required/>
         </div>
         <div className="text-left text-3xl lg:text-2xl lg:mx-4 sm:mx-2">Confirm Password:</div>
         <div>
-          <input type="password" id = "confirmPassword" className="w-full border rounded px-2 py-1 text-black" />
+          <input type="password" id = "confirmPassword" className="w-full border rounded px-2 py-1 text-black" required/>
         </div>
         <div className="col-span-2 text-center mt-4">
-          <Link href="../../Dashboard/teacherDashboard">
             <button type="submit" className="bg-orange-500 text-white px-12 py-6 rounded border-2 border-orange-600 hover:bg-orange-600 hover:border-orange-700 mt-4" style={{borderWidth: "4px"}}>Submit</button>
-            </Link>
           </div>
       </div>
       </form>

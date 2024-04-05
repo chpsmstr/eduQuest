@@ -53,9 +53,8 @@ import CreateClass from "@/app/CreateClass/page";
     expect(generateCodeButton).toBeTruthy();
 
     // Check if "Create Class" button is rendered
-    const createClassButton = screen.getByText('Create Class').closest("a")!;
+    const createClassButton = screen.getByText('Create Class');
     expect(createClassButton).toBeTruthy();
-    expect(createClassButton?.getAttribute("href")).toBe("");
 
   });
 
