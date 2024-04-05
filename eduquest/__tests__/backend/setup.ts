@@ -3,6 +3,7 @@ import { submitTeacherInfo } from "@/app/Register/TeacherRegistration/TeacherReg
     //formdata sent to studentSubmitInfor
     const studentFormData = new FormData();
     //test values in formdata that is sent
+    const istest = "test"
     const studentFname = "Test"
     const studentLname = "User"
     const studentUsername = "testuser"
@@ -11,6 +12,7 @@ import { submitTeacherInfo } from "@/app/Register/TeacherRegistration/TeacherReg
     const studentPassword = "testpass"
     const studentIdNum = 123
     //add values to form data
+    studentFormData.append("istest", istest)
     studentFormData.append("fname", studentFname)
     studentFormData.append("lname", studentLname)
     studentFormData.append("username", studentUsername)
@@ -30,6 +32,7 @@ import { submitTeacherInfo } from "@/app/Register/TeacherRegistration/TeacherReg
     const teacherPassword = "testpass"
     const facultyIdNum = 123
     //adds test values to form data
+    teacherFormData.append("istest", istest)
     teacherFormData.append("fname", teacherFname)
     teacherFormData.append("lname", teacherLname)
     teacherFormData.append("username", teacherUsername)

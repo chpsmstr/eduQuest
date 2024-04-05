@@ -16,6 +16,7 @@ export default async function TeacherRegistration() {
           Create an Account
       </div>
       <form action={submitTeacherInfo} method="POST"> {/*used to denote that when submit button is clicked, will use a POST request to run function labelled above */}
+      <input name = "istest" type="hidden" value="nottest"></input>
       <div className="grid grid-cols-2 gap-4 mt-4">
         <div className="text-left text-3xl lg:text-2xl lg:mx-4 sm:mx-2">First Name:</div>
         <div>
