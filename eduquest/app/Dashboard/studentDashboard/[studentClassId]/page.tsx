@@ -24,6 +24,11 @@ export default async function Class({ params }: {
             classId: Number(params.studentClassId)
         }
     });
+    const quizzes = await prisma.quiz.findMany({
+        where: {
+            classId: Number(params.studentClassId)
+        }
+    });
     let classAssignments: Assignment[] = new Array();
     assignments.forEach(element=>{
         let temp : Assignment = {
@@ -34,13 +39,23 @@ export default async function Class({ params }: {
         }
         classAssignments.push(temp);
     })
+    let classQuizzes: Assignment[] = new Array();
+    quizzes.forEach(element=>{
+        let temp : Assignment = {
+            id: element.quizId,
+            assignmentName: element.quizName,
+            startDate: element.startDate,
+            dueDate: element.dueDate
+        }
+        classQuizzes.push(temp);
+    })
     const gradeNav = "../studentDashboard/" + params.studentClassId + "/" + 'Grades' + "/" + params.studentClassId;
     //Quiz and Assignment Nav must have their dynamic route value (Quiz1 for ex.) be changed based on the assignment clicked.
     //Grade, however, does not need the same changes as it will simply redirect to the grades page of that class for the studentId based on what is stored in the current session
     /*Assignments and Quizzes should be loaded from the database based on if they are open/unoppen by the teacher and 
     */
     const assignNav = "../studentDashboard/" + params.studentClassId + "/" + 'Assignment' + '/';
-    const quizNav = "../studentDashboard/" + params.studentClassId + "/" + 'Quiz' + '/' + 'Quiz1';
+    const quizNav = "../studentDashboard/" + params.studentClassId + "/" + 'Quiz' + '/';
     return (
         <main className="bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col">
             <BackButton
@@ -72,9 +87,11 @@ export default async function Class({ params }: {
                     <hr className="h-1 my-4 bg-gray-200 border-0 dark:bg-gray-700"></hr>
                     <div className="grid grid-cols-1 gap-6 justify-items-center">
                         {/*Quiz Items*/}
-                    <Link href = {quizNav}>
-                    <button className="text-white bg-green-400 px-8 py-4 text-2xl transition duration-500 hover:scale-125 rounded"><strong>Quiz #1</strong><br></br>{thisCourse?.courseName+ " " + thisCourse?.courseSection} Module 1<br></br>3/13/2023</button>
-                    </Link>
+                        {classQuizzes.map((element)=> (
+                            <Link href = {quizNav+element.id}>
+                            <button className="text-white bg-green-400 px-8 py-4 text-2xl transition duration-500 hover:scale-125 rounded"><strong>{element.assignmentName}</strong><br></br>{thisCourse?.courseName+ " " + thisCourse?.courseSection}<br></br>Due: {element.dueDate?.toString().split('GMT')[0]}</button>
+                            </Link>
+                        ))}
                 </div>
                 </div>
                 <div className="col-span-6 row-start-1 row-end-10 bg-white text-black w-full rounded-lg">

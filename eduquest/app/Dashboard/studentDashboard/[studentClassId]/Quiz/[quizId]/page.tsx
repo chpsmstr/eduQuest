@@ -1,6 +1,7 @@
-"use client";
 import React from 'react';
 import BackButton from "@/app/Components/BackButton";
+import { PrismaClient, Prisma } from '@prisma/client'
+const prisma = new PrismaClient();
 
 // Question object to hold all questions, answers, correct answers, and points of each question
 export interface Question {
@@ -16,50 +17,37 @@ export interface Quiz {
   questions: Question[];
 }
 // Set quiz parameters received from previous page
-export default function Quiz({ params }: {
+export default async function Quiz({ params }: {
   params: { quizId: string }
 }) {
-  const quizId = params.quizId;
+
+  const thisQuiz = await prisma.quiz.findFirstOrThrow({
+    where: {
+      quizId: Number(params.quizId)
+    }
+  })
+    const quizName = thisQuiz.quizName;
+
+  const quizQuestions = await prisma.question.findMany({
+    where: {
+        quizId: Number(params.quizId)
+    }
+});
+  const questionArray: Question[] = Array();
+  quizQuestions.forEach(element => {
+    const temp: Question = {
+      question: element.questionContent+"",
+      answers: [element.firstAnswer+"",element.secondAnswer+"",element.thirdAnswer+"",element.fourthAnswer+""],
+      correctAns: Number(element.correctAnswer),
+      points: 10
+    }
+    questionArray.push(temp);
+  });
 
   // Example quiz object creation. follow this syntax to add questions into a quiz object
   const quiz: Quiz = {
-    quizId: "uniqueQuizId",
-    questions: [
-      // loop db results to fetch all questions based on quizId
-      {
-        question: "What is EduQuest?",
-        answers: [
-          "An E-Learning Platform",
-          "A flavor of ice cream",
-          "A breed of dog",
-          "A database management system"
-        ],
-        correctAns: 0,
-        points: 10
-      },
-      {
-        question: "What is the value of x? (x + 2 = 5)",
-        answers: [
-          "2",
-          "4",
-          "3",
-          "5"
-        ],
-        correctAns: 2,
-        points: 10
-      },
-      {
-        question: "Which of the following languages has the longest alphabet?",
-        answers: [
-          "Greek",
-          "Russian",
-          "Arrabic"
-        ],
-        correctAns: 1,
-        points: 10
-      },
-      
-    ]
+    quizId: params.quizId,
+    questions: questionArray
   };
 
   // Total score calculation, based on correct quiz answers
@@ -103,9 +91,9 @@ export default function Quiz({ params }: {
       }}
     />
       <div className="bg-white rounded-lg p-6 md:w-[75rem] w-full mt-8">
-        <h1 className="text-5xl font-bold mb-4 text-black text-center">{quizId}</h1>
+        <h1 className="text-5xl font-bold mb-4 text-black text-center">{quizName}</h1>
         <br></br>
-        <form onSubmit={handleSubmit}>
+        <form>
           {/* Loop through each question to display each question to the user */}
           {quiz.questions.map((question, index) => (
             <div key={index} className="mb-6">
