@@ -180,6 +180,20 @@ INSERT INTO assignment (assignmentName, startDate, dueDate, worth, assignmentQue
 INSERT INTO assignment (assignmentName, startDate, dueDate, worth, assignmentQuestion, classId) VALUES ('Sound Design Assignment', '2024-03-24 08:00:00', '2024-03-25 23:59:59', '7.50', 
 "How does the use of sound design influence the viewer's perception and immersion in a film's narrative and atmosphere? Provide examples of how sound is utilized effectively in a particular movie to enhance storytelling and evoke emotional responses.", 6);
 
+-- -- quiz dummy data being inserted for testing:
+INSERT INTO quiz (quizName, startDate, dueDate, worth, classId) VALUES ('Algebra Quiz', '2024-03-20 08:00:00', '2024-03-21 23:59:59', '5.00', 1);
+INSERT INTO quiz (quizName, startDate, dueDate, worth, classId) VALUES ('Ancient Civilizations Quiz', '2024-03-24 08:00:00', '2024-03-25 23:59:59', '7.50', 3);
+INSERT INTO quiz (quizName, startDate, dueDate, worth, classId) VALUES ('Cinema History Quiz', '2024-03-20 08:00:00', '2024-03-21 23:59:59', '5.00', 6);
+INSERT INTO question(questionContent, firstAnswer, secondAnswer, thirdAnswer, fourthAnswer, correctAnswer, quizId) VALUES ('Solve for x: 2x + 5 = 13', '2', '4', '6', '8', 2, 1);
+INSERT INTO question(questionContent, firstAnswer, secondAnswer, thirdAnswer, fourthAnswer, correctAnswer, quizId) VALUES ('Solve for y: 3y - 7 = 20', '3', '5', '7', '9', 4, 1);
+INSERT INTO question(questionContent, firstAnswer, secondAnswer, thirdAnswer, fourthAnswer, correctAnswer, quizId) VALUES ('Solve for z: 4z/2 + 6 = 14', '4', '6', '8', '10', 1, 1);
+INSERT INTO question(questionContent, firstAnswer, secondAnswer, thirdAnswer, fourthAnswer, correctAnswer, quizId) VALUES ('Which ancient chinese dynasty lasted only 15 years?', 'Zhou', 'Qin', 'Han', 'Shang', 2, 2);
+INSERT INTO question(questionContent, firstAnswer, secondAnswer, thirdAnswer, fourthAnswer, correctAnswer, quizId) VALUES ('Which ancient civilization first invented roads?', 'Greece', 'Rome', 'Mesopotamia', 'Egypt', 3, 2);
+INSERT INTO question(questionContent, firstAnswer, secondAnswer, thirdAnswer, fourthAnswer, correctAnswer, quizId) VALUES ('Who was the first roman emperor?', 'Augustus Caesar', 'Julius Caesar', 'Tiberius', 'Caligula', 1, 2);
+INSERT INTO question(questionContent, firstAnswer, secondAnswer, thirdAnswer, fourthAnswer, correctAnswer, quizId) VALUES ('Where was paper invented?', 'Rome', 'Mesopotamia', 'China', 'Egypt', 1, 2);
+INSERT INTO question(questionContent, firstAnswer, secondAnswer, thirdAnswer, fourthAnswer, correctAnswer, quizId) VALUES ('In what year was "2001: A Space Odyssey" released? ', '1962', '1968', '1975', '2001', 2, 3);
+INSERT INTO question(questionContent, firstAnswer, secondAnswer, thirdAnswer, fourthAnswer, correctAnswer, quizId) VALUES ('In what year was "The Godfather" released?', '1969', '1970', '1971', '1972', 4, 3);
+
 -- -- enrollment dummy data being inserted for testing: 
 INSERT INTO enrolled (studentId, courseId) VALUES (1,1);
 INSERT INTO enrolled (studentId, courseId) VALUES (1,2);

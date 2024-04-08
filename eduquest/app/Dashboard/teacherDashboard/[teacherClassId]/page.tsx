@@ -24,6 +24,11 @@ export default async function Class({ params }: {
             classId: Number(params.teacherClassId)
         }
     });
+    const quizzes = await prisma.quiz.findMany({
+        where: {
+            classId: Number(params.teacherClassId)
+        }
+    });
     let classAssignments: Assignment[] = new Array();
     assignments.forEach(element=>{
         let temp : Assignment = {
@@ -33,6 +38,16 @@ export default async function Class({ params }: {
             dueDate: element.dueDate
         }
         classAssignments.push(temp);
+    })
+    let classQuizzes: Assignment[] = new Array();
+    quizzes.forEach(element=>{
+        let temp : Assignment = {
+            id: element.quizId,
+            assignmentName: element.quizName,
+            startDate: element.startDate,
+            dueDate: element.dueDate
+        }
+        classQuizzes.push(temp);
     })
     const gradeNav = "../teacherDashboard/" + params.teacherClassId + "/" + params.teacherClassId;
     return (
@@ -71,9 +86,10 @@ export default async function Class({ params }: {
                     <hr className="h-1 my-4 bg-gray-200 border-0 dark:bg-gray-700"></hr>
                     <div className="grid grid-cols-1 gap-6 justify-items-center">
                         {/* Quiz Items */}
-                        <Link href = "../../Quiz/Quiz1">
-                    <button className="text-white bg-green-400 px-8 py-4 text-2xl transition duration-500 hover:scale-125 rounded"><strong>Quiz #1</strong><br></br>{thisCourse?.courseName+ " " + thisCourse?.courseSection} Module 1<br></br>3/13/2023</button>
-                    </Link><div className="static bottom-100 left-0"></div>
+                        {classQuizzes.map((element) =>(
+                    <button className="text-white bg-green-400 px-8 py-4 text-2xl transition duration-500 hover:scale-125 rounded"><strong>{element.assignmentName}</strong><br></br>{thisCourse?.courseName+ " " + thisCourse?.courseSection}<br></br>Due: {element.dueDate?.toString().split('GMT')[0]}</button>
+                    ))}
+                    <div className="static bottom-100 left-0"></div>
                     </div>
                 </div>
                 <div className="col-span-6 row-start-1 row-end-10 bg-white text-black w-full rounded-lg">
