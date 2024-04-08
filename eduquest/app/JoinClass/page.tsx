@@ -1,9 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
+import BackButton from "@/app/Components/BackButton";
 
 export default function JoinClass() {
   return (
     <main className="px-4 bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col">
+       <BackButton
+      params={{
+        link: "Dashboard/studentDashboard"
+      }}
+    />
       <img
         src="/eduQuestpxArtLogo.png"
         alt="Eduquest logo"

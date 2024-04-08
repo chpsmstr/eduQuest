@@ -1,6 +1,7 @@
 // Import React
 import React from 'react';
 import Link from "next/link";
+import BackButton from "@/app/Components/BackButton";
 import { PrismaClient, Prisma } from '@prisma/client'
 const prisma = new PrismaClient();
 // Define the interface for the Student type
@@ -108,6 +109,11 @@ export default async function main({ params }: { params: { adminClassId: string 
 
   return (
     <main className="px-4 bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col">
+      <BackButton
+      params={{
+        link: "../"
+      }}
+    />
       <br />
       <br></br>
       <h1 className="lg:text-4xl sm:text-4xl font-bold">{params.adminClassId} Student Registration List</h1>

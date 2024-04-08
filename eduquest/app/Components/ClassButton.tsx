@@ -27,4 +27,3 @@ export default function ClassButton({ params }: Params) {
       </div>
   );
 }
-8

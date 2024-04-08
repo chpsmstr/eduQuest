@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Logo from "@/app/Components/Logo";
+import BackButton from "@/app/Components/BackButton";
 
 const generateRandomString = (): string => {
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -23,6 +24,11 @@ export default function editAdminClass({ params }: { params: { adminClassId: str
 
   return (
     <main className="px-4 bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col text-black">
+      <BackButton
+      params={{
+        link: "../"
+      }}
+    />
       <div className="w-48 h-48">
         <Logo/>
       </div>
