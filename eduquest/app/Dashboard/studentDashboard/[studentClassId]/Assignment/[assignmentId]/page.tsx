@@ -1,5 +1,6 @@
 import React from 'react';
 import { PrismaClient, Prisma } from '@prisma/client'
+import BackButton from "@/app/Components/BackButton";
 const prisma = new PrismaClient();
 
 export default async function Assignment({ params }: {
@@ -12,6 +13,11 @@ export default async function Assignment({ params }: {
     });
     return (
         <main className="px-4 bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col">
+            <BackButton
+      params={{
+        link: "../"
+      }}
+    />
             <div className="bg-white rounded-lg p-6 md:w-[75rem] w-full mt-8">
                 <h1 className="text-3xl font-bold mb-4 text-black">{assignment?.assignmentName}</h1>
                 <p className="text-lg mb-4 text-black">{assignment?.assignmentQuestion}</p>

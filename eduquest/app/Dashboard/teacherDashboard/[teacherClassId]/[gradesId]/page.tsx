@@ -1,3 +1,4 @@
+import BackButton from '@/app/Components/BackButton';
 const courses: { [key: string]: string } = {
     "Math100": "bg-red-500",
     "Chemistry111": "bg-blue-500",
@@ -12,6 +13,11 @@ export default function Grades({ params }: {
     let bgColor = courses[params.teacherClassId];
     return (
         <main className="px-4 bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col">
+            <BackButton
+      params={{
+        link: "./"
+      }}
+    />
              <br></br>
                 <div className={`${bgColor} w-[75rem] h-64 rounded-lg px-6`}><h1 className="text-5xl relative bottom-20 px-4">{params.teacherClassId}</h1>
                     <h1 className="text-white text-6xl pt-[8rem]">{params.teacherClassId}</h1>

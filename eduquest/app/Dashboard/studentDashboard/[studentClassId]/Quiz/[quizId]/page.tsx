@@ -1,5 +1,6 @@
 "use client";
 import React from 'react';
+import BackButton from "@/app/Components/BackButton";
 
 // Question object to hold all questions, answers, correct answers, and points of each question
 export interface Question {
@@ -96,6 +97,11 @@ export default function Quiz({ params }: {
 
   return (
     <main className="px-4 bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col">
+      <BackButton
+      params={{
+        link: "../"
+      }}
+    />
       <div className="bg-white rounded-lg p-6 md:w-[75rem] w-full mt-8">
         <h1 className="text-5xl font-bold mb-4 text-black text-center">{quizId}</h1>
         <br></br>

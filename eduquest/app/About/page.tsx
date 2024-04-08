@@ -1,7 +1,13 @@
 import Logo from "@/app/Components/Logo";
+import BackButton from "@/app/Components/BackButton";
 export default function About() {
   return (
     <main className="px-4 bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col">
+       <BackButton
+      params={{
+        link: "../"
+      }}
+    />
       <div className="grid text-right space-y-4 sm:space-y-0 lg:space-y-0 lg:grid-cols-1 lg:grid-cols-1 gap-3 justify-items-center">
         <Logo />
       </div>
