@@ -31,3 +31,15 @@ body {
     text-wrap: balance;
   }
 }
+.checkmark-green {
+  color: green;
+  margin-right: 8px;
+  font-size: 1.5em;
+}
+
+.crossmark-red {
+  color: red;
+  margin-right: 8px;
+  font-size: 1.5em;
+}
+
