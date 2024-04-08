@@ -1,4 +1,5 @@
 import Assignment from "@/app/Components/Assignment";
+import BackButton from "@/app/Components/BackButton";
 import Link from "next/link";
 
 export default async function Class({ params }: {
@@ -8,6 +9,11 @@ export default async function Class({ params }: {
     const gradeNav = "../Dashboard/" + params.adminClassId + "/" + params.adminClassId;
     return (
         <main className="bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col text-black">
+            <BackButton
+      params={{
+        link: "./"
+      }}
+    />
             <div className="grid grid-cols-1">
 
                 <figure>

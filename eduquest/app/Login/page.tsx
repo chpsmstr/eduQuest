@@ -5,6 +5,7 @@ import { FormEvent } from "react";
 import { options } from "../api/auth/[...nextauth]/options";
 import prisma from "../lib/prisma";
 import { RedirectType, redirect } from "next/navigation";
+import BackButton from "@/app/Components/BackButton";
 
 export default async function Login() {
   const teacher = await prisma.teacher.findMany();        // returns a list of records from the teacher database
@@ -59,6 +60,11 @@ export default async function Login() {
 
   return (
     <main className="px-4 bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col">
+       <BackButton
+      params={{
+        link: "./"
+      }}
+    />
       <Logo />
       <form action={submitLogin} method="POST"> {/*used to denote that when submit button is clicked, will use a POST request to run function labelled above */}
       <div className="grid grid-cols-2 gap-4">

@@ -1,3 +1,4 @@
+import BackButton from '@/app/Components/BackButton';
 const courses: { [key: string]: string } = {
     "Math100": "bg-red-500",
     "Chemistry111": "bg-blue-500",
@@ -12,6 +13,11 @@ export default function Grades({ params }: {
     let bgColor = courses[params.studentClassId];
     return (
         <main className="px-4 bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col">
+            <BackButton
+      params={{
+        link: "../"
+      }}
+    />
             {/*Show student grades based on the class Id, classId is passed from studentClassId when a student clicks view grades.
             Both graded assignments and ungraded assignments will be shown to the user along with an average grade for the class.*/}
              <br></br>

@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import BackButton from "@/app/Components/BackButton";
 import Link from 'next/link';
 
 const courses: { [key: string]: string } = {
@@ -56,10 +57,15 @@ const Assignment: React.FC<{ params: { teacherClassId: string } }> = ({ params }
 
   return (
     <main className="px-4 bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col gap-4 text-black">
+      <BackButton
+      params={{
+        link: "./"
+      }}
+    />
       {/* Header */}
       <br></br>
       <div className={`${bgColor} w-[75rem] h-36 rounded-lg px-6 relative`}>
-      <h1 className="text-5xl text-center text-white" style={{ marginTop: '48px' }}>Create an Assignment for {params.teacherClassId}</h1>
+      <h1 className="text-5xl text-center text-black" style={{ marginTop: '48px' }}>Create an Assignment for {params.teacherClassId}</h1>
       </div>           {/* Assignment Name Input */}
       <div style={{ marginTop: '36px' }}>
         <label className='text-3xl text-black mb-4 mt-4' htmlFor="assignment-name">Assignment Name: </label>

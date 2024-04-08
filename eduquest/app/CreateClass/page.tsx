@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { submitClassInfo } from './submitClassInfo/submitClassInfo';
+import BackButton from "@/app/Components/BackButton";
 
 const generateRandomString = (): string => {
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -23,6 +24,12 @@ export default function CreateClass() {
 
   return (
     <main className="px-4 bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col text-black">
+      <BackButton
+      params={{
+        link: "Dashboard/adminDashboard"
+      }}
+    />
+    
       <div className="w-48 h-48">
         <Image
           src="/eduQuestpxArtLogo.png"
@@ -32,6 +39,7 @@ export default function CreateClass() {
           height={300} // Adjust height according to your design
         />
       </div>
+      
       <div className="text-center text-black text-4xl lg:text-3xl lg:mx-4 sm:mx-2 mb-12">Create a Class</div>
       <form action={submitClassInfo} method="POST">{/*sends form data to submitClassInfo function */}
       <input name = "istest" type="hidden" value="nottest"></input>

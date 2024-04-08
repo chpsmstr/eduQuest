@@ -1,4 +1,5 @@
 import Assignment from "@/app/Components/Assignment";
+import BackButton from "@/app/Components/BackButton";
 import Link from "next/link";
 import { PrismaClient, Prisma } from '@prisma/client'
 const prisma = new PrismaClient();
@@ -42,6 +43,11 @@ export default async function Class({ params }: {
     const quizNav = "../studentDashboard/" + params.studentClassId + "/" + 'Quiz' + '/' + 'Quiz1';
     return (
         <main className="bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col">
+            <BackButton
+      params={{
+        link: "./"
+      }}
+    />
              <br></br>
                 <div className={`${"bg-" + thisCourse?.courseColour +"-500"} w-[75rem] h-64 rounded-lg px-6`}><h1 className="text-5xl relative bottom-20 px-4">{thisCourse?.courseName+ " " + thisCourse?.courseSection}</h1>
                     <Link href={gradeNav}>

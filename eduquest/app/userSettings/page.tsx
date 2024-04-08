@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Logo from "../Components/Logo";
 import Link from 'next/link';
+import BackButton from "@/app/Components/BackButton";
 
 interface User {
   firstName: string;
@@ -24,6 +25,11 @@ const SettingsPage: React.FC<{ user: User }> = ({ user }) => {
 
   return (
     <main className="px-4 bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col text-black">
+       <BackButton
+      params={{
+        link: "../"
+      }}
+    />
       <div className="container mx-auto p-4 flex flex-col items-center">
         <div className="w-64 h-64">
           <Logo />

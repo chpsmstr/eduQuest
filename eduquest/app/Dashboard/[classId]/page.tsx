@@ -1,5 +1,6 @@
 import Assignment from "@/app/Components/Assignment";
 import Link from "next/link";
+import BackButton from "@/app/Components/BackButton";
 
 const courses: { [key: string]: string } = {
     "Math100": "bg-red-500",
