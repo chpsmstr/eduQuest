@@ -6,6 +6,7 @@ import { options } from "../api/auth/[...nextauth]/options";
 import prisma from "../lib/prisma";
 import { RedirectType, redirect } from "next/navigation";
 import BackButton from "@/app/Components/BackButton";
+import { cookies } from 'next/headers';
 
 export default async function Login() {
   const teacher = await prisma.teacher.findMany();        // returns a list of records from the teacher database
@@ -38,6 +39,9 @@ export default async function Login() {
 
     if (student && (password as string === student.studentPassword)){     // check to ensure that entry from password entry field and students password tied to username in the database match
       const { studentPassword, ...studentWithoutPass } = student;         // if password entry field and database password match, redireect to student dashboard
+      
+      cookies().set('id', student?.studentId.toString() as string);
+      cookies().set('role', 'student');
       redirect("../Dashboard/studentDashboard", RedirectType.replace);
     } else {
       console.log("Error");                                               // if password entry field and database password do not match, print error to console.log (going to need to workshop better solution)
@@ -45,6 +49,9 @@ export default async function Login() {
 
     if (teacher && (password as string === teacher.teacherPassword)){     // check to ensure that entry from password entry field and teachers password tied to username in the database match
       const { teacherPassword, ...teacherWithoutPass } = teacher;         // if password entry field and database password match, redirect to teacher dashboard
+      
+      cookies().set('id', teacher?.teacherId?.toString() as string)
+      cookies().set('role', 'teacher');
       redirect("../Dashboard/teacherDashboard", RedirectType.replace);
     } else {
       console.log("Error");                                               // if password entry field and database password do not match, print error to console.log (going to need to workshop better solution)
@@ -52,6 +59,9 @@ export default async function Login() {
 
     if (administrator && (password as string === administrator.adminPassword)){     // check to ensure that entry from password entry field and admis password tied to username in the database match
       const { adminPassword, ...administratorWithoutPass } = administrator;         // if password entry field and database password match, redirect to admin dashboard
+      
+      cookies().set('id', administrator?.adminId?.toString() as string);
+      cookies().set('role', 'admin');
       redirect("../Dashboard/adminDashboard", RedirectType.replace);
     } else {
       console.log("Error");                                                         // if password entry field and database password do not match, print error to console.log (going to need to workshop better solution)
