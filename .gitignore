@@ -194,14 +194,4 @@ code/docker/mysql/data/performance_schema/users_146.sdi
 code/docker/mysql/data/performance_schema/variables_by_thr_185.sdi
 code/docker/mysql/data/performance_schema/variables_info_188.sdi
 code/docker/mysql/data/sys/sys_config.ibd
-code/docker/mysql/data/ibtmp1
-code/docker/mysql/data/#innodb_temp/temp_1.ibt
-code/docker/mysql/data/#innodb_temp/temp_2.ibt
-code/docker/mysql/data/#innodb_temp/temp_3.ibt
-code/docker/mysql/data/#innodb_temp/temp_4.ibt
-code/docker/mysql/data/#innodb_temp/temp_5.ibt
-code/docker/mysql/data/#innodb_temp/temp_6.ibt
-code/docker/mysql/data/#innodb_temp/temp_7.ibt
-code/docker/mysql/data/#innodb_temp/temp_8.ibt
-code/docker/mysql/data/#innodb_temp/temp_9.ibt
-code/docker/mysql/data/#innodb_temp/temp_10.ibt
+
