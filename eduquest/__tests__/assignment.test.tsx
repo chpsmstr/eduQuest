@@ -13,4 +13,3 @@ test("Invalid quizId Parameters", () => {
  expect(submitButton).toBeTruthy();
  expect(submitButton?.getAttribute("type")).toBe("submit");
 });*/
-  

@@ -1,10 +1,22 @@
+"use client";
 import React from 'react';
+import { useRouter } from 'next/navigation';
 import { PrismaClient, Prisma } from '@prisma/client'
 const prisma = new PrismaClient();
-
+const checkParam = (assignmentId: string): boolean => {
+    const regex = /^[a-zA-Z0-9]+$/;
+    return regex.test(assignmentId);
+  }
 export default async function Assignment({ params }: {
     params: { assignmentId: string }
 }) {
+    const router = useRouter(); // Define the router here
+    if(!(checkParam(params.assignmentId))) {
+        if(typeof window !== 'undefined') {
+          router.back();
+        }
+        router.push("@/app/page");
+      }
     const assignment = await prisma.assignment.findFirst({
         where: {
             assignmentId: Number(params.assignmentId)

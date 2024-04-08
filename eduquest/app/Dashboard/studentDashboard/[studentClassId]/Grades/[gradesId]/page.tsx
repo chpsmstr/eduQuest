@@ -1,3 +1,6 @@
+"use client";
+import React from 'react';
+import { useRouter } from 'next/navigation';
 const courses: { [key: string]: string } = {
     "Math100": "bg-red-500",
     "Chemistry111": "bg-blue-500",
@@ -6,9 +9,20 @@ const courses: { [key: string]: string } = {
     "Comp-Sci122": "bg-purple-500",
     "English112": "bg-pink-500",
   };
+  const checkParam = (studentClassId: string): boolean => {
+    const regex = /^[a-zA-Z0-9]+$/;
+    return regex.test(studentClassId);
+  }
 export default function Grades({ params }: {
     params: { studentClassId: string }
 }) {
+    const router = useRouter(); // Define the router here
+  if(!(checkParam(params.studentClassId))) {
+    if(typeof window !== 'undefined') {
+      router.back();
+    }
+    router.push("@/app/page");
+  }
     let bgColor = courses[params.studentClassId];
     return (
         <main className="px-4 bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col">
