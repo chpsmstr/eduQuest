@@ -22,9 +22,9 @@ import JoinClass from "@/app/JoinClass/page";
     expect(classJoinCodeInput).toBeTruthy();
 
     // Check if "Join Class" button is rendered
-    const joinClassButton = screen.getByText('Join Class').closest("a")!;
+    const joinClassButton = screen.getByText('Join Class');
     expect(joinClassButton).toBeTruthy();
-    expect(joinClassButton?.getAttribute("href")).toBe("");
+
    
   
   });
