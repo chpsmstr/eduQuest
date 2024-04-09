@@ -1,8 +1,13 @@
+'use server'
+import { redirect } from 'next/navigation'
 import React from 'react';
 import BackButton from "@/app/Components/BackButton";
 import { PrismaClient, Prisma } from '@prisma/client'
 const prisma = new PrismaClient();
-
+const checkParam = (quizId: string): boolean => {
+  const regex = /^[a-zA-Z0-9]+$/;
+  return regex.test(quizId);
+}
 // Question object to hold all questions, answers, correct answers, and points of each question
 export interface Question {
   question: string;
@@ -20,6 +25,9 @@ export interface Quiz {
 export default async function Quiz({ params }: {
   params: { quizId: string }
 }) {
+  if (!(checkParam(params.quizId))) {
+    redirect('../../../../Error');
+}
 
   const thisQuiz = await prisma.quiz.findFirstOrThrow({
     where: {

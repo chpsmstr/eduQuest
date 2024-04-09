@@ -87,7 +87,7 @@ export default async function Class({ params }: {
                     <div className="grid grid-cols-1 gap-6 justify-items-center">
                         {/* Quiz Items */}
                         {classQuizzes.map((element) =>(
-                    <button className="text-white bg-green-400 px-8 py-4 text-2xl transition duration-500 hover:scale-125 rounded"><strong>{element.assignmentName}</strong><br></br>{thisCourse?.courseName+ " " + thisCourse?.courseSection}<br></br>Due: {element.dueDate?.toString().split('GMT')[0]}</button>
+                    <button className="text-white bg-green-400 px-2 py-4 text-2xl transition duration-500 hover:bg-green-500 rounded"><strong>{element.assignmentName}</strong><br></br>{thisCourse?.courseName+ " " + thisCourse?.courseSection}<br></br>Due: {element.dueDate?.toString().split('GMT')[0]}</button>
                     ))}
                     <div className="static bottom-100 left-0"></div>
                     </div>
@@ -99,7 +99,7 @@ export default async function Class({ params }: {
                     <div className="grid grid-cols-1 gap-6 justify-items-center">
                         {/* Fetched Assignments */}
                         {classAssignments.map((element) =>(
-                            <button className="text-white bg-orange-400 px-8 py-4 text-2xl transition duration-500 hover:scale-125 rounded"><strong>{element.assignmentName}</strong><br></br>Open: {element.startDate?.toString().split('GMT')[0]}<br></br>Due: {element.dueDate?.toString().split('GMT')[0]}</button>
+                            <button className="text-white bg-orange-400 px-2 py-4 text-2xl transition duration-500 hover:bg-orange-500 rounded"><strong>{element.assignmentName}</strong><br></br>Open: {element.startDate?.toString().split('GMT')[0]}<br></br>Due: {element.dueDate?.toString().split('GMT')[0]}</button>
                         ))}
                 </div>
                 </div>
