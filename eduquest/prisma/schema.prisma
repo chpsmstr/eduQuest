@@ -97,12 +97,12 @@ model doesAssignment {
   assignmentId     Int
   studentId        Int
   response         String?  @db.VarChar(1000)
-  assignmentGrade  Decimal? @db.Decimal(3, 2)
+  assignmentGrade  Decimal? @db.Decimal(5, 2)
 }
 
 model doesQuiz {
   doesQuizId Int      @id @default(autoincrement())
   quizId     Int
   studentId  Int
-  quizGrade  Decimal? @db.Decimal(3, 2)
+  quizGrade  Decimal? @db.Decimal(5, 2)
 }

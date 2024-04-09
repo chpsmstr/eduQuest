@@ -81,7 +81,7 @@ CREATE TABLE doesAssignment(
     assignmentId            INT NOT NULL,
     studentId               INT NOT NULL,
     response                VARCHAR(1000),
-    assignmentGrade         DECIMAL(3,2),
+    assignmentGrade         DECIMAL(5,2),
     PRIMARY KEY(doesAssignmentId)
 ) ENGINE=InnoDB;
 
@@ -99,7 +99,7 @@ CREATE TABLE doesQuiz(
     doesQuizId        INT NOT NULL AUTO_INCREMENT,
     quizId            INT NOT NULL,
     studentId          INT NOT NULL,
-    quizGrade         DECIMAL(3,2),
+    quizGrade         DECIMAL(5,2),
     PRIMARY KEY(doesQuizId)
 ) ENGINE=InnoDB;
 
@@ -208,7 +208,7 @@ INSERT INTO enrolled (studentId, courseId) VALUES (5,1);
 INSERT INTO enrolled (studentId, courseId) VALUES (5,2);
 INSERT INTO enrolled (studentId, courseId) VALUES (5,3);
 INSERT INTO enrolled (studentId, courseId) VALUES (6,3);
-INSERT INTO enrolled (studentId, courseId) VALUES (1,4);
+INSERT INTO enrolled (studentId, courseId) VALUES (1,3);
 INSERT INTO enrolled (studentId, courseId) VALUES (1,5);
 INSERT INTO enrolled (studentId, courseId) VALUES (2,4);
 INSERT INTO enrolled (studentId, courseId) VALUES (2,6);
@@ -221,3 +221,24 @@ INSERT INTO enrolled (studentId, courseId) VALUES (5,4);
 INSERT INTO enrolled (studentId, courseId) VALUES (5,5);
 INSERT INTO enrolled (studentId, courseId) VALUES (5,6);
 INSERT INTO enrolled (studentId, courseId) VALUES (6,6);
+
+-- -- Dummy values for assignments completed
+INSERT INTO doesAssignment (assignmentId, studentId, response, assignmentGrade) VALUES (1,1, 
+'To determine the vertex of a quadratic function without graphing it, you can use the formula x= -b/(2a) for the x-coordinate of the vertex, where a,  b, and c are coefficients in the quadratic equation ax^2+bx+c. Then, plug this value of x into the quadratic equation to find the corresponding y-coordinate.',
+'100');
+INSERT INTO doesAssignment (assignmentId, studentId, response, assignmentGrade) VALUES (2,1,
+"Derivatives find critical points where stuff might be high or low, and then you check if the stuff goes up and then down or down and then up, which tells you if it's a big hill or a low valley.",
+'45.0');
+INSERT INTO doesAssignment (assignmentId, studentId, response, assignmentGrade) VALUES (7,1,
+'The 19th-century Industrial Revolution, driven by technological innovation, urbanization, and capitalism, sparked unprecedented economic growth and urban development. However, it also brought about significant social upheaval, as rural populations migrated to cities in search of work, leading to the emergence of urban slums and labor movements. Additionally, industrialization contributed to environmental degradation and public health challenges, highlighting the complex and multifaceted impact of this transformative period in history.',
+'85.0');
+INSERT INTO doesAssignment (assignmentId, studentId, response, assignmentGrade) VALUES (11,1,
+'Authors use symbolism in literature to convey deeper meanings and themes by assigning symbolic significance to objects, characters, or events. In F. Scott Fitzgeralds "The Great Gatsby," examples include the green light symbolizing Gatsbys unattainable dream and the valley of ashes representing moral decay beneath the surface of wealth and glamour. These symbols enhance themes of longing, disillusionment, and the corrupting influence of materialism.',
+'92.5');
+INSERT INTO doesAssignment (assignmentId, studentId, response, assignmentGrade) VALUES (12, 1,
+'The narrative perspective used in a story significantly affects our understanding and interpretation. For example, first-person perspective, like in "The Catcher in the Rye," provides intimacy with the protagonist but limits understanding of other characters. Third-person omniscient, as seen in "To Kill a Mockingbird," offers broader insights but may sacrifice immediacy. Second-person perspective, like in "Bright Lights, Big City," creates immersion by directly addressing the reader. Each perspective shapes how we engage with the story and interpret its themes.',
+'97.5');
+
+-- -- Dummy values for quizzes completed
+INSERT INTO doesQuiz (quizId, studentId, quizGrade) VALUES (1,1,'100');
+INSERT INTO doesQuiz (quizId, studentId, quizGrade) VALUES (2,1,'75.0');
