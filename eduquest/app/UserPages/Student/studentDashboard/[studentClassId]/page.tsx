@@ -11,6 +11,7 @@ interface Assignment {
     dueDate: Date|null;
   }
 
+
 export default async function Class({ params }: {
     params: { studentClassId: number }
 }) {
