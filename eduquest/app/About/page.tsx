@@ -35,7 +35,7 @@ export default function About() {
       </div>
       <hr className="w-96 h-1 my-4 bg-gray-100 border-0 rounded"></hr>
       {/*Mission statement pt 1*/}
-      <div className="grid grid-cols-[115rem,8fr] justify-items-center">
+      <div className="grid grid-cols-[95rem,8fr] justify-items-center">
         <div className="col-span-3">
           <p className="text-3xl rounded-lg px-20 py-5 text-center">EduQuest is an innovative e-learning platform created by team members for our Software Engineering Course.</p>
         </div>
