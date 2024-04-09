@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import BackButton from "@/app/Components/BackButton";
 import Link from 'next/link';
+import { createQuiz } from './createQuizFunction/createQuiz';
 
 interface Question {
   question: string;
@@ -119,22 +120,25 @@ const handleQuestionWorthChange = (index: number, e: React.ChangeEvent<HTMLSelec
       </div> 
 
       {/* Quiz details form */}
+      <form action={createQuiz} method="POST">
+      <input name="istest" id="istest" type="hidden" value="nottest"></input>
+      <input name="classId" id="classId" type="hidden" value={params.teacherClassId}></input>
       <div style={{ marginTop: '36px' }}>
         <label className='text-3xl text-black mb-4 mt-4'>Quiz Name: </label>
-        <input className='text-2xl text-black rounded' type="text" value={quizName} onChange={handleQuizNameChange} />
+        <input name="quizName" id="quizName" className='text-2xl text-black rounded' type="text" value={quizName} onChange={handleQuizNameChange} />
       </div>
        {/* Start Date Input */}
        <div style={{ marginTop: '36px' }}>
         <label className='text-3xl text-black mb-4 mt-4' htmlFor="start-date">Set Start Date: </label>
-        <input id="start-date" className='text-2xl text-black' type="datetime-local" value={startDate} onChange={handleStartDateChange} />
+        <input name="startDate" id="start-date" className='text-2xl text-black' type="datetime-local" value={startDate} onChange={handleStartDateChange} />
       </div>
       <div style={{ marginTop: '36px' }}>
         <label className='text-3xl text-black mb-4 mt-4'>Set Due Date: </label>
-        <input className='text-2xl text-black' type="datetime-local" value={dueDate} onChange={handleDueDateChange} />
+        <input name="dueDate" id="dueDate" className='text-2xl text-black' type="datetime-local" value={dueDate} onChange={handleDueDateChange} />
       </div>
       <div style={{ marginTop: '36px' }}>
         <label className='text-3xl text-black' style={{ marginTop: '36px' }}>Select number of questions: </label>
-        <select className="text-2xl text-black" value={numQuestions} onChange={handleNumQuestionsChange}>
+        <select name="worth" id="worth" className="text-2xl text-black" value={numQuestions} onChange={handleNumQuestionsChange}>
          {Array.from({ length: 6 }, (_, index) => (
           <option key={index + 5} value={index + 5}>{index + 5}</option>
           ))}
@@ -145,19 +149,19 @@ const handleQuestionWorthChange = (index: number, e: React.ChangeEvent<HTMLSelec
           <div key={index} className="grid col-2 gap-2">
           <label className='text-3xl mt-8 mb-4 text-black'>Question {index + 1}:</label>
           <label className='text-2xl text-black'>Enter your question:</label>
-          <input className="rounded text-black" type="text" value={questions[index]} onChange={(e) => handleQuestionChange(index, e)} />
+          <input name={"questionContent" + index} id={"questionContent" + index} className="rounded text-black" type="text" value={questions[index]} onChange={(e) => handleQuestionChange(index, e)} />
       
           <label className='mt-4 text-xl text-black'> Please enter options and select a correct answer</label>
           {options[index].map((option, optionIndex) => (
               <div key={optionIndex} className="flex gap-2 items-center text-black">
                   <label className = 'text-black'>{String.fromCharCode(65 + optionIndex)}:</label>
-                  <input className="rounded text-black" type="text" value={option} onChange={(e) => handleOptionChange(index, optionIndex, e)} />
+                  <input name={"answer" + String.fromCharCode(65 + optionIndex) + index} id={"" + String.fromCharCode(65 + optionIndex) + index} className="rounded text-black" type="text" value={option} onChange={(e) => handleOptionChange(index, optionIndex, e)} />
                   <label>
                       <input
                           className = 'text-black'
                           type="radio"
                           name={`correct-answer-${index}`}
-                          value={optionIndex}
+                          value={option}
                           checked={correctAnswers[index] === optionIndex}
                           onChange={() => handleCorrectAnswerChange(index, optionIndex)}
                       />
@@ -184,9 +188,10 @@ const handleQuestionWorthChange = (index: number, e: React.ChangeEvent<HTMLSelec
       </div>
 
       {/* Submit button */}
-      <Link href="">
-        <button className="bg-orange-500 text-white px-10 py-5 rounded border-2 border-orange-600 hover:bg-orange-600 hover:border-orange-700 mt-6" style={{ borderWidth: "4px" }}>Submit</button>
-      </Link>
+      
+        <button type="submit" className="bg-orange-500 text-white px-10 py-5 rounded border-2 border-orange-600 hover:bg-orange-600 hover:border-orange-700 mt-6" style={{ borderWidth: "4px" }}>Submit</button>
+      
+      </form>
 
       {/* Spacing */}
       <div style={{ marginBottom: '24px'}}>

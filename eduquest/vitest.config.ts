@@ -7,7 +7,7 @@ export default defineConfig({
   test: {
     environment: "jsdom",
     //Uncomment the "//" below when testing database
-    //setupFiles: ["./__tests__/backend/setup.ts"],
+    // setupFiles: ["./__tests__/backend/setup.ts"],
 
     //Add "//" below when testing database
     include: ["./__tests__/frontend/*"],
