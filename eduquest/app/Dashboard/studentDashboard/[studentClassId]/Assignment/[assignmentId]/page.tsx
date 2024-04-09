@@ -1,11 +1,22 @@
+"use client";
 import React from 'react';
+import { useRouter } from 'next/navigation';
 import { PrismaClient, Prisma } from '@prisma/client'
-import BackButton from "@/app/Components/BackButton";
 const prisma = new PrismaClient();
-
+const checkParam = (assignmentId: string): boolean => {
+    const regex = /^[a-zA-Z0-9]+$/;
+    return regex.test(assignmentId);
+  }
 export default async function Assignment({ params }: {
     params: { assignmentId: string }
 }) {
+    const router = useRouter(); // Define the router here
+    if(!(checkParam(params.assignmentId))) {
+        if(typeof window !== 'undefined') {
+          router.back();
+        }
+        router.push("@/app/page");
+      }
     const assignment = await prisma.assignment.findFirst({
         where: {
             assignmentId: Number(params.assignmentId)
@@ -13,11 +24,6 @@ export default async function Assignment({ params }: {
     });
     return (
         <main className="px-4 bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col">
-            <BackButton
-      params={{
-        link: "../"
-      }}
-    />
             <div className="bg-white rounded-lg p-6 md:w-[75rem] w-full mt-8">
                 <h1 className="text-3xl font-bold mb-4 text-black">{assignment?.assignmentName}</h1>
                 <p className="text-lg mb-4 text-black">{assignment?.assignmentQuestion}</p>
@@ -37,7 +43,7 @@ export default async function Assignment({ params }: {
                         </div>
                     </div>
                 </div>
-                <button className="bg-amber-500 text-white py-2 px-4 rounded-md hover:bg-amber-600">Submit</button>
+                <button type="submit" className="bg-amber-500 text-white py-2 px-4 rounded-md hover:bg-amber-600">Submit</button>
             </div>
         </main>
     );
