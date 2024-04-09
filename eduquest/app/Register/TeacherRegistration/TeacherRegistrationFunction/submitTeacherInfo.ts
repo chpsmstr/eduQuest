@@ -28,6 +28,6 @@ export async function submitTeacherInfo(formData: FormData){   // function for i
       }
     })
     if(istest === "nottest"){
-    redirect("../../../Dashboard/teacherDashboard", RedirectType.replace);   // after successful registration, redirects to teacherDashboard
+    redirect("../../../Login", RedirectType.replace);   // after successful registration, redirects to teacherDashboard
     }
   }

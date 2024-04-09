@@ -42,7 +42,7 @@ export default async function Login() {
       
       cookies().set('id', student?.studentId.toString() as string);
       cookies().set('role', 'student');
-      redirect("../Dashboard/studentDashboard", RedirectType.replace);
+      redirect("../UserPages/Student/studentDashboard", RedirectType.replace);
     } else {
       console.log("Error");                                               // if password entry field and database password do not match, print error to console.log (going to need to workshop better solution)
     }
@@ -52,7 +52,7 @@ export default async function Login() {
       
       cookies().set('id', teacher?.teacherId?.toString() as string)
       cookies().set('role', 'teacher');
-      redirect("../Dashboard/teacherDashboard", RedirectType.replace);
+      redirect("../UserPages/Teacher/teacherDashboard", RedirectType.replace);
     } else {
       console.log("Error");                                               // if password entry field and database password do not match, print error to console.log (going to need to workshop better solution)
     }
@@ -62,7 +62,7 @@ export default async function Login() {
       
       cookies().set('id', administrator?.adminId?.toString() as string);
       cookies().set('role', 'admin');
-      redirect("../Dashboard/adminDashboard", RedirectType.replace);
+      redirect("../UserPages/Admin/adminDashboard", RedirectType.replace);
     } else {
       console.log("Error");                                                         // if password entry field and database password do not match, print error to console.log (going to need to workshop better solution)
     }

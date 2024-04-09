@@ -24,6 +24,6 @@ export async function submitClassInfo(formData: FormData){
         }
     })
     if(istest === "nottest"){
-        redirect("../Dashboard/adminDashboard", RedirectType.replace); // Redirects to correct page after submitting information to database
+        redirect("./adminDashboard", RedirectType.replace); // Redirects to correct page after submitting information to database
        }
 }

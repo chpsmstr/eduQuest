@@ -9,7 +9,7 @@ export default function Home() {
     <main className="px-9 bg-center bg-cover bg-landing h-screen flex items-center flex-col">
       <br></br>
       <div className="absolute top-0 right-0 mt-6 mr-6 flex flex-col gap-2">
-        <SolidColorButton
+        {/*<SolidColorButton
           params={{
             text: "Sign Up",
             href: "/Register",
@@ -26,7 +26,7 @@ export default function Home() {
             hoverColor: "bg-gray-700",
             length: "px-8",
           }}
-        />
+        /> */}
       </div>
       <div className="grid text-right space-y-4 sm:space-y-0 lg:space-y-0 lg:grid-cols-1 lg:grid-cols-1 gap-3 justify-items-center pt-5">
         <Logo />
@@ -35,7 +35,7 @@ export default function Home() {
         <MenuButton
           params={{
             text: "Enter",
-            href: "/Dashboard",
+            href: "/Login",
           }}
         />
 
