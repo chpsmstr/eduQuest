@@ -13,7 +13,7 @@ test("Navigation Buttons Work", () => {
   // Enter Button
   const homeEnterButton = screen.getByText("Enter").closest("a")!;
   expect(homeEnterButton).toBeTruthy();
-  expect(homeEnterButton?.getAttribute("href")).toBe("/Dashboard");
+  expect(homeEnterButton?.getAttribute("href")).toBe("/Login");
 
   // Credits Button
   const CreditsButton = screen.getByText("Credits").closest("a")!;
