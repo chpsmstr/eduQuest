@@ -6,10 +6,10 @@ const prisma = new PrismaClient();
 
 interface Assignment {
     id: number;
-    assignmentName: string|null;
-    startDate: Date|null;
-    dueDate: Date|null;
-  }
+    assignmentName: string | null;
+    startDate: Date | null;
+    dueDate: Date | null;
+}
 
 export default async function Class({ params }: {
     params: { teacherClassId: number }
@@ -30,8 +30,8 @@ export default async function Class({ params }: {
         }
     });
     let classAssignments: Assignment[] = new Array();
-    assignments.forEach(element=>{
-        let temp : Assignment = {
+    assignments.forEach(element => {
+        let temp: Assignment = {
             id: element.assignmentId,
             assignmentName: element.assignmentName,
             startDate: element.startDate,
@@ -40,8 +40,8 @@ export default async function Class({ params }: {
         classAssignments.push(temp);
     })
     let classQuizzes: Assignment[] = new Array();
-    quizzes.forEach(element=>{
-        let temp : Assignment = {
+    quizzes.forEach(element => {
+        let temp: Assignment = {
             id: element.quizId,
             assignmentName: element.quizName,
             startDate: element.startDate,
@@ -49,16 +49,18 @@ export default async function Class({ params }: {
         }
         classQuizzes.push(temp);
     })
+    const assignNav = "../teacherDashboard/" + params.teacherClassId + "/" + "gradeAssignment" + "/";
     const gradeNav = "../teacherDashboard/" + params.teacherClassId + "/" + params.teacherClassId;
     return (
         <main className="bg-gradient-to-b from-amber-100 to-amber-500 min-h-screen flex items-center flex-col">
-             <BackButton
-      params={{
-        link: "../teacherDashboard"
-      }}
-    />
+            <BackButton
+                params={{
+                    link: "../teacherDashboard"
+                }}
+            />
+
             <br></br>
-            <div className={`${"bg-" + thisCourse?.courseColour +"-500"} w-[75rem] h-64 rounded-lg px-6`}><h1 className="text-5xl relative bottom-20 px-4">{thisCourse?.courseName+ " " + thisCourse?.courseSection}</h1>
+            <div className={`${"bg-" + thisCourse?.courseColour + "-500"} w-[75rem] h-64 rounded-lg px-6`}><h1 className="text-5xl relative bottom-20 px-4">{thisCourse?.courseName + " " + thisCourse?.courseSection}</h1>
                 <Link href={gradeNav}>
                     <button className="relative left-1 bottom-10 text-white bg-gray-500 text-4xl hover:bg-gray-400 text-white py-2 px-4 border-b-4 border-gray-700 hover:border-gray-500 rounded-lg">Grade</button>
                 </Link>
@@ -68,7 +70,7 @@ export default async function Class({ params }: {
                 <Link href={`${params.teacherClassId}/createQuiz`}>
                     <button className="relative left-7 bottom-10 text-white bg-gray-500 text-4xl hover:bg-gray-400 text-white py-2 px-4 border-b-4 border-gray-700 hover:border-gray-500 rounded-lg">Create Quiz</button>
                 </Link>
-                <h1 className="text-white text-6xl pt-[5rem]">{thisCourse?.courseName+ " " + thisCourse?.courseSection}</h1>
+                <h1 className="text-white text-6xl pt-[5rem]">{thisCourse?.courseName + " " + thisCourse?.courseSection}</h1>
             </div>
             <br></br>
             <div className="grid grid-rows-12 grid-cols-12 gap-20">
@@ -86,10 +88,10 @@ export default async function Class({ params }: {
                     <hr className="h-1 my-4 bg-gray-200 border-0 dark:bg-gray-700"></hr>
                     <div className="grid grid-cols-1 gap-6 justify-items-center">
                         {/* Quiz Items */}
-                        {classQuizzes.map((element) =>(
-                    <button className="text-white bg-green-400 px-2 py-4 text-2xl transition duration-500 hover:bg-green-500 rounded"><strong>{element.assignmentName}</strong><br></br>{thisCourse?.courseName+ " " + thisCourse?.courseSection}<br></br>Due: {element.dueDate?.toString().split('GMT')[0]}</button>
-                    ))}
-                    <div className="static bottom-100 left-0"></div>
+                        {classQuizzes.map((element) => (
+                                <button className="text-white bg-green-400 px-2 py-4 text-2xl transition duration-500 hover:bg-green-500 rounded"><strong>{element.assignmentName}</strong><br></br>{thisCourse?.courseName + " " + thisCourse?.courseSection}<br></br>Due: {element.dueDate?.toString().split('GMT')[0]}</button>
+                        ))}
+                        <div className="static bottom-100 left-0"></div>
                     </div>
                 </div>
                 <div className="col-span-6 row-start-1 row-end-10 bg-white text-black w-full rounded-lg">
@@ -98,10 +100,13 @@ export default async function Class({ params }: {
                     <hr className="h-1 my-4 bg-gray-200 border-0 dark:bg-gray-700"></hr>
                     <div className="grid grid-cols-1 gap-6 justify-items-center">
                         {/* Fetched Assignments */}
-                        {classAssignments.map((element) =>(
+                        
+                        {classAssignments.map((element) => (
+                            <Link href={assignNav + element.id}>
                             <button className="text-white bg-orange-400 px-2 py-4 text-2xl transition duration-500 hover:bg-orange-500 rounded"><strong>{element.assignmentName}</strong><br></br>Open: {element.startDate?.toString().split('GMT')[0]}<br></br>Due: {element.dueDate?.toString().split('GMT')[0]}</button>
+                        </Link>
                         ))}
-                </div>
+                    </div>
                 </div>
             </div>
 
