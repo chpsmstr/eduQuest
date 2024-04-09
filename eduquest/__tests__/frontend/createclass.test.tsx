@@ -1,6 +1,6 @@
 import { expect, test } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
-import CreateClass from "@/app/CreateClass/page";
+import CreateClass from "@/app/UserPages/Admin/CreateClass/page";
 
 
 

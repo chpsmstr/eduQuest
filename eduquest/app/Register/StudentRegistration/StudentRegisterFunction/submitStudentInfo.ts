@@ -28,6 +28,6 @@ export async function submitStudentInfo(formData: FormData){
       }
     })
     if(istest === "nottest"){
-     redirect("../../../Dashboard/studentDashboard", RedirectType.replace); // Redirects to correct page after submitting information to database
+     redirect("../../../Login", RedirectType.replace); // Redirects to correct page after submitting information to database
     }
   }
