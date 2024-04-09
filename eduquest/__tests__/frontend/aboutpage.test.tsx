@@ -5,8 +5,8 @@ import About from "@/app/About/page";
 test('renders about page with correct content', () => {
     render(<About />);
 
-    // Check if "Credits" heading is rendered
-    const creditsHeading = screen.getByText('Credits');
+    // Check if "Team Members" heading is rendered
+    const creditsHeading = screen.getByText('Team Members');
     expect(creditsHeading).toBeTruthy();
 
     // Check if team member names are rendered
@@ -17,13 +17,9 @@ test('renders about page with correct content', () => {
     });
 
     // Check if mission statement part 1 is rendered
-    const missionStatement1 = screen.getByText('EduQuest is an innovative e-learning platform created by team members for our Software Engineering Course.');
+    const missionStatement1 = screen.getByText('EduQuest is an innovative e-learning platform created by team members for our Software Engineering Course. We hope that this platform can benefit both teachers and students alike in creating a fun learning environment.');
     expect(missionStatement1).toBeTruthy();
-
-    // Check if mission statement part 2 is rendered
-    const missionStatement2 = screen.getByText('We hope that this platform can benefit both teachers and students alike in creating a fun learning environment.');
-    expect(missionStatement2).toBeTruthy();
-
+    
     const image = screen.getByAltText('Picture of a Controller');
     expect(image).toBeTruthy();
     expect(image.getAttribute('src')).toContain('/pixelteam.webp');

@@ -43,3 +43,7 @@ body {
   font-size: 1.5em;
 }
 
+.menu-button-container:hover .text-xl {
+  display: inline; /* Show '>' arrow when hovering over the button container */
+  opacity: 100; /* Show '>' arrow when hovering over the button container */
+}

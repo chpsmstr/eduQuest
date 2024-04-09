@@ -90,7 +90,7 @@ export default async function Class({ params }: {
                         {/*Quiz Items*/}
                         {classQuizzes.map((element)=> (
                             <Link href = {quizNav+element.id}>
-                            <button className="text-white bg-green-400 px-8 py-4 text-2xl transition duration-500 hover:scale-125 rounded"><strong>{element.assignmentName}</strong><br></br>{thisCourse?.courseName+ " " + thisCourse?.courseSection}<br></br>Due: {element.dueDate?.toString().split('GMT')[0]}</button>
+                            <button className="text-white bg-green-400 px-2 py-4 text-2xl transition duration-500 hover:bg-green-500 rounded"><strong>{element.assignmentName}</strong><br></br>{thisCourse?.courseName+ " " + thisCourse?.courseSection}<br></br>Due: {element.dueDate?.toString().split('GMT')[0]}</button>
                             </Link>
                         ))}
                 </div>
@@ -103,7 +103,7 @@ export default async function Class({ params }: {
                         {/*Fetched Assignments*/}
                         {classAssignments.map((element) =>(
                             <Link href = {assignNav+element.id}>
-                            <button className="text-white bg-orange-400 px-8 py-4 text-2xl transition duration-500 hover:scale-125 rounded"><strong>{element.assignmentName}</strong><br></br>Open: {element.startDate?.toString().split('GMT')[0]}<br></br>Due: {element.dueDate?.toString().split('GMT')[0]}</button>
+                            <button className="text-white bg-orange-400 px-2 py-4 text-2xl transition duration-500 hover:bg-orange-500 rounded"><strong>{element.assignmentName}</strong><br></br>Open: {element.startDate?.toString().split('GMT')[0]}<br></br>Due: {element.dueDate?.toString().split('GMT')[0]}</button>
                             </Link>
                         ))}
                     </div>
