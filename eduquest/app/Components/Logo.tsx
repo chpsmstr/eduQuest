@@ -5,7 +5,7 @@ export default function logo() {
     <img
       src="/eduQuestlogoresized2.webp"
       alt="Eduquest logo"
-      className="h-100 w-100 xs:h-80 xs:w-80 lg:h-100 lg:w-100"
+      className="h-100 w-100 xs:h-80 xs:w-80 lg:h-100 lg:w-100 animate-entry"
     ></img>
   );
 }

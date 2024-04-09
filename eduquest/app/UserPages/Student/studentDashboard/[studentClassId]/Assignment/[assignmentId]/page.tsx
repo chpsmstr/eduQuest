@@ -1,11 +1,20 @@
+'use server'
+import { redirect } from 'next/navigation'
 import React from 'react';
 import { PrismaClient, Prisma } from '@prisma/client'
 import BackButton from "@/app/Components/BackButton";
 const prisma = new PrismaClient();
 
+const checkParam = (assignmentId: string): boolean => {
+    const regex = /^[a-zA-Z0-9]+$/;
+    return regex.test(assignmentId);
+}
 export default async function Assignment({ params }: {
     params: { assignmentId: string }
 }) {
+    if (!(checkParam(params.assignmentId))) {
+        redirect('../../../../../Error');
+    }
     const assignment = await prisma.assignment.findFirst({
         where: {
             assignmentId: Number(params.assignmentId)
