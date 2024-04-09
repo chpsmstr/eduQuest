@@ -1,5 +1,6 @@
 import { submitStudentInfo } from "@/app/Register/StudentRegistration/StudentRegisterFunction/submitStudentInfo";
 import { submitTeacherInfo } from "@/app/Register/TeacherRegistration/TeacherRegistrationFunction/submitTeacherInfo";
+import { submitClassInfo } from "@/app/UserPages/Admin/CreateClass/submitClassInfo/submitClassInfo";
     //formdata sent to studentSubmitInfor
     const studentFormData = new FormData();
     //test values in formdata that is sent
@@ -41,4 +42,20 @@ import { submitTeacherInfo } from "@/app/Register/TeacherRegistration/TeacherReg
     teacherFormData.append("password", teacherPassword)
     //sends form data to submit teacher function
     submitTeacherInfo(teacherFormData)
+
+    const courseFormData = new FormData()
+    //setting variables to be testing values
+    const courseName = "Test"
+    const teacherId = "123"
+    const courseColor = "red"
+    const courseSection = "101"
+    const classCode = "ABCD1234"
+    //adding testing values to course form data
+    courseFormData.append("className", courseName)
+    courseFormData.append("teacherId", teacherId)
+    courseFormData.append("classColor", courseColor)
+    courseFormData.append("classSection", courseSection)
+    courseFormData.append("classCode", classCode)
+    //sending form data to submitClassInfo function
+    submitClassInfo(courseFormData)
 
