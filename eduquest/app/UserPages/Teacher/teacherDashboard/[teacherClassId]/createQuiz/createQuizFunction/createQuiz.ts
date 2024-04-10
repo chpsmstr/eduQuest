@@ -24,14 +24,18 @@ export async function createQuiz(formData: FormData){
     })
 
     for(let i = 0; i < Number(worth);i++){
-
+        const quiz = await prisma.quiz.findFirst({
+            where: {
+                quizName: quizName as string
+            }
+        })
         let qci = "questionContent" + i
         let fai = "answerA" + i
         let sai = "answerB" + i
         let tai = "answerC" + i
         let foai = "answerD" + i
         let cai = "correct-answer-"+i
-
+        const quizId = quiz?.quizId
         const questionContent = formData.get(qci)
         const firstAnswer = formData.get(fai)
         const secondAnswer = formData.get(sai)
@@ -62,7 +66,7 @@ export async function createQuiz(formData: FormData){
                 thirdAnswer: thirdAnswer as string,
                 fourthAnswer: fourthAnswer as string,
                 correctAnswer: Number(correctAnswer),
-                quizId: Number(classId)
+                quizId: Number(quizId)
             }
         })
     }
