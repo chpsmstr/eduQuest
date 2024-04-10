@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation'
 import React from 'react';
 import BackButton from "@/app/Components/BackButton";
 import { PrismaClient, Prisma } from '@prisma/client'
+import { doesQuiz } from './doesQuizFunction/doesQuiz';
 const prisma = new PrismaClient();
 const checkParam = (quizId: string): boolean => {
   const regex = /^[a-zA-Z0-9]+$/;
@@ -87,8 +88,11 @@ export default async function Quiz({ params }: {
     });
     
     const totalScore = calculateScore(answers);
+    // <form action={doesQuiz} method="POST">
+    //   <input name="score" id="score" type="hidden" value={totalScore}></input>
+    // </form>
     // |Displays Total Score| to user based on number of questions (this logic assumes each question is worth the same amount of points)
-    alert(`Your score: ${totalScore} out of ${quiz.questions.length * 10}`);
+    // alert(`Your score: ${totalScore} out of ${quiz.questions.length * 10}`);
   };
 
   return (
@@ -101,7 +105,10 @@ export default async function Quiz({ params }: {
       <div className="bg-white rounded-lg p-6 md:w-[75rem] w-full mt-8">
         <h1 className="text-5xl font-bold mb-4 text-black text-center">{quizName}</h1>
         <br></br>
-        <form>
+        <form action={doesQuiz} method="POST">
+          <input name="istest" id="istest" type="hidden" value="nottest"></input>
+          <input name="quizId" id="quizId" type="hidden" value={params.quizId}></input>
+          <input name="quizLength" id="quizLength" type="hidden" value={questionArray.length}></input>
           {/* Loop through each question to display each question to the user */}
           {quiz.questions.map((question, index) => (
             <div key={index} className="mb-6">

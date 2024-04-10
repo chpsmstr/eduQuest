@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import BackButton from "@/app/Components/BackButton";
+import { joinClass } from "./JoinClassFunction/JoinClass";
 
 export default function JoinClass() {
   return (
@@ -18,13 +19,15 @@ export default function JoinClass() {
       <div className="text-center text-4xl lg:text-3xl lg:mx-4 sm:mx-2 mb-12">
         Join a Class
       </div>
-      <form>
+      <form action={joinClass} method='POST'>
+        <input name="istest" type="hidden" value="nottest"></input>
         <div className="grid grid-cols-2 gap-4 mt-4">
           <div className="text-left text-3xl lg:text-2xl lg:mx-4 sm:mx-2">
             Class Join Code:
           </div>
           <div>
             <input
+              name="courseCode"
               type="text"
               id="classId"
               placeholder="ex: ABCD1234"
@@ -33,14 +36,13 @@ export default function JoinClass() {
           </div>
 
           <div className="col-span-2 text-center mt-4">
-            <Link href="">
               <button
+                type="submit"
                 className="bg-orange-500 text-white px-12 py-6 rounded border-2 border-orange-600 hover:bg-orange-600 hover:border-orange-700 mt-4"
                 style={{ borderWidth: "4px" }}
               >
                 Join Class
               </button>
-            </Link>
           </div>
         </div>
       </form>
