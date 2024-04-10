@@ -86,45 +86,10 @@ const Assignment: React.FC<{ params: { teacherClassId: string } }> = ({ params }
           <input name="dueDate" id="due-date" className='text-2xl text-black' type="datetime-local" value={dueDate} onChange={handleDueDateChange} />
         </div>
         {/* Assignment Details Input */}
-        <div className='text-center text-black' style={{ marginTop: '36px' }}>
-          <label className='text-3xl text-black mb-4 mt-4'>Assignment Details: </label>
-          <div>
-            <input
-              type="radio"
-              id="file"
-              name="detailInputType"
-              value="file"
-              checked={detailInputType === 'file'}
-              onChange={() => handleDetailInputTypeChange('file')}
-            />
-            <label htmlFor="file" className="text-2xl ml-2">Upload File</label>
-          </div>
-          <div>
-            <input
-              type="radio"
-              id="text"
-              name="detailInputType"
-              value="text"
-              checked={detailInputType === 'text'}
-              onChange={() => handleDetailInputTypeChange('text')}
-            />
-            <label htmlFor="text" className="text-2xl ml-2">Input Text</label>
-          </div>
+        <label className='text-3xl text-black mb-4 mt-4'>Assignment Details: </label>
+        <div style={{ marginTop: '36px' }} className="mx-center">
+          <textarea name="assignmentQuestion" id="assignment-question" className="text-black text-2x1 rounded-lg p-2" rows={8} cols={50} placeholder="Enter assignment details..." />
         </div>
-        {/* Conditional rendering based on detailInputType */}
-        {detailInputType === 'text' && (
-          <div style={{ marginTop: '36px' }} className="mx-center">
-            <textarea name="assignmentQuestion" id="assignment-question" className="text-black text-2xl rounded-lg p-2" rows={8} cols={50} placeholder="Enter assignment details..." />
-          </div>
-        )}
-        {detailInputType === 'file' && (
-          <div style={{ marginTop: '36px' }}>
-            <label htmlFor="file-upload" className="bg-blue-500 text-white px-10 py-5 rounded border-2 border-blue-600 hover:bg-blue-600 hover:border-blue-700 mb-4 mt-4 cursor-pointer" style={{ borderWidth: "4px" }}>
-              Choose File
-              <input id="file-upload" className="hidden" type="file"/>
-            </label>
-          </div>
-        )}
         {/* Marks Input */}
         <div style={{ marginTop: '36px' }}>
           <label className='text-3xl text-black mb-4 mt-4' htmlFor="marks">Marks Out Of: </label>
