@@ -31,78 +31,10 @@ export default async function main({ params }: { params: { adminClassId: string 
     studentsRegistered.push(temp);
   });
 
-    const studentsUnregistered: Student[] = [{
-      id: 7,
-      studentNumber: 56789012,
-      firstName: 'Emily',
-      lastName: 'Davis',
-      email: 'emily_davis@gmail.com',
-      grade: 83,
-    },
-    {
-      id: 8,
-      studentNumber: 67890123,
-      firstName: 'Michael',
-      lastName: 'Martinez',
-      email: 'michael_martinez@hotmail.com',
-      grade: 89,
-    },
-    {
-      id: 9,
-      studentNumber: 78901234,
-      firstName: 'Jennifer',
-      lastName: 'Garcia',
-      email: 'jennifer_garcia@gmail.com',
-      grade: 84,
-    },
-    {
-      id: 10,
-      studentNumber: 89012345,
-      firstName: 'Matthew',
-      lastName: 'Taylor',
-      email: 'matthew_taylor@hotmail.com',
-      grade: 91,
-    },
-    {
-      id: 11,
-      studentNumber: 90123456,
-      firstName: 'Jessica',
-      lastName: 'Rodriguez',
-      email: 'jessica_rodriguez@gmail.com',
-      grade: 86,
-    },
-    {
-      id: 12,
-      studentNumber: 11223344,
-      firstName: 'William',
-      lastName: 'Anderson',
-      email: 'william_anderson@hotmail.com',
-      grade: 82,
-    },
-    {
-      id: 13,
-      studentNumber: 33445566,
-      firstName: 'Amanda',
-      lastName: 'Thomas',
-      email: 'amanda_thomas@gmail.com',
-      grade: 88,
-    },
-    {
-      id: 14,
-      studentNumber: 55667788,
-      firstName: 'Daniel',
-      lastName: 'Hernandez',
-      email: 'daniel_hernandez@hotmail.com',
-      grade: 85,
-    },
-    {
-      id: 15,
-      studentNumber: 77889900,
-      firstName: 'Elizabeth',
-      lastName: 'Young',
-      email: 'elizabeth_young@gmail.com',
-      grade: 90,
-    },
+    const studentsUnregistered: Student[] = [
+      //Not impleneted for backend
+      //Used to let students register in a course
+      //Don't want dummy value for our finished product
   ];
   
 
@@ -121,7 +53,7 @@ export default async function main({ params }: { params: { adminClassId: string 
         <div className="overflow-x-auto sm:-mx-6 lg:-mx-12 border-black">
           <div className="inline-block min-w-full py-10 sm:px-6 lg:px-8">
             <div className="overflow-hidden">
-            <h1 className="lg:text-3xl sm:text-2xl mt-8 mb-8 text-center font-bold">{params.adminClassId} Registered Students</h1>
+            <h1 className="lg:text-3xl sm:text-2xl mt-8 mb-8 text-center font-bold"> Registered Students</h1>
               <table className="min-w-full text-left text-sm font-light text-black border-black sm:text-xl">
                 <thead className="border-b border-black font-medium dark:border-white/10">
                   <tr>
@@ -146,7 +78,7 @@ export default async function main({ params }: { params: { adminClassId: string 
                 </tbody>
               </table>
                     <br></br>
-              <h1 className="lg:text-3xl sm:text-2xl mt-8 mb-8 text-center font-bold">{params.adminClassId} Students Requesting Registration</h1>
+              <h1 className="lg:text-3xl sm:text-2xl mt-8 mb-8 text-center font-bold"> Students Requesting Registration</h1>
               <table className="min-w-full text-left text-sm font-light text-black border-black sm:text-xl">
                 <thead className="border-b border-black font-medium dark:border-white/10">
                   <tr>
@@ -158,7 +90,7 @@ export default async function main({ params }: { params: { adminClassId: string 
                 </thead>
                 <tbody>
                   {studentsUnregistered.map((student) => (
-                    <tr key={student.id} className="border-b border-black dark:border-white/10">
+                    <tr key={student.id} className="border-b border-black dark:border-white/10"> {/*Where we would load unregistered students if the database was connected*/}
                       <td className="whitespace-nowrap text-left px-3 py-4 sm:px-3 sm:py-2 lg:px-6 lg:py-4 lg:text-xl sm:text-l">{student.studentNumber}</td>
                       <td className="whitespace-nowrap text-left px-3 py-4 sm:px-3 sm:py-2 lg:px-6 lg:py-4 lg:text-xl sm:text-l">{student.firstName} {student.lastName}</td>
                       <td className="whitespace-nowrap text-left px-3 py-4 sm:px-3 sm:py-2 lg:px-6 lg:py-4 lg:text-xl sm:text-l"><Link href = "">
